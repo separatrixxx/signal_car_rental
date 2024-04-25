@@ -7,6 +7,9 @@
 
 	width: calc(100% - 160px);
 	height: fit-content;
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
+	height: auto;
 	padding: 10px 80px;
 
 	border-radius: 0 0 20px 20px;
