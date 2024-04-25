@@ -390,7 +390,8 @@ export interface ApiCarCar extends Schema.CollectionType {
     engine_type: Attribute.Enumeration<
       ['gasoline', 'diesel', 'hybrid', 'electricity']
     > &
-      Attribute.Required;
+      Attribute.Required &
+      Attribute.DefaultTo<'gasoline'>;
     engine_capacity: Attribute.Float & Attribute.Required;
     engine_power: Attribute.Integer & Attribute.Required;
     drive_unit: Attribute.Enumeration<['front_wheel', 'rear']> &

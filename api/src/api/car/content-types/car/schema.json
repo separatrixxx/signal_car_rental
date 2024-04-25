@@ -78,7 +78,8 @@
         "hybrid",
         "electricity"
       ],
-      "required": true
+      "required": true,
+      "default": "gasoline"
     },
     "engine_capacity": {
       "required": true,
