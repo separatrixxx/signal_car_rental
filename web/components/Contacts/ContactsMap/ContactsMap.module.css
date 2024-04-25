@@ -1,0 +1,41 @@
+.contactsMap {
+	position: relative;
+
+	overflow: hidden;
+
+	width: 600px;
+	height: 400px;
+	margin-top: 20px;
+
+	border-radius: 20px;
+}
+
+@media (max-width: 800px) {
+	.contactsMap {
+		width: 450px;
+		height: 300px;
+	}
+}
+
+@media (max-width: 580px) {
+	.contactsMap {
+		width: 350px;
+		height: 250px;
+		margin-top: 10px;
+
+		border-radius: 15px;
+	}
+}
+
+@media (max-width: 450px) {
+	.contactsMap {
+		width: 95%;
+		height: 250px;
+	}
+}
+
+@media (max-width: 300px) {
+	.contactsMap {
+		border-radius: 10px;
+	}
+}

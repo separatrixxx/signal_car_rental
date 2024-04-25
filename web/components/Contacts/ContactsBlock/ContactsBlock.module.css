@@ -1,0 +1,35 @@
+.contactsBlock {
+	display: grid;
+
+	width: 80%;
+	height: fit-content;
+	margin-top: 100px;
+	gap: 20px;
+}
+
+.contacts_title {
+	color: var(--primary);
+}
+
+.infoDiv {
+	display: grid;
+	gap: 10px;
+}
+
+@media (max-width: 1024px) {
+	.contactsBlock {
+		margin-top: 80px;
+	}
+}
+
+@media (max-width: 580px) {
+	.contactsBlock {
+		margin-top: 60px;
+		gap: 10px;
+	}
+
+	.infoDiv {
+		display: grid;
+		gap: 5px;
+	}
+}

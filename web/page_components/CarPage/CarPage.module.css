@@ -1,0 +1,35 @@
+.wrapper {
+	display: grid;
+
+	width: 100%;
+	justify-items: center;
+}
+
+.carBlock {
+	display: grid;
+
+	width: 80%;
+	height: fit-content;
+	margin-top: 100px;
+	grid-template-columns: 60% auto;
+	gap: 30px;
+}
+
+@media (max-width: 1024px) {
+	.carBlock {
+		margin-top: 80px;
+		gap: 20px;
+	}
+}
+
+@media (max-width: 800px) {
+	.carBlock {
+		grid-template-columns: 100%;
+	}
+}
+
+@media (max-width: 580px) {
+	.carBlock {
+		margin-top: 60px;
+	}
+}

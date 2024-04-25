@@ -1,0 +1,147 @@
+.carItem {
+	display: grid;
+
+	width: 100%;
+	height: fit-content;
+	padding: 5px;
+	padding-bottom: 20px;
+
+	cursor: pointer;
+	transition-duration: 300ms;
+
+	border-radius: 20px;
+	background: var(--white);
+	gap: 20px;
+	filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+
+.imageBlock {
+	display: grid;
+
+	width: 100%;
+	height: 300px;
+}
+
+.img {
+	width: 100%;
+	height: fit-content;
+	object-fit: cover;
+	object-position: center;
+
+	border-radius: 15px;
+}
+
+.carInfoBlock {
+	display: grid;
+
+	margin-left: 12px;
+	gap: 10px;
+}
+
+.carInfoBlock > h1 {
+	color: var(--dark);
+}
+
+.name {
+	color: var(--primary) !important;
+
+	font-weight: 700;
+}
+
+@media (min-width: 1024px) {
+	.carItem:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.07)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.15));
+	}
+}
+
+@media (max-width: 1700px) {
+	.imageBlock {
+		height: 250px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.imageBlock {
+		height: 200px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.imageBlock {
+		height: 250px;
+	}
+}
+
+@media (max-width: 900px) {
+	.imageBlock {
+		height: 200px;
+	}
+}
+
+@media (max-width: 700px) {
+	.imageBlock {
+		height: 150px;
+	}
+}
+
+@media (max-width: 580px) {
+	.carItem {
+		padding: 3px;
+		padding-bottom: 10px;
+
+		border-radius: 15px;
+		gap: 10px;
+	}
+
+	.imageBlock {
+		height: 250px;
+	}
+
+	.img {
+		border-radius: 10px;
+	}
+
+	.carInfoBlock {
+		gap: 5px;
+	}
+}
+
+@media (max-width: 400px) {
+	.imageBlock {
+		height: 200px;
+	}
+}
+
+@media (max-width: 300px) {
+	.carItem {
+		border-radius: 10px;
+	}
+
+	.imageBlock {
+		height: 150px;
+	}
+
+	.img {
+		border-radius: 7px;
+	}
+}
+
+@media (max-width: 200px) {
+	.imageBlock {
+		height: 100px;
+	}
+}
+
+@media (max-width: 150px) {
+	.imageBlock {
+		height: 70px;
+	}
+}
+
+@media (max-width: 100px) {
+	.imageBlock {
+		height: 50px;
+	}
+}

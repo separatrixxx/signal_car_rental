@@ -1,0 +1,27 @@
+.link {
+	display: grid;
+
+	width: fit-content;
+
+	cursor: pointer;
+}
+
+.link > h1 {
+	transition-duration: 300ms;
+
+	color: var(--darkLight);
+}
+
+.link:active > h1 {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--primary);
+}
+
+@media (min-width: 1024px) {
+	.link:hover > h1 {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--primary) !important;
+	}
+}

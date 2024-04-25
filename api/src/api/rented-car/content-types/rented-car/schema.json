@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rented_cars",
+  "info": {
+    "singularName": "rented-car",
+    "pluralName": "rented-cars",
+    "displayName": "RentedCars",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clientName": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "finishDate": {
+      "type": "datetime"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "car": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::car.car"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "free",
+        "booked",
+        "rented",
+        "processing",
+        "canceled"
+      ],
+      "default": "free",
+      "required": true
+    }
+  }
+}

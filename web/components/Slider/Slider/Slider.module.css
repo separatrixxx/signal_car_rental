@@ -1,0 +1,7 @@
+.slider {
+	z-index: 1;
+
+	width: 100%;
+
+	height: fit-content;
+}

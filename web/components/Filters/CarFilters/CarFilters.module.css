@@ -1,0 +1,28 @@
+.filtersBlock {
+	display: grid;
+	overflow: hidden;
+	overflow-x: scroll;
+
+	width: 80%;
+	height: fit-content;
+	margin-top: 100px;
+	margin-bottom: 10px;
+	padding: 0 20px 20px 10px;
+
+	white-space: nowrap;
+	gap: 10px;
+	grid-template-columns: repeat(12, auto);
+}
+
+@media (max-width: 1024px) {
+	.filtersBlock {
+		margin-top: 80px;
+	}
+}
+
+@media (max-width: 580px) {
+	.filtersBlock {
+		margin-top: 60px;
+		margin-bottom: 20px;
+	}
+}

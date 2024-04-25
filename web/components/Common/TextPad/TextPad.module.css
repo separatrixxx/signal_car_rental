@@ -1,0 +1,42 @@
+.textPad {
+	display: grid;
+	align-items: center;
+
+	width: calc(100% - 60px);
+	height: fit-content;
+	padding: 40px 30px;
+
+	border-radius: 20px;
+	background: var(--white);
+	gap: 20px;
+	filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+
+@media (max-width: 1024px) {
+	.carInfo {
+		gap: 20px;
+	}
+
+	.carInfoBlock {
+		width: calc(100% - 40px);
+		gap: 10px;
+
+		padding: 30px 20px;
+	}
+}
+
+@media (max-width: 580px) {
+	.carInfo,
+	.carInfoBlock,
+	.imageBlock {
+		border-radius: 15px;
+	}
+}
+
+@media (max-width: 300px) {
+	.carInfo,
+	.carInfoBlock,
+	.imageBlock {
+		border-radius: 10px;
+	}
+}

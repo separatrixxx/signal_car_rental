@@ -1,0 +1,38 @@
+.aboutBlock {
+	display: grid;
+
+	width: 80%;
+	height: fit-content;
+	margin-top: 100px;
+	gap: 20px;
+}
+
+.about_title {
+	color: var(--primary);
+}
+
+.about_text {
+	max-width: 60%;
+
+	white-space: pre-line;
+
+	font-weight: 500;
+	overflow-wrap: break-word;
+}
+
+@media (max-width: 1024px) {
+	.aboutBlock {
+		margin-top: 80px;
+	}
+}
+
+@media (max-width: 580px) {
+	.aboutBlock {
+		margin-top: 60px;
+		gap: 10px;
+	}
+
+	.about_text {
+		max-width: 80%;
+	}
+}

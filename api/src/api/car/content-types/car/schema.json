@@ -1,0 +1,110 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cars",
+  "info": {
+    "singularName": "car",
+    "pluralName": "cars",
+    "displayName": "Cars",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {}
+    },
+    "price": {
+      "type": "integer",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "counter": {
+      "type": "integer",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "description_ru": {
+      "pluginOptions": {},
+      "type": "text",
+      "required": true
+    },
+    "description_ge": {
+      "type": "text",
+      "required": true
+    },
+    "class": {
+      "type": "enumeration",
+      "enum": [
+        "econom",
+        "comfort",
+        "business",
+        "premium",
+        "suv",
+        "minivan"
+      ],
+      "required": true,
+      "default": "econom"
+    },
+    "mileage": {
+      "type": "integer",
+      "required": true
+    },
+    "engine_type": {
+      "type": "enumeration",
+      "enum": [
+        "gasoline",
+        "diesel",
+        "hybrid",
+        "electricity"
+      ],
+      "required": true
+    },
+    "engine_capacity": {
+      "required": true,
+      "type": "float"
+    },
+    "engine_power": {
+      "required": true,
+      "type": "integer"
+    },
+    "drive_unit": {
+      "type": "enumeration",
+      "enum": [
+        "front_wheel",
+        "rear"
+      ],
+      "required": true,
+      "default": "front_wheel"
+    },
+    "transmission": {
+      "type": "enumeration",
+      "enum": [
+        "automatic",
+        "manual"
+      ],
+      "required": true,
+      "default": "automatic"
+    }
+  }
+}
