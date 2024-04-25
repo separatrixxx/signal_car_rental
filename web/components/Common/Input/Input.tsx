@@ -16,7 +16,9 @@ export const Input = ({ type, text, value, minDate, error, isSearch, onChange }:
         [styles.search]: isSearch,
     })}
         placeholder={text}
-        value={value.length === 0 ? `${year}-${month}-${day}T${hours}:${minutes}` : value}
+        value={value.length === 0 && type === 'date'
+            ? `${year}-${month}-${day}T${hours}:${minutes}`
+            : value}
         onChange={onChange}
         type={type === 'text' ? 'text' : type === 'date' ? 'datetime-local' : 'phone'}
         name={type}
