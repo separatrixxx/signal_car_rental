@@ -6,10 +6,10 @@ import { InfoData } from "../interfaces/info.interface";
 export async function getInfo(dispatch: any) {
     try {
         const { data : response }: AxiosResponse<InfoData> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/api/company-infos/1');
+            '/api/company-infos');
 
-        if (response.data) {
-            dispatch(setinfo(response.data));
+        if (response.data[0]) {
+            dispatch(setinfo(response.data[0]));
         }
     } catch (err) {
         console.log(err);

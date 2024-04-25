@@ -1,5 +1,5 @@
 export interface InfoData {
-    data: InfoInterface,
+    data: InfoInterface[],
 }
 
 export interface InfoInterface {
