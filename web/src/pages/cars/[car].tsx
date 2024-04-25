@@ -52,7 +52,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: GetStaticProps
 
 	return {
 		paths: paths,
-		fallback: false
+		fallback: true
 	};
 };
 
