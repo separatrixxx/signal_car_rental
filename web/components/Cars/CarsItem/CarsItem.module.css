@@ -17,6 +17,7 @@
 
 .imageBlock {
 	display: grid;
+	overflow: hidden;
 
 	width: 100%;
 	height: 300px;

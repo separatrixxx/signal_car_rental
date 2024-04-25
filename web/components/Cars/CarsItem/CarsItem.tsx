@@ -25,9 +25,8 @@ export const CarsItem = ({ carId }: CarsItemProps): JSX.Element => {
 						src={process.env.NEXT_PUBLIC_DOMAIN + car.images[0].url}
 						alt={car.images[0].alternativeText}
 						width={1}
-						height={1}
-						priority={true}
-						unoptimized={true}
+						height={3}
+						layout="responsive"
 					/>
 				</div>
 				<div className={styles.carInfoBlock}>

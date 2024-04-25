@@ -43,7 +43,7 @@ export const Header = ({ setActive }: HeaderProps): JSX.Element => {
             transition={{ duration: 0.3 }}
             animate={flag ? 'hidden' : 'visible'}>
             <div className={styles.linksDiv}>
-                <Link href="/" className={styles.logo}>
+                <Link href="/" aria-label="logo" className={styles.logo}>
                     <Logo />
                 </Link>
                 <HeaderLink text={setLocale(router.locale).about}  link="/about" />
