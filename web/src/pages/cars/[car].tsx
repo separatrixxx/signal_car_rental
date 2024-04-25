@@ -19,20 +19,24 @@ export default function Car({ car }: CarProps) {
 	  getCars(dispatch);
 	}, [dispatch]);
 
-	return (
-		<>
-			<Head>
-				<title>{setLocale(router.locale).signal_car + ' - ' + car.data.name}</title>
-				<meta name='description' content={setLocale(router.locale).signal_car + ' - ' + (router.locale === 'en' 
-					? car.data.description : router.locale === 'ru' ? car.data.description_ru : car.data.description_ge)} />
-				<meta property='og:title' content={setLocale(router.locale).signal_car + ' - ' + car.data.name} />
-				<meta name='og:description' content={setLocale(router.locale).signal_car + ' - ' + (router.locale === 'en' 
-					? car.data.description : router.locale === 'ru' ? car.data.description_ru : car.data.description_ge)} />
-				<meta charSet="utf-8" />
-			</Head>
-			<CarPage carId={car.data.id} />
-		</>
-	);
+	if (car) {
+		return (
+			<>
+				<Head>
+					<title>{setLocale(router.locale).signal_car + ' - ' + car.data.name}</title>
+					<meta name='description' content={setLocale(router.locale).signal_car + ' - ' + (router.locale === 'en' 
+						? car.data.description : router.locale === 'ru' ? car.data.description_ru : car.data.description_ge)} />
+					<meta property='og:title' content={setLocale(router.locale).signal_car + ' - ' + car.data.name} />
+					<meta name='og:description' content={setLocale(router.locale).signal_car + ' - ' + (router.locale === 'en' 
+						? car.data.description : router.locale === 'ru' ? car.data.description_ru : car.data.description_ge)} />
+					<meta charSet="utf-8" />
+				</Head>
+				<CarPage carId={car.data.id} />
+			</>
+		);
+	} else {
+		return <></>
+	}
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }: GetStaticPropsContext<ParsedUrlQuery>) => {		
