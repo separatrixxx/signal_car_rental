@@ -10,18 +10,31 @@ export const Input = ({ type, text, value, minDate, error, isSearch, onChange }:
     const year = now.getFullYear();
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
+
+    function handleFocus(e: any) {
+        if (type === 'date') {
+            e.target.type = 'datetime-local';
+            e.target.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+    }
+
+    function handleBlur(e: any) {
+        if (type === 'date' && e.target.value === '') {
+            e.target.type = 'text';
+        }
+    }
     
 	return <input className={cn(styles.input, {
         [styles.error_input]: error,
         [styles.search]: isSearch,
     })}
         placeholder={text}
-        value={value.length === 0 && type === 'date'
-            ? `${year}-${month}-${day}T${hours}:${minutes}`
-            : value}
+        value={value}
         onChange={onChange}
-        type={type === 'text' ? 'text' : type === 'date' ? 'datetime-local' : 'phone'}
+        type={type === 'text' ? 'text' : type === 'date' ? 'text' : 'phone'}
         name={type}
         aria-label={type}
-        min={minDate} />;
+        min={minDate}
+        onFocus={handleFocus} 
+        onBlur={handleBlur} />;
 };
