@@ -2,6 +2,8 @@
 .input[type="datetime-local"] {
 	width: calc(80% - 30px);
 	height: fit-content;
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
 	padding: 15px 15px;
 
 	transition-duration: 300ms;
