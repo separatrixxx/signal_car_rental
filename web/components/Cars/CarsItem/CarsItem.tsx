@@ -27,6 +27,8 @@ export const CarsItem = ({ carId }: CarsItemProps): JSX.Element => {
 						width={1}
 						height={3}
 						layout="responsive"
+						priority={true}
+						unoptimized={true}
 					/>
 				</div>
 				<div className={styles.carInfoBlock}>

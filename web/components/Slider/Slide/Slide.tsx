@@ -13,6 +13,8 @@ export const Slide = ({ image, alt }: SlideProps): JSX.Element => {
 				width={1}
 				height={1}
 				layout="responsive"
+				priority={true}
+				unoptimized={true}
 			/>
 		</div>
 	);
