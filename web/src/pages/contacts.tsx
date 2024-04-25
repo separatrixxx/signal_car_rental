@@ -15,7 +15,7 @@ function Contacts(): JSX.Element {
 
   useEffect(() => {
     getInfo(dispatch);
-  }, []);
+  }, [dispatch]);
 
   const info = useSelector((state: AppState) => state.info.info);
 

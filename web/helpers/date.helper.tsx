@@ -4,8 +4,6 @@ export function getDate(): string {
     const year = dateNow.getFullYear();
     let month = '' + (dateNow.getMonth() + 1);
     let day = '' + dateNow.getDate();
-    let hours = dateNow.getHours();
-    let minutes = dateNow.getMinutes();
 
     if (month.length === 1) {
         month = '0' + month;

@@ -17,7 +17,7 @@ export default function Car({ car }: CarProps) {
 
 	useEffect(() => {
 	  getCars(dispatch);
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<>
