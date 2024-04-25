@@ -15,12 +15,14 @@
 
 @media (max-width: 1024px) {
 	.carsDiv {
+		width: 85%;
 		grid-template-columns: repeat(2, auto);
 	}
 }
 
 @media (max-width: 580px) {
 	.carsDiv {
+		width: 90%;
 		grid-template-columns: auto;
 	}
 }

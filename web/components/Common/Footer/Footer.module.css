@@ -40,7 +40,6 @@
 @media (max-width: 580px) {
 	.footer {
 		grid-template-columns: auto;
-		gap: 10px;
 
 		margin-top: 40px;
 		padding: 20px 0;

@@ -40,8 +40,6 @@
 
 @media (max-width: 300px) {
 	.carBooking {
-		height: 150px;
-
 		border-radius: 10px;
 	}
 }

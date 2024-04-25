@@ -11,7 +11,7 @@ export const Input = ({ type, text, value, minDate, error, isSearch, onChange }:
         placeholder={text}
         value={value}
         onChange={onChange}
-        type={type === 'text' ? 'text' : type === 'date' ? 'datetime-local' : 'phone'}
+        type={type === 'text' ? 'text' : type === 'date' ? 'datetime' : 'phone'}
         name={type}
         aria-label={type}
         min={minDate} />;
