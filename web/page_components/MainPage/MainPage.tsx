@@ -44,6 +44,7 @@ export const MainPage = (): JSX.Element => {
 				}}
 			/>
             <div className={styles.wrapper}>
+                <Header setActive={setActive} />
                 <CarFilters filtersActual={filtersActual} setActive={setActiveFilters} setFilters={setFilters} />
                 <SortingBar sort={sort} name={name} setSort={setSort} setName={setName} />
                 <CarsList />
