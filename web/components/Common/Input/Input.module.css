@@ -24,6 +24,7 @@
 }
 
 .inputDate {
+	width: 90%;
 	border: none;
 }
 
@@ -75,6 +76,10 @@
 
 	.inputDiv {
 		width: 90%;
+	}
+
+	.inputDate {
+		width: 95%;
 	}
 
 	.search {
