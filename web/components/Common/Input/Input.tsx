@@ -13,7 +13,7 @@ export const Input = ({ type, text, value, minDate, error, isSearch, onChange }:
 
     function handleFocus(e: any) {
         if (type === 'date') {
-            e.target.type = 'datetime-local';
+            e.target.type = 'date';
             e.target.value = `${year}-${month}-${day}T${hours}:${minutes}`;
         }
     }
