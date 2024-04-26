@@ -12,7 +12,7 @@ export const Input = ({ type, text, value, minDate, error, isSearch, onChange }:
     const minutes = now.getMinutes().toString().padStart(2, '0');
 
     function handleFocus(e: any) {
-        if (type === 'date') {
+        if (type === 'date' && e.target.value === '') {
             e.target.type = 'datetime-local';
             e.target.value = `${year}-${month}-${day}T${hours}:${minutes}`;
         }
@@ -24,17 +24,34 @@ export const Input = ({ type, text, value, minDate, error, isSearch, onChange }:
         }
     }
     
-	return <input className={cn(styles.input, {
-        [styles.error_input]: error,
-        [styles.search]: isSearch,
-    })}
-        placeholder={text}
-        value={value}
-        onChange={onChange}
-        type={type === 'text' ? 'text' : type === 'date' ? 'text' : 'phone'}
-        name={type}
-        aria-label={type}
-        min={minDate}
-        onFocus={handleFocus} 
-        onBlur={handleBlur} />;
+	if (type !== 'date') {
+        return <input className={cn(styles.input, {
+            [styles.error_input]: error,
+            [styles.search]: isSearch,
+        })}
+            placeholder={text}
+            value={value}
+            onChange={onChange}
+            type={type === 'text' ? 'text' : 'phone'}
+            name={type}
+            aria-label={type}
+            min={minDate} />;
+    } else {
+        return (
+            <div className={cn(styles.input, styles.inputDiv, {
+                [styles.error_input]: error,
+            })}>
+                <input className={cn(styles.input, styles.inputDate)}
+                    placeholder={text}
+                    value={value}
+                    onChange={onChange}
+                    type="text" 
+                    name={type}
+                    aria-label={type}
+                    min={minDate}
+                    onFocus={handleFocus} 
+                    onBlur={handleBlur} />
+            </div>
+        );
+    }
 };
