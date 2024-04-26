@@ -13,18 +13,22 @@
 
 	font-size: 18px;
 	font-weight: 700;
-	display: grid;
 	cursor: text;
 }
 
 .inputDiv {
 	width: 80%;
 	color: var(--darkLight);
+	height: fit-content;
 	padding: 0 !important;
+	height: 54px;
+	display: grid;
+	align-items: center;
 }
 
 .inputDate {
-	width: 90%;
+	width: 85%;
+	height: 1px;
 	border: none;
 }
 
@@ -76,10 +80,11 @@
 
 	.inputDiv {
 		width: 90%;
+		height: 40px;
 	}
 
 	.inputDate {
-		width: 95%;
+		width: 90%;
 	}
 
 	.search {
