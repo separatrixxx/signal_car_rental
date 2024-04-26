@@ -1,7 +1,7 @@
 .input {
-	/* width: calc(80% - 30px) !important; */
+	width: calc(80% - 30px);
 	height: fit-content !important;
-	padding: 15px 15px !important;
+	padding: 15px 15px;
 
 	transition-duration: 300ms;
 
@@ -11,7 +11,7 @@
 	outline: none;
 	background: var(--white);
 
-	font-size: 18px !important;
+	font-size: 18px;
 	font-weight: 700;
 	display: grid;
 }
@@ -34,7 +34,6 @@
 
 .search {
 	width: 30%;
-	height: fit-content;
 	margin-left: 20px;
 	padding: 7px 12px;
 
@@ -50,18 +49,18 @@
 	color: var(--darkLight);
 }
 
-.search::-ms-input-placeholder { /* Edge 12 -18 */
+.search::-ms-input-placeholder {
 	color: var(--darkLight);
 }
 
 @media (max-width: 580px) {
 	.input {
-		width: calc(90% - 20px) !important;
-		padding: 10px 10px !important;
+		width: calc(90% - 20px);
+		padding: 10px 10px;
 
 		border-radius: 7px;
 
-		font-size: 14px !important;
+		font-size: 14px;
 	}
 
 	.search {
