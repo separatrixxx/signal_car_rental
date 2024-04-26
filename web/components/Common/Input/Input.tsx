@@ -1,40 +1,38 @@
 import { InputProps } from './Input.props';
 import styles from './Input.module.css';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from 'react';
 import cn from 'classnames';
 
 
 export const Input = ({ type, text, value, minDate, error, isSearch, onChange }: InputProps): JSX.Element => {
-    const now = new Date();
-    const day = now.getDate().toString().padStart(2, '0');
-    const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Месяцы начинаются с 0
-    const year = now.getFullYear();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const [startDate, setStartDate] = useState(new Date());
 
-    function handleFocus(e: any) {
-        if (type === 'date') {
-            e.target.type = 'datetime-local';
-            e.target.value = `${year}-${month}-${day}T${hours}:${minutes}`;
-        }
-    }
+    const handleChange = (date: any) => {
+        setStartDate(date);
+        onChange(date);
+    };
 
-    function handleBlur(e: any) {
-        if (type === 'date' && e.target.value === '') {
-            e.target.type = 'text';
-        }
+	if (type !== 'date') {
+        return <input className={cn(styles.input, {
+            [styles.error_input]: error,
+            [styles.search]: isSearch,
+        })}
+            placeholder={text}
+            value={value}
+            onChange={onChange}
+            type={type === 'text' ? 'text' : 'phone'}
+            name={type}
+            aria-label={type}
+            min={minDate} />;
+    } else {
+        return (
+            <DatePicker className={cn(styles.input, styles.datePicker)}
+                selected={startDate}
+                onChange={handleChange}
+                customInput={<input />}
+            />
+        );
     }
-    
-	return <input className={cn(styles.input, {
-        [styles.error_input]: error,
-        [styles.search]: isSearch,
-    })}
-        placeholder={text}
-        value={value}
-        onChange={onChange}
-        type={type === 'text' ? 'text' : type === 'date' ? 'text' : 'phone'}
-        name={type}
-        aria-label={type}
-        min={minDate}
-        onFocus={handleFocus} 
-        onBlur={handleBlur} />;
 };

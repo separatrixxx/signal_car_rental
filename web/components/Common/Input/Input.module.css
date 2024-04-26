@@ -1,7 +1,7 @@
 .input {
-	width: calc(80% - 30px);
-	height: 50px;
-	padding: 15px 15px;
+	/* width: calc(80% - 30px) !important; */
+	height: fit-content !important;
+	padding: 15px 15px !important;
 
 	transition-duration: 300ms;
 
@@ -11,9 +11,14 @@
 	outline: none;
 	background: var(--white);
 
-	font-size: 18px;
+	font-size: 18px !important;
 	font-weight: 700;
+	display: grid;
 }
+
+/* .datePicker {
+	width: fit-content;
+} */
 
 .input:active,
 .input:hover,
@@ -50,14 +55,13 @@
 }
 
 @media (max-width: 580px) {
-	.input,
-	.input[type="datetime-local"] {
-		width: calc(90% - 20px);
-		padding: 10px 10px;
+	.input {
+		width: calc(90% - 20px) !important;
+		padding: 10px 10px !important;
 
 		border-radius: 7px;
 
-		font-size: 14px;
+		font-size: 14px !important;
 	}
 
 	.search {
