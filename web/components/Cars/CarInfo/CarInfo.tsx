@@ -10,6 +10,7 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { CarInfoItem } from '../CarInfoItem/CarInfoItem';
 import { CarInterface } from '../../../interfaces/car.interface';
 import { Slider } from '../../Slider/Slider/Slider';
+import { setDeliveryPrice } from '../../../helpers/price.helper';
 
 
 export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
@@ -18,6 +19,9 @@ export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
     const car: CarInterface | undefined = useSelector((state: AppState) => state.cars.cars).find(function (car) {
 		return car.id === carId;
 	});
+
+	const dates = useSelector((state: AppState) => state.dates.dates);
+	const price = useSelector((state: AppState) => state.price.price);
 
 	if (car) {
 		return (
@@ -32,8 +36,17 @@ export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
 							car.description_ru : car.description_ge}
 					</Htag>
 					<Htag tag='xl' className={styles.carPrice}>
-						{setLocale(router.locale).from + ' ' + car.price + '₾ / ' + setLocale(router.locale).day}
+						{car.price + '₾ / ' + setLocale(router.locale).day}
 					</Htag>
+					{setDeliveryPrice(car.location.location_code, dates, price) > 0 
+						?
+							<Htag tag='l' className={styles.carPrice}>
+								{setLocale(router.locale).delivery_price + ': ' +
+									setDeliveryPrice(car.location.location_code, dates, price) + '₾'}
+							</Htag>
+						:
+							<></>
+					}
 				</TextPad>
 				<TextPad>
 					<Htag tag='xl' className={styles.carName}>

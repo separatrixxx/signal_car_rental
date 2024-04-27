@@ -1,0 +1,33 @@
+.blockFilters {
+	display: grid;
+	gap: 10px;
+}
+
+.filterLink {
+	width: fit-content;
+
+	cursor: pointer;
+	transition-duration: 300ms;
+}
+
+.filterLink:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--primary);
+}
+
+.divider {
+	width: 100%;
+	height: 1px;
+	margin: 10px 0;
+
+	background: var(--light);
+}
+
+@media (min-width: 1024px) {
+	.filterLink:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--primary);
+	}
+}

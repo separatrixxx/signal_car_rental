@@ -20,12 +20,12 @@ export const infoSlice = createSlice({
     info: infoData,
   },
   reducers: {
-    setinfo: (state, actions) => {
+    setInfo: (state, actions) => {
         state.info = actions.payload
     },
   },
 })
 
-export const { setinfo } = infoSlice.actions
+export const { setInfo } = infoSlice.actions
 
 export default infoSlice.reducer;

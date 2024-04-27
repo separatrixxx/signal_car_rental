@@ -40,6 +40,14 @@
       ],
       "default": "free",
       "required": true
+    },
+    "startLocation": {
+      "type": "string",
+      "required": true
+    },
+    "finishLocation": {
+      "type": "string",
+      "required": true
     }
   }
 }

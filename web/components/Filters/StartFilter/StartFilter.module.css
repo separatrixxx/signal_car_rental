@@ -1,0 +1,35 @@
+.startFilter {
+	display: grid;
+	align-items: center;
+
+	width: 40%;
+	height: fit-content;
+	margin-top: 100px;
+	padding: 40px 30px;
+
+	border-radius: 20px;
+	background: var(--white);
+	gap: 20px;
+	filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+	justify-items: center;
+}
+
+@media (max-width: 1024px) {
+	.startFilter {
+		margin-top: 80px;
+	}
+}
+
+@media (max-width: 580px) {
+	.startFilter {
+		margin-top: 60px;
+
+		border-radius: 15px;
+	}
+}
+
+@media (max-width: 300px) {
+	.startFilter {
+		border-radius: 10px;
+	}
+}

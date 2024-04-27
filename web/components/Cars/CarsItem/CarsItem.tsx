@@ -33,10 +33,12 @@ export const CarsItem = ({ carId }: CarsItemProps): JSX.Element => {
 				</div>
 				<div className={styles.carInfoBlock}>
 					<Htag tag='m' className={styles.name}>
-						{car.name}
+						{car.name + ' | ' + (router.locale === 'en' ?
+							car.location.location : router.locale === 'ru' ?
+							car.location.location_ru : car.location.location_ge)}
 					</Htag>
 					<Htag tag='l'>
-						{setLocale(router.locale).from + ' ' + car.price + '₾ / ' + setLocale(router.locale).day}
+						{car.price + '₾ / ' + setLocale(router.locale).day}
 					</Htag>
 				</div>
 			</Link>

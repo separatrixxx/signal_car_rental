@@ -1,30 +1,29 @@
 import { InputProps } from './Input.props';
 import styles from './Input.module.css';
+import { getDateInput } from '../../../helpers/date.helper';
 import cn from 'classnames';
 
 
-export const Input = ({ type, text, value, minDate, error, isSearch, onChange }: InputProps): JSX.Element => {
-    const now = new Date();
-    const day = now.getDate().toString().padStart(2, '0');
-    const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Месяцы начинаются с 0
-    const year = now.getFullYear();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
+export const Input = ({ type, text, value, minDate, error, isSearch, isActive, onChange }: InputProps): JSX.Element => {
+
 
     function handleFocus(e: any) {
-        if (type === 'date' && e.target.value === '') {
-            e.target.type = 'datetime-local';
-            e.target.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        if ((type === 'date') && e.target.value === '') {
+            e.target.type = 'date';
+        }
+
+        if ((type === 'time') && e.target.value === '') {
+            e.target.type = 'time';
         }
     }
 
     function handleBlur(e: any) {
-        if (type === 'date' && e.target.value === '') {
+        if ((type === 'date' || type === 'time') && e.target.value === '') {
             e.target.type = 'text';
         }
     }
     
-	if (type !== 'date') {
+	if (type !== 'date' && type !== 'time' && type !== 'location') {
         return <input className={cn(styles.input, {
             [styles.error_input]: error,
             [styles.search]: isSearch,
@@ -36,7 +35,7 @@ export const Input = ({ type, text, value, minDate, error, isSearch, onChange }:
             name={type}
             aria-label={type}
             min={minDate} />;
-    } else {
+    } else if (type !== 'location') {
         return (
             <div className={cn(styles.input, styles.inputDiv, {
                 [styles.error_input]: error,
@@ -51,6 +50,15 @@ export const Input = ({ type, text, value, minDate, error, isSearch, onChange }:
                     min={minDate}
                     onFocus={handleFocus} 
                     onBlur={handleBlur} />
+            </div>
+        );
+    } else {
+        return (
+            <div className={cn(styles.input, styles.inputDiv, styles.locationInput, {
+                [styles.error_input]: error,
+                [styles.activeInput]: isActive,
+            })} onClick={() => onChange(true)}>
+                {text}
             </div>
         );
     }

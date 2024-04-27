@@ -2,13 +2,31 @@ import axios, { AxiosResponse } from "axios";
 import { CarInterface, Cars } from "../interfaces/car.interface";
 import { setCars } from "../features/cars/carsSlice";
 import { FilterActualInterface } from "../interfaces/filters.interface";
+import { DatesInterface } from "../interfaces/dates.interface";
 
 
-export async function getCars(dispatch: any, filtersActual?: FilterActualInterface, sort?: 'low' | 'high', name?: string) {
+export async function getCars(dispatch: any, dates: DatesInterface, router: any, filtersActual?: FilterActualInterface,
+    sort?: 'low' | 'high', name?: string) {
+    if (dates.startLocation === '') {
+        router.push('/');
+    }
+    
     try {
         const { data : response }: AxiosResponse<Cars> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/api/cars?populate=images');
+            '/api/cars?populate=images%2C%20location');
 
+        response.data.sort((carA, carB) => {
+            if (carA.location.location_code === dates.startLocation
+                && carB.location.location_code !== dates.startLocation) {
+                return -1;
+            } else if (carA.location.location_code !== dates.startLocation
+                && carB.location.location_code === dates.startLocation) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+            
         if (response.data && filtersActual && sort) {
             response.data.sort(function (a, b) {
                 if (a.price > b.price && sort === 'low') {

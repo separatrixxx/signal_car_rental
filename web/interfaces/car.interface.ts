@@ -1,3 +1,5 @@
+import { LocationInterface } from "./location.interface";
+
 export interface Cars {
     data: CarInterface[],
 }
@@ -21,6 +23,7 @@ export interface CarInterface {
     mileage: number,
     transmission: 'automatic' | 'manual',
     drive_unit: 'front_wheel' | 'rear',
+    location: LocationInterface,
     images: CarImage[],
 }
 

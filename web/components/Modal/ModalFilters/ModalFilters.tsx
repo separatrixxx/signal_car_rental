@@ -1,12 +1,12 @@
-import { ModaFiltersProps } from './ModaFilters.props';
-import styles from './ModaFilters.module.css';
+import { ModalFiltersProps } from './ModalFilters.props';
+import styles from './ModalFilters.module.css';
 import { setLocale } from '../../../helpers/locale.helper';
 import { useRouter } from 'next/router';
 import { Htag } from '../../Common/Htag/Htag';
 import { FilterActualInterface } from '../../../interfaces/filters.interface';
 
 
-export const ModaFilters = ({ filters, filtersActual, setActiveFilters, setFiltersActual }: ModaFiltersProps): JSX.Element => {
+export const ModalFilters = ({ filters, filtersActual, setActiveFilters, setFiltersActual }: ModalFiltersProps): JSX.Element => {
     const router = useRouter();
     
     return (

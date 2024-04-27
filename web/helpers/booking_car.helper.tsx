@@ -3,11 +3,12 @@ import { BookingErrorInterface, BookingInterface } from "../interfaces/booking.i
 import { ToastError, ToastSuccess } from "../components/Common/Toast/Toast";
 import { setLocale } from "./locale.helper";
 import { CarInterface } from "../interfaces/car.interface";
-import { setCars } from "../features/cars/carsSlice";
 import { getCars } from "./car.helper";
+import { DatesInterface } from "../interfaces/dates.interface";
+import { setDeliveryPrice } from "./price.helper";
 
 
-export async function chechData(data: BookingInterface, errData: BookingErrorInterface,
+export async function checkData(data: BookingInterface, errData: BookingErrorInterface, dates: DatesInterface,
     dispatch: any, setIsLoading: (e: boolean) => void, setError: (e: any) => void, router: any) {
     setIsLoading(true);
 
@@ -19,8 +20,7 @@ export async function chechData(data: BookingInterface, errData: BookingErrorInt
             password: process.env.NEXT_PUBLIC_PASSWORD,
         })
             .then(function (response) {
-                bookingCar(data, setIsLoading, response.data.jwt, router);
-                changeCarStatus(data.car, dispatch, response.data.jwt, router);
+                bookingCar(data, dates, dispatch, setIsLoading, response.data.jwt, router);
             })
             .catch(function (error) {
                 console.log("Booking error: " + error);
@@ -40,7 +40,7 @@ export async function chechData(data: BookingInterface, errData: BookingErrorInt
         }
 
         if (!data.startDate || !data.finishDate) {
-            ToastError(setLocale(router.locale).error_data);
+            ToastError(setLocale(router.locale).error_date);
         }
 
         if (!data.startDate) {
@@ -53,15 +53,18 @@ export async function chechData(data: BookingInterface, errData: BookingErrorInt
     }
 }
 
-export async function bookingCar(data: BookingInterface, setIsLoading: (e: boolean) => void, token: string, router: any) {
+export async function bookingCar(data: BookingInterface, dates: DatesInterface, dispatch: any,
+    setIsLoading: (e: boolean) => void, token: string, router: any) {
     await axios.post(process.env.NEXT_PUBLIC_DOMAIN + '/api/rented-cars', {
         data: {
             clientName: data.clientName,
-            startDate: data.startDate,
-            finishDate: data.finishDate,
+            startDate: dates.startDate + 'T' + data.startDate,
+            finishDate: dates.finishDate + 'T' + data.finishDate,
             phone: data.phone,
             car: data.car.id,
             status: 'booked',
+            startLocation: dates.startLocation,
+            finishLocation: dates.finishLocation,
         }
     }, {
         headers: {
@@ -70,6 +73,8 @@ export async function bookingCar(data: BookingInterface, setIsLoading: (e: boole
         }
     })
         .then(function () {
+            changeCarStatus(data.car, dates, dispatch, token, router);
+
             setIsLoading(false);
             ToastSuccess(setLocale(router.locale).car_reserved);
         })
@@ -79,13 +84,9 @@ export async function bookingCar(data: BookingInterface, setIsLoading: (e: boole
     });
 }
 
-export async function changeCarStatus(car: CarInterface, dispatch: any, token: string, router: any) {
+export async function changeCarStatus(car: CarInterface, dates: DatesInterface, dispatch: any, token: string, router: any) {
     await axios.put(process.env.NEXT_PUBLIC_DOMAIN + '/api/cars/' + car.id, {
         data: {
-            name: car.name,
-            description: car.description,
-            images: car.images.map(img => img.id),
-            price: car.price,
             counter: car.counter - 1,
         }
     }, {
@@ -95,7 +96,7 @@ export async function changeCarStatus(car: CarInterface, dispatch: any, token: s
         }
     })
         .then(function () {
-            getCars(dispatch, router.locale);
+            getCars(dispatch, dates, router.locale);
         })
         .catch(function (error) {
             console.log("Change status error: " + error);

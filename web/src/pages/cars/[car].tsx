@@ -9,6 +9,10 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getCars } from '../../../helpers/car.helper';
+import { getLocations } from '../../../helpers/location.helper';
+import { getPrice } from '../../../helpers/price.helper';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../../features/store/store';
 
 
 export default function Car({ car }: CarProps) {
@@ -16,10 +20,15 @@ export default function Car({ car }: CarProps) {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-	  getCars(dispatch);
+		getLocations(dispatch);
+    	getPrice(dispatch);
 	}, [dispatch]);
 
-	if (car) {
+	const dates = useSelector((state: AppState) => state.dates.dates);
+
+	getCars(dispatch, dates, router);
+
+	if (car && dates.startLocation !== '') {
 		return (
 			<>
 				<Head>
@@ -44,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: GetStaticProps
 	 
 	for (const locale of locales as []) {
 		const { data: response }: AxiosResponse<Cars> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-			'/api/cars?populate=images');
+			'/api/cars?populate=images%2C%20location');
 
 		response.data.map(car => {
             return paths.push({

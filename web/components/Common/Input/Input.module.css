@@ -29,6 +29,17 @@
 	color: var(--darkLight);
 }
 
+.locationInput {
+	width: calc(80% - 33.2px);
+	padding: 0 16.6px !important;
+
+	cursor: pointer;
+}
+
+.activeInput {
+	color: var(--primary);
+}
+
 .inputDate {
 	width: 85%;
 	height: 1px !important;
@@ -85,6 +96,11 @@
 	.inputDiv {
 		width: 90%;
 		height: 40px;
+	}
+
+	.locationInput {
+		width: calc(90% - 23.2px);
+		padding: 0 11.6px !important;
 	}
 
 	.inputDate {

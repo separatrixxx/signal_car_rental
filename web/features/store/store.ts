@@ -2,6 +2,9 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import carsSlice from "../cars/carsSlice";
 import infoSlice from "../info/infoSlice";
+import datesSlice from "../dates/datesSlice";
+import locationsSlice from "../locations/locationsSlice";
+import priceSlice from "../price/priceSlice";
 
 
 const makeStore = () =>
@@ -9,6 +12,9 @@ const makeStore = () =>
     reducer: {
       cars: carsSlice,
       info: infoSlice,
+      dates: datesSlice,
+      locations: locationsSlice,
+      price: priceSlice,
     },
     devTools: true,
 });

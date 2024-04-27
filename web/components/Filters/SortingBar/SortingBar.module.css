@@ -5,8 +5,8 @@
 	width: 80%;
 	height: fit-content;
 	margin-bottom: 30px;
-	grid-template-columns: 120px 1fr;
-	gap: 10px;
+	grid-template-columns: auto 120px 1fr;
+	gap: 30px;
 }
 
 .sortingDiv {
@@ -43,17 +43,37 @@
 	transform: scale(1, -1);
 }
 
+.location {
+	cursor: pointer;
+	transition-duration: 300ms;
+
+	color: var(--primary);
+}
+
+.location:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
 @media (min-width: 1024px) {
 	.sortingDiv:hover > h1 {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		color: var(--primary);
 	}
+
+	.location:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
 }
 
 @media (max-width: 1024px) {
 	.sortingBar {
-		grid-template-columns: 100px 1fr;
+		grid-template-columns: auto 100px 1fr;
+		gap: 20px;
 	}
 }
 
@@ -69,6 +89,6 @@
 
 @media (max-width: 300px) {
 	.sortingBar {
-		grid-template-columns: 80px 1fr;
+		grid-template-columns: auto 80px 1fr;
 	}
 }

@@ -20,6 +20,12 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
                 mileage: entity.attributes.mileage,
                 transmission: entity.attributes.transmission,
                 drive_unit: entity.attributes.drive_unit,
+                location: {
+                    location_code: entity.attributes.location.data.attributes.location_code,
+                    location: entity.attributes.location.data.attributes.location,
+                    location_ru: entity.attributes.location.data.attributes.location_ru,
+                    location_ge: entity.attributes.location.data.attributes.location_ge,
+                },
                 images: entity.attributes.images.data.map(img => ({
                     id: img.id,
                     alternativeText: img.attributes.alternativeText,
@@ -32,7 +38,7 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
     },
 
     async findOne(ctx) {
-        ctx.query.populate = ['images'];
+        ctx.query.populate = ['images', 'location'];
 
         const { data } = await super.findOne(ctx);
 
@@ -51,6 +57,12 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
             mileage: data.attributes.mileage,
             transmission: data.attributes.transmission,
             drive_unit: data.attributes.drive_unit,
+            location: {
+                location_code: data.attributes.location.data.attributes.location_code,
+                location: data.attributes.location.data.attributes.location,
+                location_ru: data.attributes.location.data.attributes.location_ru,
+                location_ge: data.attributes.location.data.attributes.location_ge,
+            },
             images: data.attributes.images.data.map(img => ({
                 id: img.id,
                 alternativeText: img.attributes.alternativeText,

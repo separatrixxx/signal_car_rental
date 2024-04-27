@@ -12,31 +12,14 @@
 	filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
 }
 
-@media (max-width: 1024px) {
-	.carInfo {
-		gap: 20px;
-	}
-
-	.carInfoBlock {
-		width: calc(100% - 40px);
-		gap: 10px;
-
-		padding: 30px 20px;
-	}
-}
-
 @media (max-width: 580px) {
-	.carInfo,
-	.carInfoBlock,
-	.imageBlock {
+	.textPad {
 		border-radius: 15px;
 	}
 }
 
 @media (max-width: 300px) {
-	.carInfo,
-	.carInfoBlock,
-	.imageBlock {
+	.textPad {
 		border-radius: 10px;
 	}
 }

@@ -16,7 +16,7 @@ export const Slider = ({ images }: SliderProps): JSX.Element => {
         <Swiper className={styles.slider}
             modules={[Pagination, A11y, Autoplay]}
             slidesPerView={1}
-            loop={true}
+            loop={images.length > 1 ? true : false}
             spaceBetween={10}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}

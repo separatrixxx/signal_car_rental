@@ -362,137 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCarCar extends Schema.CollectionType {
-  collectionName: 'cars';
-  info: {
-    singularName: 'car';
-    pluralName: 'cars';
-    displayName: 'Cars';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
-    images: Attribute.Media & Attribute.Required;
-    price: Attribute.Integer & Attribute.Required;
-    counter: Attribute.Integer & Attribute.Required;
-    description_ru: Attribute.Text & Attribute.Required;
-    description_ge: Attribute.Text & Attribute.Required;
-    class: Attribute.Enumeration<
-      ['econom', 'comfort', 'business', 'premium', 'suv', 'minivan']
-    > &
-      Attribute.Required &
-      Attribute.DefaultTo<'econom'>;
-    mileage: Attribute.Integer & Attribute.Required;
-    engine_type: Attribute.Enumeration<
-      ['gasoline', 'diesel', 'hybrid', 'electricity']
-    > &
-      Attribute.Required &
-      Attribute.DefaultTo<'gasoline'>;
-    engine_capacity: Attribute.Float & Attribute.Required;
-    engine_power: Attribute.Integer & Attribute.Required;
-    drive_unit: Attribute.Enumeration<['front_wheel', 'rear']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'front_wheel'>;
-    transmission: Attribute.Enumeration<['automatic', 'manual']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'automatic'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::car.car', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::car.car', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCompanyInfoCompanyInfo extends Schema.CollectionType {
-  collectionName: 'company_infos';
-  info: {
-    singularName: 'company-info';
-    pluralName: 'company-infos';
-    displayName: 'CompanyInfo';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    address: Attribute.String & Attribute.Required;
-    about_text: Attribute.Text & Attribute.Required;
-    phone: Attribute.String & Attribute.Required;
-    email: Attribute.String & Attribute.Required;
-    about_text_ru: Attribute.Text & Attribute.Required;
-    about_text_ge: Attribute.Text & Attribute.Required;
-    address_ru: Attribute.String & Attribute.Required;
-    address_ge: Attribute.String & Attribute.Required;
-    location: Attribute.String & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::company-info.company-info',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::company-info.company-info',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiRentedCarRentedCar extends Schema.CollectionType {
-  collectionName: 'rented_cars';
-  info: {
-    singularName: 'rented-car';
-    pluralName: 'rented-cars';
-    displayName: 'RentedCars';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    clientName: Attribute.String;
-    startDate: Attribute.DateTime;
-    finishDate: Attribute.DateTime;
-    phone: Attribute.String;
-    car: Attribute.Relation<
-      'api::rented-car.rented-car',
-      'oneToOne',
-      'api::car.car'
-    >;
-    status: Attribute.Enumeration<
-      ['free', 'booked', 'rented', 'processing', 'canceled']
-    > &
-      Attribute.Required &
-      Attribute.DefaultTo<'free'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::rented-car.rented-car',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::rented-car.rented-car',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -919,6 +788,218 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCarCar extends Schema.CollectionType {
+  collectionName: 'cars';
+  info: {
+    singularName: 'car';
+    pluralName: 'cars';
+    displayName: 'Cars';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    images: Attribute.Media & Attribute.Required;
+    price: Attribute.Integer & Attribute.Required;
+    counter: Attribute.Integer & Attribute.Required;
+    description_ru: Attribute.Text & Attribute.Required;
+    description_ge: Attribute.Text & Attribute.Required;
+    class: Attribute.Enumeration<
+      ['econom', 'comfort', 'business', 'premium', 'suv', 'minivan']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'econom'>;
+    mileage: Attribute.Integer & Attribute.Required;
+    engine_type: Attribute.Enumeration<
+      ['gasoline', 'diesel', 'hybrid', 'electricity']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'gasoline'>;
+    engine_capacity: Attribute.Float & Attribute.Required;
+    engine_power: Attribute.Integer & Attribute.Required;
+    drive_unit: Attribute.Enumeration<['front_wheel', 'rear']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'front_wheel'>;
+    transmission: Attribute.Enumeration<['automatic', 'manual']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'automatic'>;
+    location: Attribute.Relation<
+      'api::car.car',
+      'oneToOne',
+      'api::location.location'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::car.car', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::car.car', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCompanyInfoCompanyInfo extends Schema.CollectionType {
+  collectionName: 'company_infos';
+  info: {
+    singularName: 'company-info';
+    pluralName: 'company-infos';
+    displayName: 'CompanyInfo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Attribute.String & Attribute.Required;
+    about_text: Attribute.Text & Attribute.Required;
+    phone: Attribute.String & Attribute.Required;
+    email: Attribute.String & Attribute.Required;
+    about_text_ru: Attribute.Text & Attribute.Required;
+    about_text_ge: Attribute.Text & Attribute.Required;
+    address_ru: Attribute.String & Attribute.Required;
+    address_ge: Attribute.String & Attribute.Required;
+    location: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::company-info.company-info',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::company-info.company-info',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLocationLocation extends Schema.CollectionType {
+  collectionName: 'locations';
+  info: {
+    singularName: 'location';
+    pluralName: 'locations';
+    displayName: 'Location';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    location_code: Attribute.String & Attribute.Required;
+    location: Attribute.String & Attribute.Required;
+    location_ru: Attribute.String & Attribute.Required;
+    location_ge: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPricePrice extends Schema.CollectionType {
+  collectionName: 'prices';
+  info: {
+    singularName: 'price';
+    pluralName: 'prices';
+    displayName: 'Price';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    price: Attribute.Integer & Attribute.Required;
+    start_location: Attribute.Relation<
+      'api::price.price',
+      'oneToOne',
+      'api::location.location'
+    >;
+    finish_location: Attribute.Relation<
+      'api::price.price',
+      'oneToOne',
+      'api::location.location'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::price.price',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::price.price',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRentedCarRentedCar extends Schema.CollectionType {
+  collectionName: 'rented_cars';
+  info: {
+    singularName: 'rented-car';
+    pluralName: 'rented-cars';
+    displayName: 'RentedCars';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clientName: Attribute.String;
+    startDate: Attribute.DateTime;
+    finishDate: Attribute.DateTime;
+    phone: Attribute.String;
+    car: Attribute.Relation<
+      'api::rented-car.rented-car',
+      'oneToOne',
+      'api::car.car'
+    >;
+    status: Attribute.Enumeration<
+      ['free', 'booked', 'rented', 'processing', 'canceled']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'free'>;
+    startLocation: Attribute.String & Attribute.Required;
+    finishLocation: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rented-car.rented-car',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rented-car.rented-car',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -929,9 +1010,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::car.car': ApiCarCar;
-      'api::company-info.company-info': ApiCompanyInfoCompanyInfo;
-      'api::rented-car.rented-car': ApiRentedCarRentedCar;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -940,6 +1018,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::car.car': ApiCarCar;
+      'api::company-info.company-info': ApiCompanyInfoCompanyInfo;
+      'api::location.location': ApiLocationLocation;
+      'api::price.price': ApiPricePrice;
+      'api::rented-car.rented-car': ApiRentedCarRentedCar;
     }
   }
 }
