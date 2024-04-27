@@ -4,7 +4,7 @@
 
 	width: 80%;
 	gap: 30px;
-	justify-items: center;
+	justify-items: left;
 }
 
 .emptyText {

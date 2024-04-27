@@ -5,8 +5,8 @@
 	width: 80%;
 	height: fit-content;
 	margin-bottom: 30px;
-	grid-template-columns: auto 120px 1fr;
-	gap: 30px;
+	grid-template-columns: auto auto 1fr;
+	gap: 20px;
 }
 
 .sortingDiv {
@@ -72,23 +72,22 @@
 
 @media (max-width: 1024px) {
 	.sortingBar {
-		grid-template-columns: auto 100px 1fr;
-		gap: 20px;
+		width: 85%;
 	}
 }
 
 @media (max-width: 580px) {
 	.sortingBar {
+		width: 90%;
 		margin-bottom: 20px;
+		grid-template-columns: auto 1fr;
+		justify-items: left;
+		grid-template-areas:
+			". ."
+			"search search";
 	}
 
 	.sortIcon > svg {
 		width: 10px;
-	}
-}
-
-@media (max-width: 300px) {
-	.sortingBar {
-		grid-template-columns: auto 80px 1fr;
 	}
 }

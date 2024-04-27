@@ -64,7 +64,7 @@
 
 .search {
 	width: 30%;
-	margin-left: 20px;
+	margin-left: 10px;
 	padding: 7px 12px;
 
 	transition-duration: 300ms;
@@ -81,6 +81,18 @@
 
 .search::-ms-input-placeholder {
 	color: var(--darkLight);
+}
+
+@media (max-width: 1024px) {
+	.search {
+		width: 40%;
+	}
+}
+
+@media (max-width: 800px) {
+	.search {
+		width: 50%;
+	}
 }
 
 @media (max-width: 580px) {
@@ -108,8 +120,10 @@
 	}
 
 	.search {
-		width: 70%;
-		margin-left: 10px;
+		width: calc(100% - 20px);
+		grid-area: search;
+
+		margin: 0;
 		padding: 5px 10px;
 
 		transition-duration: 300ms;

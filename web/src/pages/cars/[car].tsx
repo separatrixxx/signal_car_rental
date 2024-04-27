@@ -19,14 +19,13 @@ export default function Car({ car }: CarProps) {
     const router = useRouter();
 	const dispatch = useDispatch();
 
+	const dates = useSelector((state: AppState) => state.dates.dates);
+
 	useEffect(() => {
 		getLocations(dispatch);
     	getPrice(dispatch);
-	}, [dispatch]);
-
-	const dates = useSelector((state: AppState) => state.dates.dates);
-
-	getCars(dispatch, dates, router);
+		getCars(dispatch, dates, router);
+	}, [dispatch, dates, router]);
 
 	if (car && dates.startLocation !== '') {
 		return (

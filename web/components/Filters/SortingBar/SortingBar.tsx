@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { setLocale } from '../../../helpers/locale.helper';
 import { Htag } from '../../Common/Htag/Htag';
 import SortIcon from './sort_icon.svg';
+import LocationIcon from './location_icon.svg';
 import { Input } from '../../Common/Input/Input';
 import { useDispatch } from "react-redux";
 import { setDates } from '../../../features/dates/datesSlice';
@@ -29,18 +30,28 @@ export const SortingBar = ({ sort, name, setSort, setName }: SortingBarProps): J
     
     return (
         <div className={styles.sortingBar}>
-            <Htag tag='m' className={styles.location} onClick={()=> dispatch(setDates(datesData))}>
+            {/* <Htag tag='m' className={styles.location}>
                 {locations.filter(l => l.location_code === dates.startLocation)[0][
                     router.locale === 'en' ? 'location' : router.locale === 'ru' ? 'location_ru' : 'location_ge'
                 ]}
-            </Htag>
-            <div className={styles.sortingDiv}>
+            </Htag> */}
+            <div className={styles.sortingDiv} onClick={()=> dispatch(setDates(datesData))}>
+                <span className={styles.sortIcon}>
+                    <LocationIcon />
+                </span>
+                <Htag tag='m'>
+                    {locations.filter(l => l.location_code === dates.startLocation)[0][
+                        router.locale === 'en' ? 'location' : router.locale === 'ru' ? 'location_ru' : 'location_ge'
+                    ]}
+                </Htag>
+            </div>
+            <div className={styles.sortingDiv} onClick={() => sort === 'low' ? setSort('high') : setSort('low')}>
                 <span className={cn(styles.sortIcon, {
                         [styles.sortLow]: sort === 'low',
                 })}>
                     <SortIcon />
                 </span>
-                <Htag tag='m' onClick={() => sort === 'low' ? setSort('high') : setSort('low')}>
+                <Htag tag='m'>
                     {sort === 'low' ? setLocale(router.locale).by_low_price : setLocale(router.locale).by_high_price}
                 </Htag>
             </div>

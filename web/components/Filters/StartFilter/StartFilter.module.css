@@ -16,13 +16,17 @@
 
 @media (max-width: 1024px) {
 	.startFilter {
+		width: 60%;
 		margin-top: 80px;
+		padding: 30px 20px;
 	}
 }
 
 @media (max-width: 580px) {
 	.startFilter {
+		width: 80%;
 		margin-top: 60px;
+		padding: 30px 10px;
 
 		border-radius: 15px;
 	}

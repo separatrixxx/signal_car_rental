@@ -16,12 +16,14 @@
 
 @media (max-width: 1024px) {
 	.filtersBlock {
+		width: 85%;
 		margin-top: 80px;
 	}
 }
 
 @media (max-width: 580px) {
 	.filtersBlock {
+		width: 90%;
 		margin-top: 60px;
 		margin-bottom: 20px;
 	}
