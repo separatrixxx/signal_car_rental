@@ -5,7 +5,6 @@ import { setLocale } from "./locale.helper";
 import { CarInterface } from "../interfaces/car.interface";
 import { getCars } from "./car.helper";
 import { DatesInterface } from "../interfaces/dates.interface";
-import { setDeliveryPrice } from "./price.helper";
 
 
 export async function checkData(data: BookingInterface, errData: BookingErrorInterface, dates: DatesInterface,
@@ -81,6 +80,7 @@ export async function bookingCar(data: BookingInterface, dates: DatesInterface, 
         .catch(function (error) {
             console.log("Booking error: " + error);
             ToastError(setLocale(router.locale).booking_error);
+            setIsLoading(false);
     });
 }
 
