@@ -17,9 +17,9 @@ export async function getPrice(dispatch: any) {
 }
 
 export function checkPrices(carLocation: string, dates: DatesInterface, price: PriceInterface): boolean {
-    if (carLocation === dates.startLocation && carLocation !== dates.finishLocation) {
-        return price.start_location === dates.finishLocation && price.finish_location === dates.startLocation;
-    } else if (carLocation !== dates.startLocation && carLocation === dates.finishLocation) {
+    if (carLocation === dates.startLocation && carLocation !== dates.finishLocation
+        || carLocation !== dates.startLocation && carLocation === dates.finishLocation
+    ) {
         return price.start_location === dates.finishLocation && price.finish_location === dates.startLocation;
     } else if (carLocation !== dates.startLocation && carLocation !== dates.finishLocation) {
         return price.start_location === carLocation && price.finish_location === dates.startLocation
