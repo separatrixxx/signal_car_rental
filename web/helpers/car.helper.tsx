@@ -5,40 +5,6 @@ import { FilterActualInterface } from "../interfaces/filters.interface";
 import { DatesInterface } from "../interfaces/dates.interface";
 
 
-export async function getCars(dispatch: any, dates: DatesInterface, router: any, filtersActual?: FilterActualInterface,
-    sort?: 'low' | 'high', name?: string) {
-    if (dates.startLocation === '') {
-        router.push('/');
-    }
-    
-    try {
-        const { data : response }: AxiosResponse<Cars> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/api/cars?populate=images%2C%20location');
-            
-        if (response.data && filtersActual && sort) {
-            response.data = sortPrice(response.data, sort);
-
-            if (name) {
-                response.data = response.data.filter((car) => car.name.toLowerCase().startsWith(name.toLowerCase()));
-            }
-
-            const carsNew = sortClass(response.data, filtersActual);
-
-            if (carsNew.length > 0 || filtersActual.class || filtersActual.drive_unit || filtersActual.engine_type
-                || filtersActual.transmission || filtersActual.mileage
-            ) {
-                dispatch(setCars(sortLocation(carsNew, dates)));
-            } else {
-                dispatch(setCars(sortLocation(response.data, dates)));
-            }
-        } else {
-            dispatch(setCars(sortLocation(response.data, dates)));
-        }
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 function sortLocation(cars: CarInterface[], dates: DatesInterface): CarInterface[] {
     return cars.sort((carA, carB) => {
         if (carA.location.location_code === dates.startLocation
@@ -90,4 +56,38 @@ function sortClass(cars: CarInterface[], filtersActual: FilterActualInterface): 
     }
 
     return carsNew;
+}
+
+export async function getCars(dispatch: any, dates: DatesInterface, router: any, filtersActual?: FilterActualInterface,
+    sort?: 'low' | 'high', name?: string) {
+    if (dates.startLocation === '') {
+        router.push('/');
+    }
+    
+    try {
+        const { data : response }: AxiosResponse<Cars> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
+            '/api/cars?populate=images%2C%20location');
+            
+        if (response.data && filtersActual && sort) {
+            response.data = sortPrice(response.data, sort);
+
+            if (name) {
+                response.data = response.data.filter((car) => car.name.toLowerCase().startsWith(name.toLowerCase()));
+            }
+
+            const carsNew = sortClass(response.data, filtersActual);
+
+            if (carsNew.length > 0 || filtersActual.class || filtersActual.drive_unit || filtersActual.engine_type
+                || filtersActual.transmission || filtersActual.mileage
+            ) {
+                dispatch(setCars(sortLocation(carsNew, dates)));
+            } else {
+                dispatch(setCars(sortLocation(response.data, dates)));
+            }
+        } else {
+            dispatch(setCars(sortLocation(response.data, dates)));
+        }
+    } catch (err) {
+        console.log(err);
+    }
 }
