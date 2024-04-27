@@ -39,6 +39,13 @@
 
 @media (max-width: 580px) {
 	.footer {
+		width: 85%;
+	}
+}
+
+@media (max-width: 580px) {
+	.footer {
+		width: 90%;
 		grid-template-columns: auto;
 
 		margin-top: 40px;

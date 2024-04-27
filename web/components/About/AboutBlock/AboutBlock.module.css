@@ -22,12 +22,14 @@
 
 @media (max-width: 1024px) {
 	.aboutBlock {
+		width: 85%;
 		margin-top: 80px;
 	}
 }
 
 @media (max-width: 580px) {
 	.aboutBlock {
+		width: 90%;
 		margin-top: 60px;
 		gap: 10px;
 	}
