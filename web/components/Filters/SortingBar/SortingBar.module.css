@@ -73,13 +73,13 @@
 @media (max-width: 1024px) {
 	.sortingBar {
 		width: 85%;
+		margin-bottom: 20px;
 	}
 }
 
 @media (max-width: 580px) {
 	.sortingBar {
 		width: 90%;
-		margin-bottom: 20px;
 		grid-template-columns: auto 1fr;
 		justify-items: left;
 		grid-template-areas:

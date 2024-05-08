@@ -26,10 +26,12 @@
 .img {
 	width: 100%;
 	height: fit-content;
-	object-fit: cover;
-	object-position: center;
+
+	user-select: none;
 
 	border-radius: 15px;
+	object-fit: cover;
+	object-position: center;
 }
 
 .carInfoBlock {

@@ -4,3 +4,12 @@
 	width: 100%;
 	justify-items: center;
 }
+
+.mainDiv {
+	position: relative;
+
+	display: grid;
+
+	width: 100%;
+	justify-items: center;
+}

@@ -20,6 +20,8 @@ import { getLocations } from '../../helpers/location.helper';
 import { LocationInterface } from '../../interfaces/location.interface';
 import { getPrice } from '../../helpers/price.helper';
 import { useRouter } from 'next/router';
+import { FiltersBlock } from '../../components/Filters/FiltersBlock/FiltersBlock';
+import { MainImage } from '../../components/Common/MainImage/MainImage';
 
 
 export const MainPage = (): JSX.Element => {
@@ -80,13 +82,18 @@ export const MainPage = (): JSX.Element => {
                     dates.startLocation !== ''
                     ?
                         <>
-                            <CarFilters filtersActual={filtersActual} setActive={setActiveFilters} setFilters={setFilters} />
-                            <SortingBar sort={sort} name={name} setSort={setSort} setName={setName} />
+                            <FiltersBlock>
+                                <CarFilters filtersActual={filtersActual} setActive={setActiveFilters} setFilters={setFilters} />
+                                <SortingBar sort={sort} name={name} setSort={setSort} setName={setName} />
+                            </FiltersBlock>
                             <CarsList />
                         </>                        
                     :
-                        <StartFilter startLocation={startLocation} finishLocation={finishLocation}
-                            setActiveStart={setActiveStart} setActiveFinish={setActiveFinish} />
+                        <div className={styles.mainDiv}>
+                            <MainImage />
+                            <StartFilter startLocation={startLocation} finishLocation={finishLocation}
+                                setActiveStart={setActiveStart} setActiveFinish={setActiveFinish} />
+                        </div>
                 }
                 <Footer />
             </div>

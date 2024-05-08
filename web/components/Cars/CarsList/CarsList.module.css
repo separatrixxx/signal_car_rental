@@ -5,6 +5,7 @@
 	width: 80%;
 	gap: 30px;
 	justify-items: left;
+	margin-top: 270px;
 }
 
 .emptyText {
@@ -17,6 +18,8 @@
 	.carsDiv {
 		width: 85%;
 		grid-template-columns: repeat(2, auto);
+
+		margin-top: 240px;
 	}
 }
 
@@ -24,5 +27,7 @@
 	.carsDiv {
 		width: 90%;
 		grid-template-columns: auto;
+
+		margin-top: 250px;
 	}
 }

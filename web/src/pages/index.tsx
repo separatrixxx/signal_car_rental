@@ -7,6 +7,7 @@ import { AppState } from "../../features/store/store";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getInfo } from "../../helpers/info.helper";
+import { getRented } from "../../helpers/rented.helper";
 
 
 function Main(): JSX.Element {
@@ -15,6 +16,7 @@ function Main(): JSX.Element {
 
   useEffect(() => {
     getInfo(dispatch);
+    getRented(dispatch);
   }, [dispatch]);
 
   const info = useSelector((state: AppState) => state.info.info);

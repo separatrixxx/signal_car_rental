@@ -5,9 +5,9 @@
 
 	width: 80%;
 	height: fit-content;
-	margin-top: 100px;
+	margin-top: 90px;
 	margin-bottom: 10px;
-	padding: 0 20px 20px 10px;
+	padding: 0 20px 20px 20px;
 
 	white-space: nowrap;
 	gap: 10px;
@@ -17,7 +17,7 @@
 @media (max-width: 1024px) {
 	.filtersBlock {
 		width: 85%;
-		margin-top: 80px;
+		padding-bottom: 15px;
 	}
 }
 
@@ -26,5 +26,11 @@
 		width: 90%;
 		margin-top: 60px;
 		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 300px) {
+	.filtersBlock {
+		margin-top: 50px;
 	}
 }

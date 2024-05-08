@@ -32,3 +32,14 @@ export interface CarImage {
     alternativeText: string,
     url: string,
 }
+
+export interface CarRentedData {
+    data: CarRented[],
+}
+
+export interface CarRented {
+    car_id: number,
+    start_date: Date,
+    finish_date: Date,
+    status: 'free' | 'booked' | 'rented' | 'processing' | 'canceled',
+}

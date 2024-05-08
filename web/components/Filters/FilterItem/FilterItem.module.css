@@ -8,19 +8,30 @@
 	transition-duration: 300ms;
 	text-align: center;
 
-	color: var(--darkLight);
 	border-radius: 15px;
 	background: var(--white);
 
-	font-weight: 700;
 	filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+
+.filterItem > h1 {
+	transition-duration: 300ms;
+
+	color: var(--darkLight);
+
+	font-weight: 700;
 }
 
 .filterItem:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	color: var(--primary);
 	filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.15));
+}
+
+.filterItem:active > h1 {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--primary);
 }
 
 .filterActive {
@@ -36,7 +47,12 @@
 	.filterItem:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		color: var(--primary);
 		filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.15));
+	}
+
+	.filterItem:hover > h1 {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--primary);
 	}
 }

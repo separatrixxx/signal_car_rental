@@ -13,6 +13,7 @@ import { getLocations } from '../../../helpers/location.helper';
 import { getPrice } from '../../../helpers/price.helper';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
+import { getRented } from '../../../helpers/rented.helper';
 
 
 export default function Car({ car }: CarProps) {
@@ -25,6 +26,7 @@ export default function Car({ car }: CarProps) {
 		getLocations(dispatch);
     	getPrice(dispatch);
 		getCars(dispatch, dates, router);
+		getRented(dispatch);
 	}, [dispatch, dates, router]);
 
 	if (car && dates.startLocation !== '') {

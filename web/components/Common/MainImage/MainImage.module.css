@@ -1,0 +1,98 @@
+.imageBlock {
+	position: relative;
+
+	display: grid;
+	overflow: hidden;
+
+	width: 100%;
+	height: max-content;
+}
+
+.img {
+	width: 100%;
+	height: fit-content;
+
+	user-select: none;
+
+	border-radius: 15px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.mainImgDiv {
+	position: absolute;
+	top: 15%;
+	justify-self: center;
+
+	display: grid;
+	justify-items: center;
+	gap: 10px;
+}
+
+.mainImgDiv > h1 {
+	color: var(--darkLight);
+
+	font-weight: 900;
+}
+
+.mainImgText {
+	color: var(--primary) !important;
+}
+
+@media (max-width: 1300px) {
+	.imageBlock {
+		margin-top: 30px;
+	}
+
+	.mainImgDiv {
+		top: 12%;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mainImgDiv {
+		gap: 7px;
+	}
+}
+
+@media (max-width: 965px) {
+	.imageBlock {
+		margin-top: 40px;
+	}
+
+	.mainImgDiv {
+		top: 15%;
+	}
+}
+
+@media (max-width: 580px) {
+	.imageBlock {
+		margin-top: 60px;
+	}
+
+	.img {
+		border-radius: 10px;
+	}
+
+	.mainImgDiv {
+		top: 5%;
+		gap: 5px;
+	}
+}
+
+@media (max-width: 400px) {
+	.mainImgDiv {
+		top: 2%;
+		gap: 2px;
+	}
+}
+
+@media (max-width: 300px) {
+	.img {
+		border-radius: 7px;
+	}
+
+	.mainImgDiv {
+		display: none;
+	}
+}

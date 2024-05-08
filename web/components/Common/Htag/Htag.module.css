@@ -1,3 +1,4 @@
+.xxxl,
 .xxl,
 .xl,
 .m,
@@ -7,6 +8,13 @@
 	margin: 0;
 
 	color: var(--dark);
+}
+
+.xxxl {
+	font-size: 50px;
+	font-weight: 900;
+	font-style: normal;
+	line-height: normal;
 }
 
 .xxl {
@@ -45,6 +53,10 @@
 }
 
 @media (max-width: 1550px) {
+	.xxxl {
+		font-size: 46px;
+	}
+
 	.xxl {
 		font-size: 36px;
 		line-height: 42px;
@@ -57,6 +69,10 @@
 }
 
 @media (max-width: 1024px) {
+	.xxxl {
+		font-size: 42px;
+	}
+
 	.xxl {
 		font-size: 32px;
 	}
@@ -80,6 +96,10 @@
 }
 
 @media (max-width: 965px) {
+	.xxxl {
+		font-size: 36px;
+	}
+
 	.xxl {
 		font-size: 30px;
 		line-height: 36px;
@@ -92,6 +112,10 @@
 }
 
 @media (max-width: 580px) {
+	.xxxl {
+		font-size: 28px;
+	}
+
 	.xxl {
 		font-size: 24px;
 	}
@@ -114,7 +138,26 @@
 	}
 }
 
+@media (max-width: 400px) {
+	.xxxl {
+		font-size: 22px;
+	}
+
+	.xxl {
+		font-size: 20px;
+	}
+
+	.xl {
+		font-size: 16px;
+		line-height: 26px;
+	}
+}
+
 @media (max-width: 300px) {
+	.xxxl {
+		font-size: 20px;
+	}
+
 	.xxl {
 		font-size: 16px;
 	}

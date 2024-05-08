@@ -5,6 +5,7 @@ import infoSlice from "../info/infoSlice";
 import datesSlice from "../dates/datesSlice";
 import locationsSlice from "../locations/locationsSlice";
 import priceSlice from "../price/priceSlice";
+import rentedSlice from "../rented/rentedSlice";
 
 
 const makeStore = () =>
@@ -15,6 +16,7 @@ const makeStore = () =>
       dates: datesSlice,
       locations: locationsSlice,
       price: priceSlice,
+      rented: rentedSlice,
     },
     devTools: true,
 });

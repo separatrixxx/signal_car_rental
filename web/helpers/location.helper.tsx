@@ -27,7 +27,6 @@ export function setLocationsDate(startFilterData: DatesInterface, errData: Dates
     if (startFilterData.startLocation !== '' && startFilterData.finishLocation !== ''
         && startFilterData.startDate !== '' && startFilterData.finishDate !== '') {
         dispatch(setDates(startFilterData));
-        console.log(startFilterData)
 
         setIsLoading(false);
     } else {

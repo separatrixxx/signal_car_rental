@@ -31,11 +31,9 @@
 	color: var(--primary) !important;
 }
 
-.carPrice {
-	margin-top: 20px;
-}
-
 .description {
+	margin-bottom: 20px;
+
 	font-weight: 500;
 }
 

@@ -1,32 +1,44 @@
 .startFilter {
+	position: absolute;
+	bottom: 57%;
+
 	display: grid;
 	align-items: center;
 
-	width: 40%;
+	width: 90%;
 	height: fit-content;
-	margin-top: 100px;
-	padding: 40px 30px;
+	margin-top: 20px;
+	padding: 15px 0;
 
 	border-radius: 20px;
 	background: var(--white);
-	gap: 20px;
-	filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+	grid-template-columns: repeat(5, 20%);
 	justify-items: center;
+}
+
+@media (max-width: 1300px) {
+	.startFilter {
+		bottom: 50%;
+	}
 }
 
 @media (max-width: 1024px) {
 	.startFilter {
-		width: 60%;
-		margin-top: 80px;
-		padding: 30px 20px;
+		position: relative;
+		bottom: 0;
+
+		width: 95%;
+		padding: 10px 0;
+		grid-template-columns: repeat(3, 33.3333%);
+		gap: 20px 0;
 	}
 }
 
 @media (max-width: 580px) {
 	.startFilter {
-		width: 80%;
-		margin-top: 60px;
-		padding: 30px 10px;
+		width: 90%;
+		grid-template-columns: repeat(2, 50%);
+		gap: 15px 0;
 
 		border-radius: 15px;
 	}

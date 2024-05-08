@@ -2,13 +2,11 @@ import axios from "axios";
 import { BookingErrorInterface, BookingInterface } from "../interfaces/booking.interface";
 import { ToastError, ToastSuccess } from "../components/Common/Toast/Toast";
 import { setLocale } from "./locale.helper";
-import { CarInterface } from "../interfaces/car.interface";
-import { getCars } from "./car.helper";
 import { DatesInterface } from "../interfaces/dates.interface";
 
 
 export async function checkData(data: BookingInterface, errData: BookingErrorInterface, dates: DatesInterface,
-    dispatch: any, setIsLoading: (e: boolean) => void, setError: (e: any) => void, router: any) {
+    setIsLoading: (e: boolean) => void, setError: (e: any) => void, router: any) {
     setIsLoading(true);
 
     setError(errData);
@@ -19,7 +17,7 @@ export async function checkData(data: BookingInterface, errData: BookingErrorInt
             password: process.env.NEXT_PUBLIC_PASSWORD,
         })
             .then(function (response) {
-                bookingCar(data, dates, dispatch, setIsLoading, response.data.jwt, router);
+                bookingCar(data, dates, setIsLoading, response.data.jwt, router);
             })
             .catch(function (error) {
                 console.log("Booking error: " + error);
@@ -52,7 +50,7 @@ export async function checkData(data: BookingInterface, errData: BookingErrorInt
     }
 }
 
-export async function bookingCar(data: BookingInterface, dates: DatesInterface, dispatch: any,
+export async function bookingCar(data: BookingInterface, dates: DatesInterface,
     setIsLoading: (e: boolean) => void, token: string, router: any) {
     await axios.post(process.env.NEXT_PUBLIC_DOMAIN + '/api/rented-cars', {
         data: {
@@ -72,7 +70,7 @@ export async function bookingCar(data: BookingInterface, dates: DatesInterface, 
         }
     })
         .then(function () {
-            changeCarStatus(data.car, dates, dispatch, token, router);
+            // changeCarStatus(data.car, dates, dispatch, token, router);
 
             setIsLoading(false);
             ToastSuccess(setLocale(router.locale).car_reserved);
@@ -84,22 +82,22 @@ export async function bookingCar(data: BookingInterface, dates: DatesInterface, 
     });
 }
 
-export async function changeCarStatus(car: CarInterface, dates: DatesInterface, dispatch: any, token: string, router: any) {
-    await axios.put(process.env.NEXT_PUBLIC_DOMAIN + '/api/cars/' + car.id, {
-        data: {
-            counter: car.counter - 1,
-        }
-    }, {
-        headers: {
-          'Authorization': 'Bearer ' + token,
-          'Content-Type': 'application/json'
-        }
-    })
-        .then(function () {
-            getCars(dispatch, dates, router.locale);
-        })
-        .catch(function (error) {
-            console.log("Change status error: " + error);
-            ToastError(setLocale(router.locale).booking_error);
-        });
-}
+// export async function changeCarStatus(car: CarInterface, dates: DatesInterface, dispatch: any, token: string, router: any) {
+//     await axios.put(process.env.NEXT_PUBLIC_DOMAIN + '/api/cars/' + car.id, {
+//         data: {
+//             counter: car.counter - 1,
+//         }
+//     }, {
+//         headers: {
+//           'Authorization': 'Bearer ' + token,
+//           'Content-Type': 'application/json'
+//         }
+//     })
+//         .then(function () {
+//             getCars(dispatch, dates, router.locale);
+//         })
+//         .catch(function (error) {
+//             console.log("Change status error: " + error);
+//             ToastError(setLocale(router.locale).booking_error);
+//         });
+// }

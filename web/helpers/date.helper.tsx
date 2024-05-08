@@ -30,3 +30,14 @@ export function getDateInput(type: 'time' | 'date'): string {
         return `${year}-${month}-${day}`;
     }
 }
+
+export function getDaysNum(startDate: string, finishDate: string): number {
+    const oneDay = 24 * 60 * 60 * 1000;
+    const firstDate = new Date(startDate);
+    const secondDate = new Date(finishDate);
+
+    const daysNum = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / oneDay));
+
+    return daysNum;
+
+}

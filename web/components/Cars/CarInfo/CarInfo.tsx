@@ -11,6 +11,7 @@ import { CarInfoItem } from '../CarInfoItem/CarInfoItem';
 import { CarInterface } from '../../../interfaces/car.interface';
 import { Slider } from '../../Slider/Slider/Slider';
 import { setDeliveryPrice } from '../../../helpers/price.helper';
+import { getDaysNum } from '../../../helpers/date.helper';
 
 
 export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
@@ -22,6 +23,8 @@ export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
 
 	const dates = useSelector((state: AppState) => state.dates.dates);
 	const price = useSelector((state: AppState) => state.price.price);
+
+	// console.log(getDaysNum(dates.startDate, dates.finishDate));
 
 	if (car) {
 		return (

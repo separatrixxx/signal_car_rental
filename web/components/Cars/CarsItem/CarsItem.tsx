@@ -26,7 +26,6 @@ export const CarsItem = ({ carId }: CarsItemProps): JSX.Element => {
 						alt={car.images[0].alternativeText}
 						width={1}
 						height={1}
-						layout="responsive"
 						priority={true}
 						unoptimized={true}
 					/>

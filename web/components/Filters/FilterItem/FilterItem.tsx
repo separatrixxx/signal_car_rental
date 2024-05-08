@@ -3,6 +3,7 @@ import styles from './FilterItem.module.css';
 import { useRouter } from 'next/router';
 import { setLocale } from '../../../helpers/locale.helper';
 import cn from 'classnames';
+import { Htag } from '../../Common/Htag/Htag';
 
 
 export const FilterItem = ({ text, filters, filtersActual, filterType, setFilters, setActive }: FilterItemProps): JSX.Element => {
@@ -15,11 +16,13 @@ export const FilterItem = ({ text, filters, filtersActual, filterType, setFilter
             setFilters(filters);
             setActive(true);
         }}>
-			{filtersActual[filterType]
-                ? text + ': ' + (setLocale(router.locale)[filtersActual[filterType] as 'manual'] 
-                    ? setLocale(router.locale)[filtersActual[filterType] as 'manual'] 
-                    : filtersActual[filterType])
-                : text}
+			<Htag tag='m'>
+                {filtersActual[filterType]
+                    ? text + ': ' + (setLocale(router.locale)[filtersActual[filterType] as 'manual'] 
+                        ? setLocale(router.locale)[filtersActual[filterType] as 'manual'] 
+                        : filtersActual[filterType])
+                    : text}
+            </Htag>
 		</div>
     );
 };

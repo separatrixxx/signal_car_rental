@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { getDate } from '../../../helpers/date.helper';
 import { Htag } from '../../Common/Htag/Htag';
 import { setDeliveryPrice } from '../../../helpers/price.helper';
+import { checkAvailableCars } from '../../../helpers/rented.helper';
 
 
 export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
@@ -20,11 +21,14 @@ export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
     const dispatch = useDispatch();
 
     const car = useSelector((state: AppState) => state.cars.cars).find(function (car) {
-		return car.id === carId;
+		return car.id === 2;
 	});
 
     const dates = useSelector((state: AppState) => state.dates.dates);
     const price = useSelector((state: AppState) => state.price.price);
+    const rented = useSelector((state: AppState) => state.rented.rented).filter(function (rentedCar) {
+		return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
+	});
 
     const [clientName, setClientName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -41,6 +45,8 @@ export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
     };
 
     const [error, setError] = useState<BookingErrorInterface>(errData);
+    
+    const [freeCarsCounter, setFreeCarsCounter] = useState<number>(checkAvailableCars(car?.counter, rented, dates));
 
 	if (car) {
         const bookingCarData: BookingInterface = {
@@ -66,11 +72,14 @@ export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
                         + setDeliveryPrice(car.location.location_code, dates, price)) * 0.1 + '₾'}
 				</Htag>
                 <Htag tag='m' className={styles.car_counter}>
-					{setLocale(router.locale).available_cars_left + ': ' + car.counter}
+					{setLocale(router.locale).available_cars_left + ': ' + freeCarsCounter}
 				</Htag>
-                <Button text={car.counter > 0 ? setLocale(router.locale).book_car : setLocale(router.locale).no_cars}
-                    isActive={car.counter > 0} isLoading={isLoading}
-                    onClick={() => checkData(bookingCarData, errData, dates, dispatch, setIsLoading, setError, router)} />
+                <Button text={freeCarsCounter > 0 ? setLocale(router.locale).book_car : setLocale(router.locale).no_cars}
+                    isActive={freeCarsCounter > 0} isLoading={isLoading}
+                    onClick={() => {
+                        checkData(bookingCarData, errData, dates, setIsLoading, setError, router);
+                        setFreeCarsCounter(freeCarsCounter - 1);
+                    }} />
 			</div>
 		);
 	} else {
