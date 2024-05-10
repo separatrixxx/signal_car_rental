@@ -5,8 +5,6 @@ import cn from 'classnames';
 
 
 export const Input = ({ type, text, value, minDate, error, isSearch, isActive, onChange }: InputProps): JSX.Element => {
-
-
     function handleFocus(e: any) {
         if ((type === 'date') && e.target.value === '') {
             e.target.type = 'date';
