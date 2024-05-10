@@ -11,7 +11,7 @@ export const ContactsMap = (): JSX.Element => {
     
 	return (
         <div className={styles.contactsMap}>
-            <iframe src={info.location} width="100%" height="100%" loading="lazy"></iframe>
+            <iframe src={info.location} width="100%" height="100%" loading="lazy" />
         </div>
     );
 };
