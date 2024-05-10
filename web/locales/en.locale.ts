@@ -62,7 +62,7 @@ export const en = {
     finish_date: "Finish date",
     start_time: "Start time",
     finish_time: "Finish time",
-    find_cars: "Find cars",
+    find_cars: "Find",
     enter_data: "Enter the data required to find a car",
     delivery_price: "Delivery price",
     order_a_car: "Order a car at the best price today",

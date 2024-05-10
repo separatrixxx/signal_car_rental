@@ -10,6 +10,14 @@ export const MainImage = (): JSX.Element => {
 
     return (
         <div className={styles.imageBlock}>
+			<div className={styles.mainImgDiv}>
+				<Htag tag='xxxl' className={styles.mainImgText}>
+					{setLocale(router.locale).signal_car}
+				</Htag>
+				<Htag tag='xl'>
+					{setLocale(router.locale).order_a_car}
+				</Htag>
+			</div>
 			<Image className={styles.img} draggable='false'
 				loader={() => '/mainImg.webp'}
 				src='/mainImg.webp'
@@ -19,14 +27,6 @@ export const MainImage = (): JSX.Element => {
 				priority={true}
 				unoptimized={true}
 			/>
-            <div className={styles.mainImgDiv}>
-				<Htag tag='xxxl' className={styles.mainImgText}>
-					{setLocale(router.locale).signal_car}
-				</Htag>
-				<Htag tag='xl'>
-					{setLocale(router.locale).order_a_car}
-				</Htag>
-			</div>
 		</div>
     );
 };

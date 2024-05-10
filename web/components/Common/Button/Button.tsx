@@ -4,9 +4,9 @@ import { LoadingDots } from '../LoadingDots/LoadingDots';
 import cn from 'classnames';
 
 
-export const Button = ({ text, isActive, isLoading, onClick }: ButtonProps): JSX.Element => {
+export const Button = ({ text, isActive, isLoading, className, onClick }: ButtonProps): JSX.Element => {
 	if (!isLoading) {
-        return <button className={cn(styles.button, {
+        return <button className={cn(className, styles.button, {
             [styles.notActive]: !isActive,
         })} onClick={isActive ? onClick : () => {}}>
             {text}

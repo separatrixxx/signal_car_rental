@@ -54,7 +54,7 @@ export const StartFilter = ({ startLocation, finishLocation, setActiveStart, set
                 error={error.errStartDate} onChange={(e) => setStartDate(e.target.value)} />
             <Input type="date" text={setLocale(router.locale).finish_date} value={finishDate} minDate={getDate()}
                 error={error.errFinishDate} onChange={(e) => setFinishDate(e.target.value)} />
-            <Button text={setLocale(router.locale).find_cars} isActive={true} isLoading={isLoading}
+            <Button text={setLocale(router.locale).find_cars} isActive={true} isLoading={isLoading} className={styles.startButton}
                 onClick={() => setLocationsDate(startFilterData, errData, router, setIsLoading, setError, dispatch)} />
         </div>
     );
