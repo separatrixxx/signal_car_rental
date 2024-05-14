@@ -24,7 +24,7 @@ export const Input = ({ type, text, value, minDate, error, isSearch, isActive, o
             })}>
                 <input className={cn(styles.input, styles.inputDate)}
                     placeholder={text}
-                    value={value === '' ? getDateInput('date') : value}
+                    value={value === '' ? getDateInput(type) : value}
                     onChange={onChange}
                     type={type} 
                     name={type}

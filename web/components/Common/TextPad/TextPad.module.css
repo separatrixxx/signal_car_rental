@@ -12,9 +12,17 @@
 	filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
 }
 
+@media (max-width: 1024px) {
+	.carBooking {
+		padding: 30px 30px;
+	}
+}
+
 @media (max-width: 580px) {
 	.textPad {
+		padding: 20px 30px;
 		border-radius: 15px;
+		gap: 10px;
 	}
 }
 
