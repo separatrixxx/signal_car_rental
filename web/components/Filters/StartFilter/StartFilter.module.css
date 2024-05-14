@@ -48,7 +48,7 @@
 
 @media (max-width: 580px) {
 	.startFilter {
-		width: 90%;
+		width: 95%;
 		grid-template-columns: repeat(2, 50%);
 
 		border-radius: 15px;
@@ -60,6 +60,7 @@
 
 	.startButton {
 		grid-area: button;
+		margin-top: 10px;
 	}
 }
 

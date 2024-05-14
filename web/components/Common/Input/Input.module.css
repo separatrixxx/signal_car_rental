@@ -27,6 +27,7 @@
 	padding: 0 !important;
 
 	color: var(--darkLight);
+	overflow: hidden;
 }
 
 .locationInput {
@@ -41,7 +42,7 @@
 }
 
 .inputDate {
-	width: 85%;
+	width: 87%;
 	height: 1px !important;
 
 	border: none;
