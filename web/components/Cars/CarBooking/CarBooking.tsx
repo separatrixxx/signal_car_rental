@@ -21,7 +21,7 @@ export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
     const dispatch = useDispatch();
 
     const car = useSelector((state: AppState) => state.cars.cars).find(function (car) {
-		return car.id === 2;
+		return car.id === carId;
 	});
 
     const dates = useSelector((state: AppState) => state.dates.dates);
@@ -29,6 +29,10 @@ export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
     const rented = useSelector((state: AppState) => state.rented.rented).filter(function (rentedCar) {
 		return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
 	});
+    const rentedQ = useSelector((state: AppState) => state.rented.rented);
+
+    // console.log('carId = ' + carId)
+    // console.log(rentedQ)
 
     const [clientName, setClientName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');

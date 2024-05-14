@@ -13,7 +13,7 @@ export const ru = {
     booking_error: "Произошла ошибка при бронировании",
     error_name: "Введите ваше имя",
     error_phone: "Введите ваш номер телефона",
-    error_date: "Введите дату",
+    error_time: "Введите время",
     no_cars: "Нет доступных машин",
     about: "О нас",
     contacts: "Контакты",

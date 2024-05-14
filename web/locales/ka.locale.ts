@@ -13,7 +13,7 @@ export const ka = {
     booking_error: "ჯავშნისას შეცდომა მოხდა",
     error_name: "შეიყვანეთ სახელი",
     error_phone: "შეიყვანეთ ტელეფონის ნომერი",
-    error_date: "შეიყვანეთ თარიღი",
+    error_time: "შეიყვანეთ დრო",
     no_cars: "მანქანები არ არის მარადიული",
     about: "შესახებ",
     contacts: "კონტაქტები",

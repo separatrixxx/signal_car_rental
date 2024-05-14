@@ -13,7 +13,7 @@ export const en = {
     booking_error: "There was an error when reserving",
     error_name: "Enter your name",
     error_phone: "Enter your phone number",
-    error_date: "Enter date",
+    error_time: "Enter time",
     no_cars: "No cars available",
     about: "About",
     contacts: "Contacts",

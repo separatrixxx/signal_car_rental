@@ -3,6 +3,7 @@ import { BookingErrorInterface, BookingInterface } from "../interfaces/booking.i
 import { ToastError, ToastSuccess } from "../components/Common/Toast/Toast";
 import { setLocale } from "./locale.helper";
 import { DatesInterface } from "../interfaces/dates.interface";
+import { getDateInput } from "./date.helper";
 
 
 export async function checkData(data: BookingInterface, errData: BookingErrorInterface, dates: DatesInterface,
@@ -11,7 +12,7 @@ export async function checkData(data: BookingInterface, errData: BookingErrorInt
 
     setError(errData);
 
-    if (data.clientName && data.phone && data.startDate && data.finishDate &&  data.car.counter > 0) {
+    if (data.clientName && data.phone &&  data.car.counter > 0) {
         await axios.post(process.env.NEXT_PUBLIC_DOMAIN + '/api/auth/local', {
             identifier: process.env.NEXT_PUBLIC_EMAIL,
             password: process.env.NEXT_PUBLIC_PASSWORD,
@@ -34,24 +35,22 @@ export async function checkData(data: BookingInterface, errData: BookingErrorInt
         if (!data.phone) {
             errData.errPhone = true;
             ToastError(setLocale(router.locale).error_phone);
-        }
-
-        if (!data.startDate || !data.finishDate) {
-            ToastError(setLocale(router.locale).error_date);
-        }
-
-        if (!data.startDate) {
-            errData.errStart = true;
-        }
-
-        if (!data.finishDate) {
-            errData.errFinish = true;
-        }
+        }        
     }
 }
 
 export async function bookingCar(data: BookingInterface, dates: DatesInterface,
     setIsLoading: (e: boolean) => void, token: string, router: any) {
+    if (!data.startDate) {
+        data.startDate = getDateInput('time');
+    }
+
+    if (!data.finishDate) {
+        data.startDate = getDateInput('time');
+    }
+
+    console.log(data.startDate)
+
     await axios.post(process.env.NEXT_PUBLIC_DOMAIN + '/api/rented-cars', {
         data: {
             clientName: data.clientName,

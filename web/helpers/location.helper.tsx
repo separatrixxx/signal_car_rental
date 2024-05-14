@@ -5,6 +5,7 @@ import { DatesErrorInterface, DatesInterface } from "../interfaces/dates.interfa
 import { setLocale } from "./locale.helper";
 import { ToastError } from "../components/Common/Toast/Toast";
 import { setDates } from "../features/dates/datesSlice";
+import { getDateInput } from "./date.helper";
 
 
 export async function getLocations(dispatch: any) {
@@ -24,8 +25,15 @@ export function setLocationsDate(startFilterData: DatesInterface, errData: Dates
 
     setError(errData);
     
-    if (startFilterData.startLocation !== '' && startFilterData.finishLocation !== ''
-        && startFilterData.startDate !== '' && startFilterData.finishDate !== '') {
+    if (startFilterData.startLocation !== '' && startFilterData.finishLocation !== '') {
+        if (startFilterData.startDate === '') {
+            startFilterData.startDate = getDateInput('date');
+        }
+
+        if (startFilterData.finishDate === '') {
+            startFilterData.finishDate = getDateInput('date');
+        }
+
         dispatch(setDates(startFilterData));
 
         setIsLoading(false);
@@ -39,14 +47,6 @@ export function setLocationsDate(startFilterData: DatesInterface, errData: Dates
 
         if (startFilterData.finishLocation === '') {
             errData.errFinishLocation = true;
-        }
-
-        if (startFilterData.startDate === '') {
-            errData.errStartDate = true;
-        }
-
-        if (startFilterData.finishDate === '') {
-            errData.errFinishDate = true;
         }
     }
 }

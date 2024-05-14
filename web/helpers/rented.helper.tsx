@@ -21,7 +21,7 @@ export function checkAvailableCars(counter: number | undefined, rented: CarRente
         const startDateRented = new Date(cr.start_date);
         const finishDateRented = new Date(cr.finish_date);
 
-        if (startDate <= finishDateRented && finishDate >= startDateRented) {
+        if (startDate.setHours(0, 0, 0, 0) <= finishDateRented.setHours(0, 0, 0, 0) && finishDate.setHours(0, 0, 0, 0) >= startDateRented.setHours(0, 0, 0, 0)) {
             n += 1
         }
     }
