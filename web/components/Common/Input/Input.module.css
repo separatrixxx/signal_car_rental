@@ -43,7 +43,7 @@
 
 .inputDate {
 	width: 87%;
-	height: 10px !important;
+	height: auto !important;
 
 	border: none;
 }
@@ -117,7 +117,7 @@
 	}
 
 	.inputDate {
-		width: 90%;
+		width: 100%;
 	}
 
 	.search {
