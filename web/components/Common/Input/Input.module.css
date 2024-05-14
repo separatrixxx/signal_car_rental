@@ -27,14 +27,6 @@
 	padding: 0 !important;
 
 	color: var(--darkLight);
-	position: relative;
-}
-
-.inputDate {
-	width: 85%;
-	height: 40% !important;
-
-	border: none;
 }
 
 .locationInput {
@@ -46,6 +38,13 @@
 
 .activeInput {
 	color: var(--primary);
+}
+
+.inputDate {
+	width: 85%;
+	height: 1px !important;
+
+	border: none;
 }
 
 .input:active,

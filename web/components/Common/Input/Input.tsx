@@ -35,10 +35,7 @@ export const Input = ({ type, text, value, minDate, error, isSearch, isActive, o
             min={minDate} />;
     } else if (type !== 'location') {
         return (
-            <div className={cn(styles.input, styles.inputDiv, {
-                [styles.error_input]: error,
-            })}>
-                <input className={cn(styles.input, styles.inputDate)}
+            <input className={styles.input}
                     placeholder={text}
                     value={value}
                     onChange={onChange}
@@ -48,7 +45,6 @@ export const Input = ({ type, text, value, minDate, error, isSearch, isActive, o
                     min={minDate}
                     onFocus={handleFocus} 
                     onBlur={handleBlur} />
-            </div>
         );
     } else {
         return (
