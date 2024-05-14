@@ -4,23 +4,7 @@ import { getDateInput } from '../../../helpers/date.helper';
 import cn from 'classnames';
 
 
-export const Input = ({ type, text, value, minDate, error, isSearch, isActive, onChange }: InputProps): JSX.Element => {
-    function handleFocus(e: any) {
-        if ((type === 'date') && e.target.value === '') {
-            e.target.type = 'date';
-        }
-
-        if ((type === 'time') && e.target.value === '') {
-            e.target.type = 'time';
-        }
-    }
-
-    function handleBlur(e: any) {
-        if ((type === 'date' || type === 'time') && e.target.value === '') {
-            e.target.type = 'text';
-        }
-    }
-    
+export const Input = ({ type, text, value, minDate, error, isSearch, isActive, onChange }: InputProps): JSX.Element => {    
 	if (type !== 'date' && type !== 'time' && type !== 'location') {
         return <input className={cn(styles.input, {
             [styles.error_input]: error,
@@ -40,14 +24,12 @@ export const Input = ({ type, text, value, minDate, error, isSearch, isActive, o
             })}>
                 <input className={cn(styles.input, styles.inputDate)}
                     placeholder={text}
-                    value={value}
+                    value={value === '' ? getDateInput('date') : value}
                     onChange={onChange}
-                    type="date" 
+                    type={type} 
                     name={type}
                     aria-label={type}
                     min={minDate}
-                    // onFocus={handleFocus} 
-                    // onBlur={handleBlur}
                 />
             </div>
         );
