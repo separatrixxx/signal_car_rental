@@ -48,6 +48,10 @@
 	border: none;
 }
 
+.inputTime {
+	width: 92%;
+}
+
 .input:active,
 .input:hover,
 .input:focus,
@@ -84,10 +88,6 @@
 	color: var(--darkLight);
 }
 
-.inputDate::-webkit-calendar-picker-indicator {
-	display: none;
-}
-
 @media (max-width: 1024px) {
 	.search {
 		width: 40%;
@@ -121,6 +121,10 @@
 	}
 
 	.inputDate {
+		width: 84%;
+	}
+
+	.inputTime {
 		width: 90%;
 	}
 
