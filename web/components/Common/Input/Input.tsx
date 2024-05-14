@@ -35,16 +35,21 @@ export const Input = ({ type, text, value, minDate, error, isSearch, isActive, o
             min={minDate} />;
     } else if (type !== 'location') {
         return (
-            <input className={styles.input}
+            <div className={cn(styles.input, styles.inputDiv, {
+                [styles.error_input]: error,
+            })}>
+                <input className={cn(styles.input, styles.inputDate)}
                     placeholder={text}
                     value={value}
                     onChange={onChange}
-                    type="text" 
+                    type="date" 
                     name={type}
                     aria-label={type}
                     min={minDate}
-                    onFocus={handleFocus} 
-                    onBlur={handleBlur} />
+                    // onFocus={handleFocus} 
+                    // onBlur={handleBlur}
+                />
+            </div>
         );
     } else {
         return (
