@@ -27,13 +27,6 @@ body {
 	height: 9px;
 }
 
-@media (max-width: 480px) {
-	::-webkit-scrollbar {
-		width: 5px;
-		height: 5px;
-	}
-}
-
 ::-webkit-scrollbar-track {
 	background-color: var(--background);
 }
@@ -45,6 +38,13 @@ body {
 
 a {
 	text-decoration: none;
+}
+
+@media (max-width: 480px) {
+	::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+	}
 }
 
 :root {
