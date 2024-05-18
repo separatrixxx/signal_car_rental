@@ -8,7 +8,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Slide } from '../Slide/Slide';
-import { useResizeW } from '../../../hooks/useResize';
 
 
 export const Slider = ({ images }: SliderProps): JSX.Element => {
