@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getInfo } from "../../helpers/info.helper";
 import { getRented } from "../../helpers/rented.helper";
+import { getCoeffs } from "../../helpers/price.helper";
 
 
 function Main(): JSX.Element {
@@ -17,6 +18,7 @@ function Main(): JSX.Element {
   useEffect(() => {
     getInfo(dispatch);
     getRented(dispatch);
+    getCoeffs(dispatch);
   }, [dispatch]);
 
   const info = useSelector((state: AppState) => state.info.info);

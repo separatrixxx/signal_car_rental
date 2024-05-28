@@ -10,7 +10,7 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { CarInfoItem } from '../CarInfoItem/CarInfoItem';
 import { CarInterface } from '../../../interfaces/car.interface';
 import { Slider } from '../../Slider/Slider/Slider';
-import { setDeliveryPrice } from '../../../helpers/price.helper';
+import { setDeliveryPrice, setPriceCoeff } from '../../../helpers/price.helper';
 import { getDaysNum } from '../../../helpers/date.helper';
 
 
@@ -23,8 +23,7 @@ export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
 
 	const dates = useSelector((state: AppState) => state.dates.dates);
 	const price = useSelector((state: AppState) => state.price.price);
-
-	// console.log(getDaysNum(dates.startDate, dates.finishDate));
+	const coeffs = useSelector((state: AppState) => state.coeffs.coeffs);
 
 	if (car) {
 		return (
@@ -39,7 +38,7 @@ export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
 							car.description_ru : car.description_ge}
 					</Htag>
 					<Htag tag='xl' className={styles.carPrice}>
-						{car.price + '₾ / ' + setLocale(router.locale).day}
+						{setPriceCoeff(car.price, dates, coeffs) + '₾ / ' + setLocale(router.locale).day}
 					</Htag>
 					{setDeliveryPrice(car.location.location_code, dates, price) > 0 
 						?

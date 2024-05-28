@@ -52,14 +52,15 @@
 		grid-template-columns: repeat(2, 50%);
 
 		border-radius: 15px;
-		grid-template-areas: 
-            ". ."
-            ". ."
-            "button button";
+		grid-template-areas:
+			". ."
+			". ."
+			"button button";
 	}
 
 	.startButton {
 		grid-area: button;
+
 		margin-top: 10px;
 	}
 }

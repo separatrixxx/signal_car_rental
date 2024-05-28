@@ -19,21 +19,23 @@
 }
 
 .mainImgDiv {
-	width: 100%;
-	justify-self: center;
-
 	display: grid;
+
+	width: 100%;
+	margin-top: 100px;
+	justify-self: center;
 	justify-items: center;
 	gap: 10px;
-	margin-top: 100px;
 }
 
 .mainImgDiv > h1 {
+	max-width: 90%;
+
+	text-align: center;
+
 	color: var(--darkLight);
 
 	font-weight: 900;
-	max-width: 90%;
-	text-align: center;
 }
 
 .mainImgText {

@@ -12,13 +12,12 @@ import { checkData } from '../../../helpers/booking_car.helper';
 import { useDispatch } from "react-redux";
 import { getDate } from '../../../helpers/date.helper';
 import { Htag } from '../../Common/Htag/Htag';
-import { setDeliveryPrice } from '../../../helpers/price.helper';
+import { setDeliveryPrice, setPriceCoeff } from '../../../helpers/price.helper';
 import { checkAvailableCars } from '../../../helpers/rented.helper';
 
 
 export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
     const router = useRouter();
-    const dispatch = useDispatch();
 
     const car = useSelector((state: AppState) => state.cars.cars).find(function (car) {
 		return car.id === carId;
@@ -29,10 +28,7 @@ export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
     const rented = useSelector((state: AppState) => state.rented.rented).filter(function (rentedCar) {
 		return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
 	});
-    const rentedQ = useSelector((state: AppState) => state.rented.rented);
-
-    // console.log('carId = ' + carId)
-    // console.log(rentedQ)
+    const coeffs = useSelector((state: AppState) => state.coeffs.coeffs);
 
     const [clientName, setClientName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -72,7 +68,7 @@ export const CarBooking = ({ carId }: CarBookingProps): JSX.Element => {
                 <Input type="time" text={setLocale(router.locale).finish_time} value={finishDate} minDate={getDate()}
                     error={error.errFinish} onChange={(e) => setFinishDate(e.target.value)} />
                 <Htag tag='l' className={styles.car_price}>
-					{setLocale(router.locale).booking_price + ': ' + (car.price 
+					{setLocale(router.locale).booking_price + ': ' + (setPriceCoeff(car.price, dates, coeffs) 
                         + setDeliveryPrice(car.location.location_code, dates, price)) * 0.1 + '₾'}
 				</Htag>
                 <Htag tag='m' className={styles.car_counter}>

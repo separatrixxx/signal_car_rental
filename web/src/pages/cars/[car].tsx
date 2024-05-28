@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getCars } from '../../../helpers/car.helper';
 import { getLocations } from '../../../helpers/location.helper';
-import { getPrice } from '../../../helpers/price.helper';
+import { getCoeffs, getPrice } from '../../../helpers/price.helper';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
 import { getRented } from '../../../helpers/rented.helper';
@@ -27,6 +27,7 @@ export default function Car({ car }: CarProps) {
     	getPrice(dispatch);
 		getCars(dispatch, dates, router);
 		getRented(dispatch);
+		getCoeffs(dispatch);
 	}, [dispatch, dates, router]);
 
 	if (car && dates.startLocation !== '') {

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "price_coeffs",
+  "info": {
+    "singularName": "price-coeff",
+    "pluralName": "price-coeffs",
+    "displayName": "priceCoeffs"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "coeff1": {
+      "type": "float",
+      "required": true
+    },
+    "coeff2": {
+      "type": "float",
+      "required": true
+    },
+    "coeff3": {
+      "type": "float",
+      "required": true
+    }
+  }
+}

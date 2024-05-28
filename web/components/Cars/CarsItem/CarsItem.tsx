@@ -7,6 +7,7 @@ import { AppState } from '../../../features/store/store';
 import Image from 'next/image';
 import Link from 'next/link';
 import { setLocale } from '../../../helpers/locale.helper';
+import { setPriceCoeff } from '../../../helpers/price.helper';
 
 
 export const CarsItem = ({ carId }: CarsItemProps): JSX.Element => {
@@ -15,6 +16,8 @@ export const CarsItem = ({ carId }: CarsItemProps): JSX.Element => {
     const car = useSelector((state: AppState) => state.cars.cars).find(function (car) {
 		return car.id === carId;
 	});
+	const dates = useSelector((state: AppState) => state.dates.dates);
+	const coeffs = useSelector((state: AppState) => state.coeffs.coeffs);
     
 	if (car) {
 		return (
@@ -37,7 +40,7 @@ export const CarsItem = ({ carId }: CarsItemProps): JSX.Element => {
 							car.location.location_ru : car.location.location_ge)}
 					</Htag>
 					<Htag tag='l'>
-						{car.price + '₾ / ' + setLocale(router.locale).day}
+						{setPriceCoeff(car.price, dates, coeffs) + '₾ / ' + setLocale(router.locale).day}
 					</Htag>
 				</div>
 			</Link>

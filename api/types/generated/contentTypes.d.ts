@@ -954,6 +954,38 @@ export interface ApiPricePrice extends Schema.CollectionType {
   };
 }
 
+export interface ApiPriceCoeffPriceCoeff extends Schema.CollectionType {
+  collectionName: 'price_coeffs';
+  info: {
+    singularName: 'price-coeff';
+    pluralName: 'price-coeffs';
+    displayName: 'priceCoeffs';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    coeff1: Attribute.Float & Attribute.Required;
+    coeff2: Attribute.Float & Attribute.Required;
+    coeff3: Attribute.Float & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::price-coeff.price-coeff',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::price-coeff.price-coeff',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRentedCarRentedCar extends Schema.CollectionType {
   collectionName: 'rented_cars';
   info: {
@@ -1022,6 +1054,7 @@ declare module '@strapi/types' {
       'api::company-info.company-info': ApiCompanyInfoCompanyInfo;
       'api::location.location': ApiLocationLocation;
       'api::price.price': ApiPricePrice;
+      'api::price-coeff.price-coeff': ApiPriceCoeffPriceCoeff;
       'api::rented-car.rented-car': ApiRentedCarRentedCar;
     }
   }

@@ -21,6 +21,7 @@
 @media (max-width: 580px) {
 	.textPad {
 		padding: 20px 30px;
+
 		border-radius: 15px;
 		gap: 10px;
 	}
