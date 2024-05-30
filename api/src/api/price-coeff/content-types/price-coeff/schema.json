@@ -4,7 +4,7 @@
   "info": {
     "singularName": "price-coeff",
     "pluralName": "price-coeffs",
-    "displayName": "priceCoeffs"
+    "displayName": "PriceCoeffs"
   },
   "options": {
     "draftAndPublish": true
@@ -20,8 +20,8 @@
       "required": true
     },
     "coeff3": {
-      "type": "float",
-      "required": true
+      "required": true,
+      "type": "float"
     }
   }
 }

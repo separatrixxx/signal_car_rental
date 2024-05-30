@@ -959,7 +959,7 @@ export interface ApiPriceCoeffPriceCoeff extends Schema.CollectionType {
   info: {
     singularName: 'price-coeff';
     pluralName: 'price-coeffs';
-    displayName: 'priceCoeffs';
+    displayName: 'PriceCoeffs';
   };
   options: {
     draftAndPublish: true;

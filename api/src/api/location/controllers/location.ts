@@ -11,14 +11,12 @@ export default factories.createCoreController('api::location.location', ({ strap
                 location_ru: entity.attributes.location_ru,
                 location_ge: entity.attributes.location_ge,
             }
-        })
+        });
 
         return { data: newData };
     },
 
     async findOne(ctx) {
-        ctx.query.populate = ['images'];
-
         const { data } = await super.findOne(ctx);
 
         const newData = {

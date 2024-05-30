@@ -20,14 +20,12 @@ export default factories.createCoreController('api::company-info.company-info', 
                 address_ge: entity.attributes.address_ge,
                 location: entity.attributes.location,
             }
-        })
+        });
 
         return { data: newData };
     },
 
     async findOne(ctx) {
-        ctx.query.populate = ['images'];
-
         const { data } = await super.findOne(ctx);
 
         const newData = {

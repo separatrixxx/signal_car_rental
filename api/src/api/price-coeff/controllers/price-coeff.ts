@@ -14,7 +14,7 @@ export default factories.createCoreController('api::price-coeff.price-coeff', ({
                 coeff2: entity.attributes.coeff2,
                 coeff3: entity.attributes.coeff3,
             }
-        })
+        });
 
         return newData;
     },

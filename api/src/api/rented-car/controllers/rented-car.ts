@@ -5,13 +5,14 @@ export default factories.createCoreController('api::rented-car.rented-car', ({ s
         const { data } = await super.find(ctx);
 
         const newData = data.map(entity => {
+            const carData = entity.attributes.car && entity.attributes.car.data ? entity.attributes.car.data.id : null;
             return {
-                car_id: entity.attributes.car.data.id,
+                car_id: carData,
                 start_date: entity.attributes.startDate,
                 finish_date: entity.attributes.finishDate,
                 status: entity.attributes.status,
             }
-        })
+        });
 
         return { data: newData };
     },
@@ -21,12 +22,13 @@ export default factories.createCoreController('api::rented-car.rented-car', ({ s
 
         const { data } = await super.findOne(ctx);
 
+        const carData = data.attributes.car && data.attributes.car.data ? data.attributes.car.data.id : null;
         const newData = {
-            car_id: data.attributes.car.data.id,
+            car_id: carData,
             start_date: data.attributes.startDate,
             finish_date: data.attributes.finishDate,
             status: data.attributes.status,
-    };
+        };
 
         return { data: newData };
     },

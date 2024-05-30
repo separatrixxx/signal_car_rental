@@ -32,7 +32,7 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
                     url: img.attributes.url,
                 })),
             }
-        })
+        });
 
         return { data: newData };
     },

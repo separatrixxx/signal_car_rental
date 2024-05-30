@@ -10,7 +10,7 @@ export default factories.createCoreController('api::price.price', ({ strapi }) =
                 start_location: entity.attributes.start_location.data.attributes.location_code,
                 finish_location: entity.attributes.finish_location.data.attributes.location_code,
             }
-        })
+        });
 
         return { data: newData };
     },
