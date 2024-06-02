@@ -8,6 +8,7 @@ import { Htag } from '../../Common/Htag/Htag';
 
 export const FilterItem = ({ text, filters, filtersActual, filterType, setFilters, setActive }: FilterItemProps): JSX.Element => {
     const router = useRouter();
+    console.log(filtersActual[filterType])
     
     return (
         <div className={cn(styles.filterItem, {

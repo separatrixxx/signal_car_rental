@@ -35,8 +35,11 @@
 }
 
 .filterActive {
-	color: var(--white) !important;
 	background: var(--primary);
+}
+
+.filterActive > h1 {
+	color: var(--white) !important;
 }
 
 .filterCancel {
