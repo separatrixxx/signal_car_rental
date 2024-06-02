@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-02T17:57:43.373Z"
+    "x-generation-date": "2024-06-02T18:14:24.060Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -98,8 +98,6 @@
               "images",
               "price",
               "counter",
-              "description_ru",
-              "description_ge",
               "class",
               "mileage",
               "engine_type",
@@ -107,7 +105,9 @@
               "engine_power",
               "drive_unit",
               "transmission",
-              "description"
+              "description",
+              "description_ru",
+              "description_ge"
             ],
             "type": "object",
             "properties": {
@@ -133,12 +133,6 @@
               },
               "counter": {
                 "type": "integer"
-              },
-              "description_ru": {
-                "type": "string"
-              },
-              "description_ge": {
-                "type": "string"
               },
               "class": {
                 "type": "string",
@@ -196,6 +190,12 @@
                 "example": "string or id"
               },
               "description": {
+                "type": "string"
+              },
+              "description_ru": {
+                "type": "string"
+              },
+              "description_ge": {
                 "type": "string"
               }
             }
@@ -255,8 +255,6 @@
           "images",
           "price",
           "counter",
-          "description_ru",
-          "description_ge",
           "class",
           "mileage",
           "engine_type",
@@ -264,7 +262,9 @@
           "engine_power",
           "drive_unit",
           "transmission",
-          "description"
+          "description",
+          "description_ru",
+          "description_ge"
         ],
         "properties": {
           "name": {
@@ -901,12 +901,6 @@
           "counter": {
             "type": "integer"
           },
-          "description_ru": {
-            "type": "string"
-          },
-          "description_ge": {
-            "type": "string"
-          },
           "class": {
             "type": "string",
             "enum": [
@@ -1028,6 +1022,12 @@
             }
           },
           "description": {
+            "type": "string"
+          },
+          "description_ru": {
+            "type": "string"
+          },
+          "description_ge": {
             "type": "string"
           },
           "createdAt": {
@@ -3682,12 +3682,6 @@
                       "counter": {
                         "type": "integer"
                       },
-                      "description_ru": {
-                        "type": "string"
-                      },
-                      "description_ge": {
-                        "type": "string"
-                      },
                       "class": {
                         "type": "string",
                         "enum": [
@@ -3809,6 +3803,12 @@
                         }
                       },
                       "description": {
+                        "type": "string"
+                      },
+                      "description_ru": {
+                        "type": "string"
+                      },
+                      "description_ge": {
                         "type": "string"
                       },
                       "createdAt": {

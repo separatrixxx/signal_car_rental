@@ -804,8 +804,6 @@ export interface ApiCarCar extends Schema.CollectionType {
     images: Attribute.Media & Attribute.Required;
     price: Attribute.Integer & Attribute.Required;
     counter: Attribute.Integer & Attribute.Required;
-    description_ru: Attribute.Text & Attribute.Required;
-    description_ge: Attribute.Text & Attribute.Required;
     class: Attribute.Enumeration<
       ['econom', 'comfort', 'business', 'premium', 'suv', 'minivan']
     > &
@@ -831,6 +829,8 @@ export interface ApiCarCar extends Schema.CollectionType {
       'api::location.location'
     >;
     description: Attribute.RichText & Attribute.Required;
+    description_ru: Attribute.RichText & Attribute.Required;
+    description_ge: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

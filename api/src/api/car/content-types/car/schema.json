@@ -39,15 +39,6 @@
       "required": true,
       "pluginOptions": {}
     },
-    "description_ru": {
-      "pluginOptions": {},
-      "type": "text",
-      "required": true
-    },
-    "description_ge": {
-      "type": "text",
-      "required": true
-    },
     "class": {
       "type": "enumeration",
       "enum": [
@@ -108,6 +99,14 @@
       "target": "api::location.location"
     },
     "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "description_ru": {
+      "type": "richtext",
+      "required": true
+    },
+    "description_ge": {
       "type": "richtext",
       "required": true
     }
