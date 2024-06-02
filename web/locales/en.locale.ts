@@ -66,4 +66,6 @@ export const en = {
     enter_data: "Enter the data required to find a car",
     delivery_price: "Delivery price",
     order_a_car: "Order a car at the best price today",
+    question_booking: "You need to pay a deposit for booking a car in the amount of 10% of the daily rental cost",
+    question_delivery: "According to the selected location, you must pay for the delivery of the car",
 };

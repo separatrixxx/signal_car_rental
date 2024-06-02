@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-01T00:06:31.537Z"
+    "x-generation-date": "2024-06-02T17:57:43.373Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -95,7 +95,6 @@
           "data": {
             "required": [
               "name",
-              "description",
               "images",
               "price",
               "counter",
@@ -107,14 +106,12 @@
               "engine_capacity",
               "engine_power",
               "drive_unit",
-              "transmission"
+              "transmission",
+              "description"
             ],
             "type": "object",
             "properties": {
               "name": {
-                "type": "string"
-              },
-              "description": {
                 "type": "string"
               },
               "images": {
@@ -197,6 +194,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "description": {
+                "type": "string"
               }
             }
           }
@@ -252,7 +252,6 @@
         "type": "object",
         "required": [
           "name",
-          "description",
           "images",
           "price",
           "counter",
@@ -264,13 +263,11 @@
           "engine_capacity",
           "engine_power",
           "drive_unit",
-          "transmission"
+          "transmission",
+          "description"
         ],
         "properties": {
           "name": {
-            "type": "string"
-          },
-          "description": {
             "type": "string"
           },
           "images": {
@@ -1030,6 +1027,9 @@
               }
             }
           },
+          "description": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -1109,33 +1109,24 @@
           "data": {
             "required": [
               "address",
-              "about_text",
               "phone",
               "email",
-              "about_text_ru",
-              "about_text_ge",
               "address_ru",
               "address_ge",
-              "location"
+              "location",
+              "about_text",
+              "about_text_ru",
+              "about_text_ge"
             ],
             "type": "object",
             "properties": {
               "address": {
                 "type": "string"
               },
-              "about_text": {
-                "type": "string"
-              },
               "phone": {
                 "type": "string"
               },
               "email": {
-                "type": "string"
-              },
-              "about_text_ru": {
-                "type": "string"
-              },
-              "about_text_ge": {
                 "type": "string"
               },
               "address_ru": {
@@ -1145,6 +1136,15 @@
                 "type": "string"
               },
               "location": {
+                "type": "string"
+              },
+              "about_text": {
+                "type": "string"
+              },
+              "about_text_ru": {
+                "type": "string"
+              },
+              "about_text_ge": {
                 "type": "string"
               }
             }
@@ -1201,32 +1201,23 @@
         "type": "object",
         "required": [
           "address",
-          "about_text",
           "phone",
           "email",
-          "about_text_ru",
-          "about_text_ge",
           "address_ru",
           "address_ge",
-          "location"
+          "location",
+          "about_text",
+          "about_text_ru",
+          "about_text_ge"
         ],
         "properties": {
           "address": {
-            "type": "string"
-          },
-          "about_text": {
             "type": "string"
           },
           "phone": {
             "type": "string"
           },
           "email": {
-            "type": "string"
-          },
-          "about_text_ru": {
-            "type": "string"
-          },
-          "about_text_ge": {
             "type": "string"
           },
           "address_ru": {
@@ -1236,6 +1227,15 @@
             "type": "string"
           },
           "location": {
+            "type": "string"
+          },
+          "about_text": {
+            "type": "string"
+          },
+          "about_text_ru": {
+            "type": "string"
+          },
+          "about_text_ge": {
             "type": "string"
           },
           "createdAt": {
@@ -3051,9 +3051,6 @@
                       "name": {
                         "type": "string"
                       },
-                      "description": {
-                        "type": "string"
-                      },
                       "images": {
                         "type": "object",
                         "properties": {
@@ -3810,6 +3807,9 @@
                             }
                           }
                         }
+                      },
+                      "description": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",

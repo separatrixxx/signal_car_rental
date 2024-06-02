@@ -12,21 +12,63 @@
 	gap: 20px;
 }
 
-.car_price {
+.carPrice {
+	display: grid;
+	grid-template-columns: auto 1fr;
+
+	align-items: center;
+
 	margin-top: 10px;
 
 	color: var(--primary);
+	gap: 10px;
 }
 
-.car_counter {
+.question {
+	width: 17px;
+	fill: var(--primary);
+
+	cursor: pointer;
+	transition-duration: 300ms;
+}
+
+.question:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+.carCounter {
 	color: var(--darkLight);
 
 	font-family: 500;
 }
 
+.questionText {
+	width: 300px;
+
+	text-align: center;
+}
+
+@media (min-width: 1024px) {
+	.question:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
+
 @media (max-width: 1024px) {
 	.carBooking {
 		padding: 30px 0;
+	}
+
+	.carPrice {
+		gap: 7px;
+	}
+
+	.question {
+		width: 15px;
 	}
 }
 
@@ -36,10 +78,30 @@
 
 		border-radius: 15px;
 	}
+
+	.carPrice {
+		gap: 5px;
+	}
+
+	.question > svg {
+		width: 12px;
+	}
+
+	.questionText {
+		width: 250px;
+	}
 }
 
 @media (max-width: 300px) {
 	.carBooking {
 		border-radius: 10px;
+	}
+
+	.question {
+		width: 10px;
+	}
+
+	.questionText {
+		width: 150px;
 	}
 }

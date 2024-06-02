@@ -16,24 +16,12 @@
       "type": "string",
       "required": true
     },
-    "about_text": {
-      "type": "text",
-      "required": true
-    },
     "phone": {
       "type": "string",
       "required": true
     },
     "email": {
       "type": "string",
-      "required": true
-    },
-    "about_text_ru": {
-      "type": "text",
-      "required": true
-    },
-    "about_text_ge": {
-      "type": "text",
       "required": true
     },
     "address_ru": {
@@ -46,6 +34,18 @@
     },
     "location": {
       "type": "string",
+      "required": true
+    },
+    "about_text": {
+      "type": "richtext",
+      "required": true
+    },
+    "about_text_ru": {
+      "type": "richtext",
+      "required": true
+    },
+    "about_text_ge": {
+      "type": "richtext",
       "required": true
     }
   }

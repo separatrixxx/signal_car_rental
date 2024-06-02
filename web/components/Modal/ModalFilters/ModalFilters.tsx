@@ -24,7 +24,6 @@ export const ModalFilters = ({ filters, filtersActual, setActiveFilters, setFilt
                     {f.text}
                 </Htag>
             ))}
-            <span className={styles.divider} />
             <Htag tag='l' className={styles.filterLink} onClick={() => {
                 setActiveFilters(false);
 

@@ -801,7 +801,6 @@ export interface ApiCarCar extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
     images: Attribute.Media & Attribute.Required;
     price: Attribute.Integer & Attribute.Required;
     counter: Attribute.Integer & Attribute.Required;
@@ -831,6 +830,7 @@ export interface ApiCarCar extends Schema.CollectionType {
       'oneToOne',
       'api::location.location'
     >;
+    description: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -854,14 +854,14 @@ export interface ApiCompanyInfoCompanyInfo extends Schema.CollectionType {
   };
   attributes: {
     address: Attribute.String & Attribute.Required;
-    about_text: Attribute.Text & Attribute.Required;
     phone: Attribute.String & Attribute.Required;
     email: Attribute.String & Attribute.Required;
-    about_text_ru: Attribute.Text & Attribute.Required;
-    about_text_ge: Attribute.Text & Attribute.Required;
     address_ru: Attribute.String & Attribute.Required;
     address_ge: Attribute.String & Attribute.Required;
     location: Attribute.String & Attribute.Required;
+    about_text: Attribute.RichText & Attribute.Required;
+    about_text_ru: Attribute.RichText & Attribute.Required;
+    about_text_ge: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

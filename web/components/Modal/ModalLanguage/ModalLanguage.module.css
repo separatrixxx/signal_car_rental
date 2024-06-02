@@ -4,8 +4,14 @@
 }
 
 .link {
-	width: fit-content;
-	margin: 5px 20px 5px 20px;
+	width: calc(100% - 40px);
+	margin: 0 20px;
+}
+
+.link:not(:first-child) {
+	padding-top: 10px;
+
+	border-top: 1px solid var(--light);
 }
 
 .langLink {

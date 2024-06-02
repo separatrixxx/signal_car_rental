@@ -14,8 +14,6 @@
 .about_text {
 	max-width: 60%;
 
-	white-space: pre-line;
-
 	font-weight: 500;
 	overflow-wrap: break-word;
 }

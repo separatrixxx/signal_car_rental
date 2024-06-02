@@ -31,15 +31,59 @@
 	color: var(--primary) !important;
 }
 
+.carPrice {
+	display: grid;
+	grid-template-columns: auto 1fr;
+
+	align-items: center;
+	gap: 10px;
+}
+
+.question {
+	width: 17px;
+	fill: var(--primary);
+
+	cursor: pointer;
+	transition-duration: 300ms;
+}
+
+.question:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
 .description {
 	margin-bottom: 20px;
 
 	font-weight: 500;
 }
 
+.questionText {
+	width: 300px !important;
+
+	text-align: center;
+}
+
+@media (min-width: 1024px) {
+	.question:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
+
 @media (max-width: 1024px) {
 	.carInfo {
 		gap: 20px;
+	}
+
+	.carPrice {
+		gap: 7px;
+	}
+
+	.question {
+		width: 15px;
 	}
 }
 
@@ -47,10 +91,30 @@
 	.imageBlock {
 		border-radius: 15px;
 	}
+
+	.carPrice {
+		gap: 5px;
+	}
+
+	.question > svg {
+		width: 12px;
+	}
+
+	.questionText {
+		width: 250px !important;
+	}
 }
 
 @media (max-width: 300px) {
 	.imageBlock {
 		border-radius: 10px;
+	}
+
+	.question {
+		width: 10px;
+	}
+
+	.questionText {
+		width: 150px !important;
 	}
 }
