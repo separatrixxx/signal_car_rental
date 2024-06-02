@@ -28,18 +28,18 @@
 	filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.15));
 }
 
-.filterItem:active > h1 {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-	color: var(--primary);
-}
-
 .filterActive {
 	background: var(--primary);
 }
 
 .filterActive > h1 {
 	color: var(--white) !important;
+}
+
+.filterItem:active > h1 {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--primary);
 }
 
 .filterCancel {
