@@ -59,12 +59,12 @@ export function setPriceCoeff(price: number, dates: DatesInterface, coeffs: Pric
     const timeDifference = Math.abs(finishDate.getTime() - startDate.getTime());
     const numberOfDays = Math.ceil(timeDifference / (1000 * 3600 * 24)) + 1;
 
-    if (numberOfDays >= 3) {
-        return price * coeffs.coeff1;
+    if (numberOfDays > 14) {
+        return Math.round(price * coeffs.coeff3);
     } else if (numberOfDays >= 7) {
-        return price * coeffs.coeff2;
-    } else if (numberOfDays > 14) {
-        return price * coeffs.coeff3;
+        return Math.round(price * coeffs.coeff2);
+    } else if (numberOfDays >= 3) {
+        return Math.round(price * coeffs.coeff1);
     }
     
     return price;
