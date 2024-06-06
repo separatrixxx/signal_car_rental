@@ -16,23 +16,22 @@
 }
 
 .hitOffersTitle {
-	margin-top: 40px;
-	margin-left: 10%;
+	margin-top: 40px !important;
+	margin-left: 10% !important;
 
-	color: var(--primary);
+	color: var(--primary) !important;
 	justify-self: left;
 }
 
 @media (max-width: 1024px) {
 	.hitOffersTitle {
-		width: 85%;
-		margin-left: calc(15% / 2);
+		margin-left: calc(15% / 2) !important;
 	}
 }
 
 @media (max-width: 580px) {
 	.hitOffersTitle {
-		margin-top: 20px;
-		margin-left: 5%;
+		margin-top: 20px !important;
+		margin-left: 5% !important;
 	}
 }
