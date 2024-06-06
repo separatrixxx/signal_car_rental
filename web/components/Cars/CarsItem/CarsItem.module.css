@@ -144,10 +144,6 @@
 		gap: 10px;
 	}
 
-	.carHit {
-		border: 1px solid var(--primary);
-	}
-
 	.hitBox {
 		padding: 5px 20px;
 
