@@ -17,21 +17,23 @@ export async function getPrice(dispatch: any) {
     }
 }
 
-export function checkPrices(carLocation: string, dates: DatesInterface, price: PriceInterface): boolean {
-    if (carLocation === dates.startLocation && carLocation !== dates.finishLocation
-        || carLocation !== dates.startLocation && carLocation === dates.finishLocation
+export function checkPrices(carLocation: string, startLocation: string, finishLocation: string,
+    price: PriceInterface): boolean {
+    if (carLocation === startLocation && carLocation !== finishLocation
+        || carLocation !== startLocation && carLocation === finishLocation
     ) {
-        return price.start_location === dates.finishLocation && price.finish_location === dates.startLocation;
-    } else if (carLocation !== dates.startLocation && carLocation !== dates.finishLocation) {
-        return price.start_location === carLocation && price.finish_location === dates.startLocation
-            || price.start_location === dates.finishLocation && price.finish_location === carLocation;
+        return price.start_location === finishLocation && price.finish_location === startLocation;
+    } else if (carLocation !== startLocation && carLocation !== finishLocation) {
+        return price.start_location === carLocation && price.finish_location === startLocation
+            || price.start_location === finishLocation && price.finish_location === carLocation;
     }
 
     return false;
 }
 
-export function setDeliveryPrice(carLocation: string, dates: DatesInterface, price: PriceInterface[]): number {
-    const newPrices = price.filter(p => checkPrices(carLocation, dates, p));
+export function setDeliveryPrice(carLocation: string, startLocation: string, finishLocation: string,
+    price: PriceInterface[]): number {
+    const newPrices = price.filter(p => checkPrices(carLocation, startLocation, finishLocation, p));
     let deliveryPrice = 0;
 
     for (let np of newPrices) {
@@ -52,9 +54,10 @@ export async function getCoeffs(dispatch: any) {
     }
 }
 
-export function setPriceCoeff(price: number, dates: DatesInterface, coeffs: PriceCoeffsInterface): number {
-    const startDate = new Date(dates.startDate);
-    const finishDate = new Date(dates.finishDate);
+export function setPriceCoeff(price: number, dates: DatesInterface, coeffs: PriceCoeffsInterface,
+    isStart?: boolean, startDatetime?: string, finishDatetime?: string): number {
+    const startDate = isStart ? (startDatetime ? new Date(startDatetime) : new Date()) : new Date(dates.startDate);
+    const finishDate = isStart ? (finishDatetime ? new Date(finishDatetime) : new Date()) : new Date(dates.finishDate);
 
     const timeDifference = Math.abs(finishDate.getTime() - startDate.getTime());
     const numberOfDays = Math.ceil(timeDifference / (1000 * 3600 * 24)) + 1;

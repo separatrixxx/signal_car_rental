@@ -1,4 +1,5 @@
 import { CarInterface } from "./car.interface";
+import { LocationInterface } from "./location.interface";
 
 
 export interface BookingInterface {
@@ -7,6 +8,8 @@ export interface BookingInterface {
     startDate: string,
     finishDate: string,
     car: CarInterface,
+    startLocation?: LocationInterface,
+    finishLocation?: LocationInterface,
 }
 
 export interface BookingErrorInterface {
@@ -14,4 +17,6 @@ export interface BookingErrorInterface {
     errPhone: boolean,
     errStart: boolean,
     errFinish: boolean,
+    errStartLocation?: boolean,
+    errFinishLocation?: boolean,
 }

@@ -58,11 +58,8 @@ function sortClass(cars: CarInterface[], filtersActual: FilterActualInterface): 
     return carsNew;
 }
 
-export async function getCars(dispatch: any, dates: DatesInterface, router: any, filtersActual?: FilterActualInterface,
+export async function getCars(dispatch: any, dates: DatesInterface, filtersActual?: FilterActualInterface,
     sort?: 'low' | 'high', name?: string) {
-    if (dates.startLocation === '') {
-        router.push('/');
-    }
     
     try {
         const { data : response }: AxiosResponse<Cars> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +

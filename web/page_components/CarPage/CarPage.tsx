@@ -1,6 +1,5 @@
 import { CarPageProps } from './CarPage.props';
 import styles from './CarPage.module.css';
-import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
 import { CarInfo } from '../../components/Cars/CarInfo/CarInfo';
 import { CarBooking } from '../../components/Cars/CarBooking/CarBooking';
@@ -11,8 +10,13 @@ import { Footer } from '../../components/Common/Footer/Footer';
 import { ModalLanguage } from '../../components/Modal/ModalLanguage/ModalLanguage';
 
 
-export const CarPage = ({ carId }: CarPageProps): JSX.Element => {
+export const CarPage = ({ carId, isStart }: CarPageProps): JSX.Element => {
 	const [active, setActive] = useState<boolean>(false);
+
+	const [startDatetime, setStartDatetime] = useState<string>('');
+	const [finishDatetime, setFinishDatetime] = useState<string>('');
+	const [startLocation, setStartLocation] = useState<string>('');
+	const [finishLocation, setFinishLocation] = useState<string>('');
 	
 	return (
 		<>
@@ -26,8 +30,11 @@ export const CarPage = ({ carId }: CarPageProps): JSX.Element => {
 			<div className={styles.wrapper}>
 				<Header setActive={setActive} />
                 <div className={styles.carBlock}>
-                    <CarInfo carId={carId} />
-					<CarBooking carId={carId} />
+                    <CarInfo carId={carId} isStart={isStart} startDatetime={startDatetime} finishDatetime={finishDatetime}
+						startLocation={startLocation} finishLocation={finishLocation} />
+					<CarBooking carId={carId} isStart={isStart} startDatetime={startDatetime} finishDatetime={finishDatetime}
+						setStartDatetime={setStartDatetime} setFinishDatetime={setFinishDatetime}
+						setStartLocationModal={setStartLocation} setFinishLocationModal={setFinishLocation} />
                 </div>
 				<Footer />
 			</div>

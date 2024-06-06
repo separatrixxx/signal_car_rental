@@ -25,12 +25,12 @@ export default function Car({ car }: CarProps) {
 	useEffect(() => {
 		getLocations(dispatch);
     	getPrice(dispatch);
-		getCars(dispatch, dates, router);
+		getCars(dispatch, dates);
 		getRented(dispatch);
 		getCoeffs(dispatch);
-	}, [dispatch, dates, router]);
+	}, [dispatch, dates]);
 
-	if (car && dates.startLocation !== '') {
+	if (car) {
 		return (
 			<>
 				<Head>
@@ -42,7 +42,7 @@ export default function Car({ car }: CarProps) {
 						? car.data.description : router.locale === 'ru' ? car.data.description_ru : car.data.description_ge)} />
 					<meta charSet="utf-8" />
 				</Head>
-				<CarPage carId={car.data.id} />
+				<CarPage carId={car.data.id} isStart={dates.startLocation === '' ? true : false} />
 			</>
 		);
 	} else {

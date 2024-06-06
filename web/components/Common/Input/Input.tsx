@@ -5,7 +5,7 @@ import cn from 'classnames';
 
 
 export const Input = ({ type, text, value, minDate, error, isSearch, isActive, onChange }: InputProps): JSX.Element => {    
-	if (type !== 'date' && type !== 'time' && type !== 'location') {
+	if (type !== 'date' && type !== 'time' && type !== 'datetime-local' && type !== 'location') {
         return <input className={cn(styles.input, {
             [styles.error_input]: error,
             [styles.search]: isSearch,
@@ -23,7 +23,7 @@ export const Input = ({ type, text, value, minDate, error, isSearch, isActive, o
                 [styles.error_input]: error,
             })}>
                 <input className={cn(styles.input, styles.inputDate, {
-                    [styles.inputTime]: type === 'time',
+                    [styles.inputTime]: type === 'time' || type === 'datetime-local',
                 })}
                     placeholder={text}
                     value={value === '' ? getDateInput(type) : value}

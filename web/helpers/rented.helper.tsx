@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { CarRented, CarRentedData } from "../interfaces/car.interface";
 import { setRented } from "../features/rented/rentedSlice";
 import { DatesInterface } from "../interfaces/dates.interface";
+import { getDate } from '../helpers/date.helper';
 
 
 export async function getRented(dispatch: any) {
@@ -11,11 +12,12 @@ export async function getRented(dispatch: any) {
     dispatch(setRented(response.data));
 }
 
-export function checkAvailableCars(counter: number | undefined, rented: CarRented[], dates: DatesInterface): number {
+export function checkAvailableCars(counter: number | undefined, rented: CarRented[], dates: DatesInterface,
+    isStart?: boolean, startDatetime?: string, finishDatetime?: string): number {
     let n = 0;
 
-    const startDate = new Date(dates.startDate);
-    const finishDate = new Date(dates.finishDate);
+    const startDate = isStart ? (startDatetime ? new Date(startDatetime) : new Date(getDate(true))) : new Date(dates.startDate);
+    const finishDate = isStart ? (finishDatetime ? new Date(finishDatetime) : new Date(getDate(true))) : new Date(dates.finishDate);
 
     for (let cr of rented) {
         const startDateRented = new Date(cr.start_date);

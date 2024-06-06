@@ -10,4 +10,5 @@ export interface FilterActualInterface {
     engine_type: string,
     transmission: string,
     drive_unit: string,
+    hit: string,
 }

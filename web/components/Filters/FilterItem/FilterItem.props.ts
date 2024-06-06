@@ -6,7 +6,7 @@ export interface FilterItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDi
 	text: string,
     filters: FilterInterface[],
     filtersActual: FilterActualInterface;
-    filterType: 'class' | 'mileage' | 'engine_type' | 'transmission' | 'drive_unit',
+    filterType: 'class' | 'mileage' | 'engine_type' | 'transmission' | 'drive_unit' | 'hit',
     setFilters: (e: FilterInterface[]) => void,
     setActive: (e: boolean) => void,
 }

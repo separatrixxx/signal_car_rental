@@ -25,6 +25,7 @@ export interface CarInterface {
     drive_unit: 'front_wheel' | 'rear',
     location: LocationInterface,
     images: CarImage[],
+    hit: boolean,
 }
 
 export interface CarImage {

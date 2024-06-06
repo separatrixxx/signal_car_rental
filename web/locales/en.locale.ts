@@ -14,6 +14,7 @@ export const en = {
     error_name: "Enter your name",
     error_phone: "Enter your phone number",
     error_time: "Enter time",
+    error_location: "Enter location",
     no_cars: "No cars available",
     about: "About",
     contacts: "Contacts",
@@ -68,4 +69,9 @@ export const en = {
     order_a_car: "Order a car at the best price today",
     question_booking: "You need to pay a deposit for booking a car in the amount of 10% of the daily rental cost",
     question_delivery: "According to the selected location, you must pay for the delivery of the car",
+    hit_offers: "Hit offers",
+    hit: "Hit",
+    out_of_stock: "Out of stock for selected dates",
+    enter_locations: "Enter locations to find out delivery prices",
+    error_counter: "There are no available cars for the dates you selected",
 };

@@ -1,4 +1,4 @@
-export function getDate(): string {
+export function getDate(isTime?: boolean): string {
     let dateNow = new Date();
 
     const year = dateNow.getFullYear();
@@ -13,10 +13,14 @@ export function getDate(): string {
         day = '0' + day;
     }
 
-    return year + '-' + month + '-' + day;
+    if (isTime) {
+        return year + '-' + month + '-' + day + 'T00:00';
+    } else {
+        return year + '-' + month + '-' + day;
+    }
 }
 
-export function getDateInput(type: 'time' | 'date'): string {
+export function getDateInput(type: 'time' | 'date' | 'datetime-local'): string {
     const now = new Date();
     const day = now.getDate().toString().padStart(2, '0');
     const month = (now.getMonth() + 1).toString().padStart(2, '0');
@@ -26,8 +30,10 @@ export function getDateInput(type: 'time' | 'date'): string {
 
     if (type === 'time') {
         return `${hours}:${minutes}`;
-    } else {
+    } else if (type === 'date') {
         return `${year}-${month}-${day}`;
+    } else {
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
     }
 }
 

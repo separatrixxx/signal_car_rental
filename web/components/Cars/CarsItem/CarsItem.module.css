@@ -1,5 +1,8 @@
 .carItem {
+	position: relative;
+
 	display: grid;
+	overflow: hidden;
 
 	width: 100%;
 	height: fit-content;
@@ -13,6 +16,27 @@
 	background: var(--white);
 	gap: 20px;
 	filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+
+.carHit {
+	border: 3px solid var(--primary);
+}
+
+.hitBox {
+	position: absolute;
+
+	display: grid;
+
+	width: fit-content;
+	height: fit-content;
+	padding: 10px 30px;
+
+	border-radius: 0 0 20px 0;
+	background: var(--primary);
+}
+
+.hitBox > h1 {
+	color: var(--white) !important;
 }
 
 .imageBlock {
@@ -53,6 +77,18 @@
 	font-weight: 700;
 }
 
+.carsAvailable {
+	margin-top: 10px;
+
+	color: var(--darkLight) !important;
+}
+
+.outOfStock {
+	margin-top: 10px;
+
+	color: var(--error) !important;
+}
+
 @media (min-width: 1024px) {
 	.carItem:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -77,6 +113,10 @@
 	.imageBlock {
 		height: 250px;
 	}
+
+	.hitBox {
+		padding: 7px 25px;
+	}
 }
 
 @media (max-width: 900px) {
@@ -98,6 +138,12 @@
 
 		border-radius: 15px;
 		gap: 10px;
+	}
+
+	.hitBox {
+		padding: 5px 20px;
+
+		border-radius: 0 0 15px 0;
 	}
 
 	.imageBlock {
@@ -124,6 +170,10 @@
 @media (max-width: 300px) {
 	.carItem {
 		border-radius: 10px;
+	}
+
+	.hitBox {
+		border-radius: 0 0 10px 0;
 	}
 
 	.imageBlock {

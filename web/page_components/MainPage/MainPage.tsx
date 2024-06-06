@@ -19,9 +19,12 @@ import { ModalStart } from '../../components/Modal/ModalStart/ModalStart';
 import { getLocations } from '../../helpers/location.helper';
 import { LocationInterface } from '../../interfaces/location.interface';
 import { getPrice } from '../../helpers/price.helper';
-import { useRouter } from 'next/router';
 import { FiltersBlock } from '../../components/Filters/FiltersBlock/FiltersBlock';
 import { MainImage } from '../../components/Common/MainImage/MainImage';
+import { HitCarsList } from '../../components/Cars/HitCarsList/HitCarsList';
+import { Htag } from '../../components/Common/Htag/Htag';
+import { setLocale } from '../../helpers/locale.helper';
+import { useRouter } from 'next/router';
 
 
 export const MainPage = (): JSX.Element => {
@@ -43,6 +46,7 @@ export const MainPage = (): JSX.Element => {
         engine_type: '',
         transmission: '',
         drive_unit: '',
+        hit: '',
     });
 
     useEffect(() => {
@@ -53,9 +57,7 @@ export const MainPage = (): JSX.Element => {
     const locations = useSelector((state: AppState) => state.locations.locations);
     const dates = useSelector((state: AppState) => state.dates.dates);
 
-    if (dates.startLocation !== '') {
-        getCars(dispatch, dates, router, filtersActual, sort, name);
-    }
+    getCars(dispatch, dates, filtersActual, sort, name);
 
     const locatEx: LocationInterface = {
         location_code: '',
@@ -90,9 +92,15 @@ export const MainPage = (): JSX.Element => {
                         </>                        
                     :
                         <div className={styles.mainDiv}>
-                            <MainImage />
-                            <StartFilter startLocation={startLocation} finishLocation={finishLocation}
-                                setActiveStart={setActiveStart} setActiveFinish={setActiveFinish} />
+                            <div className={styles.startFilterDiv}>
+                                <MainImage />
+                                <StartFilter startLocation={startLocation} finishLocation={finishLocation}
+                                    setActiveStart={setActiveStart} setActiveFinish={setActiveFinish} />
+                            </div>
+                            <Htag tag='xxl' className={styles.hitOffersTitle}>
+                                {setLocale(router.locale).hit_offers}
+                            </Htag>
+                            <HitCarsList />
                         </div>
                 }
                 <Footer />

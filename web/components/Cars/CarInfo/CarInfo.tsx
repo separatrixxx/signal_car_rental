@@ -14,9 +14,11 @@ import Question from './question.svg';
 import { Modal } from '../../Modal/Modal/Modal';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import cn from 'classnames';
 
 
-export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
+export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLocation, finishLocation }:
+	CarInfoProps): JSX.Element => {
     const router = useRouter();
 
     const car: CarInterface | undefined = useSelector((state: AppState) => state.cars.cars).find(function (car) {
@@ -45,17 +47,31 @@ export const CarInfo = ({ carId }: CarInfoProps): JSX.Element => {
 							</ReactMarkdown>
 						</Htag>
 						<Htag tag='xl' className={styles.carPrice}>
-							{setPriceCoeff(car.price, dates, coeffs) + '₾ / ' + setLocale(router.locale).day}
+							{setPriceCoeff(car.price, dates, coeffs, isStart, startDatetime, finishDatetime)
+								+ '₾ / ' + setLocale(router.locale).day}
 						</Htag>
-						{setDeliveryPrice(car.location.location_code, dates, price) > 0 
-							?
-								<Htag tag='l' className={styles.carPrice}>
-									{setLocale(router.locale).delivery_price + ': ' +
-										setDeliveryPrice(car.location.location_code, dates, price) + '₾'}
-									<Question className={styles.question} onClick={() => setActive(true)}/>
+						{
+							!isStart ?
+								setDeliveryPrice(car.location.location_code, dates.startLocation, dates.finishLocation, price) > 0 ?
+									<Htag tag='l' className={styles.carPrice}>
+										{setLocale(router.locale).delivery_price + ': ' +
+											setDeliveryPrice(car.location.location_code, dates.startLocation,
+											dates.finishLocation, price) + '₾'}
+										<Question className={styles.question} onClick={() => setActive(true)}/>
+									</Htag>
+								: <></>
+							: startLocation && finishLocation ?
+								setDeliveryPrice(car.location.location_code, startLocation, finishLocation, price) > 0 ?
+									<Htag tag='l' className={styles.carPrice}>
+										{setLocale(router.locale).delivery_price + ': ' +
+											setDeliveryPrice(car.location.location_code, startLocation, finishLocation, price) + '₾'}
+										<Question className={styles.question} onClick={() => setActive(true)}/>
+									</Htag>
+								: <></>
+							: 
+								<Htag tag='l' className={cn(styles.carPrice, styles.enterLocations)}>
+									{setLocale(router.locale).enter_locations}
 								</Htag>
-							:
-								<></>
 						}
 					</TextPad>
 					<TextPad>

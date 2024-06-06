@@ -109,6 +109,11 @@
     "description_ge": {
       "type": "richtext",
       "required": true
+    },
+    "hit": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

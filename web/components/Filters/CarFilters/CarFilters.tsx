@@ -1,16 +1,12 @@
 import { CarFiltersProps } from './CarFilters.props';
 import styles from './CarFilters.module.css';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { AppState } from '../../../features/store/store';
 import { setLocale } from '../../../helpers/locale.helper';
 import { FilterItem } from '../FilterItem/FilterItem';
 
 
 export const CarFilters = ({ filtersActual, setActive, setFilters }: CarFiltersProps): JSX.Element => {
 	const router = useRouter();
-
-    const cars = useSelector((state: AppState) => state.cars.cars);
 
 	return (
 		<div className={styles.filtersBlock}>

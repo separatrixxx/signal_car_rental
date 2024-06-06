@@ -20,6 +20,7 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
                 mileage: entity.attributes.mileage,
                 transmission: entity.attributes.transmission,
                 drive_unit: entity.attributes.drive_unit,
+                hit: entity.attributes.hit,
                 location: {
                     location_code: entity.attributes.location.data.attributes.location_code,
                     location: entity.attributes.location.data.attributes.location,
@@ -57,6 +58,7 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
             mileage: data.attributes.mileage,
             transmission: data.attributes.transmission,
             drive_unit: data.attributes.drive_unit,
+            hit: data.attributes.hit,
             location: {
                 location_code: data.attributes.location.data.attributes.location_code,
                 location: data.attributes.location.data.attributes.location,

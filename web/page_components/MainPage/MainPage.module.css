@@ -5,11 +5,34 @@
 	justify-items: center;
 }
 
-.mainDiv {
+.mainDiv,
+.startFilterDiv {
 	position: relative;
 
 	display: grid;
 
 	width: 100%;
 	justify-items: center;
+}
+
+.hitOffersTitle {
+	margin-top: 40px;
+	margin-left: 10%;
+
+	color: var(--primary);
+	justify-self: left;
+}
+
+@media (max-width: 1024px) {
+	.hitOffersTitle {
+		width: 85%;
+		margin-left: calc(15% / 2);
+	}
+}
+
+@media (max-width: 580px) {
+	.hitOffersTitle {
+		margin-top: 20px;
+		margin-left: 5%;
+	}
 }

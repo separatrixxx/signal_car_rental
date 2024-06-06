@@ -831,6 +831,7 @@ export interface ApiCarCar extends Schema.CollectionType {
     description: Attribute.RichText & Attribute.Required;
     description_ru: Attribute.RichText & Attribute.Required;
     description_ge: Attribute.RichText & Attribute.Required;
+    hit: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
