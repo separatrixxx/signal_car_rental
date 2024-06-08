@@ -13,14 +13,14 @@
 }
 
 @media (max-width: 1024px) {
-	.carBooking {
-		padding: 30px 30px;
+	.textPad {
+		padding: 30px 25px;
 	}
 }
 
 @media (max-width: 580px) {
 	.textPad {
-		padding: 20px 30px;
+		padding: 25px 20px;
 
 		border-radius: 15px;
 		gap: 10px;

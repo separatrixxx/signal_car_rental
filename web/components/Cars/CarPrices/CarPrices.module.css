@@ -23,7 +23,7 @@
 	}
 }
 
-@media (max-width: 470px) {
+@media (max-width: 460px) {
 	.carPrices {
 		grid-template-columns: repeat(3, auto);
 	}

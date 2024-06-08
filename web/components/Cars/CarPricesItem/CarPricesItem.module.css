@@ -26,3 +26,9 @@
 		border: 1px solid var(--primary);
 	}
 }
+
+@media (max-width: 300px) {
+	.active {
+		border-radius: 7px;
+	}
+}
