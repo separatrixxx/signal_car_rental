@@ -1,0 +1,37 @@
+.carPrices {
+	display: grid;
+	grid-template-columns: repeat(5, auto);
+	justify-items: center;
+	gap: 10px;
+}
+
+@media (max-width: 1400px) {
+	.carPrices {
+		grid-template-columns: repeat(4, auto);
+	}
+}
+
+@media (max-width: 800px) {
+	.carPrices {
+		grid-template-columns: repeat(5, auto);
+	}
+}
+
+@media (max-width: 600px) {
+	.carPrices {
+		grid-template-columns: repeat(4, auto);
+	}
+}
+
+@media (max-width: 470px) {
+	.carPrices {
+		grid-template-columns: repeat(3, auto);
+	}
+}
+
+@media (max-width: 360px) {
+	.carPrices {
+		grid-template-columns: repeat(2, auto);
+		justify-items: left;
+	}
+}

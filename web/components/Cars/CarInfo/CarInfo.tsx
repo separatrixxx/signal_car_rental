@@ -15,6 +15,7 @@ import { Modal } from '../../Modal/Modal/Modal';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import cn from 'classnames';
+import { CarPrices } from '../CarPrices/CarPrices';
 
 
 export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLocation, finishLocation }:
@@ -35,6 +36,10 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 			<>
 				<div className={styles.carInfo}>
 					<Slider images={car.images} />
+					<TextPad>
+						<CarPrices price={car.price} isStart={isStart} startDatetime={startDatetime}
+							finishDatetime={finishDatetime} />
+					</TextPad>
 					<TextPad>
 						<Htag tag='xl' className={styles.carName}>
 							{car.name}

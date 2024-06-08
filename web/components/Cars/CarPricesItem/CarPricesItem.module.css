@@ -1,0 +1,28 @@
+.carPricesItem {
+	display: grid;
+
+	height: auto;
+	gap: 5px;
+	padding: 10px;
+}
+
+.active {
+	border: 2px solid var(--primary);
+	border-radius: 10px;
+}
+
+.text {
+	color: var(--darkLight);
+}
+
+.price {
+	color: var(--primary);
+
+	font-weight: 700;
+}
+
+@media (max-width: 580px) {
+	.active {
+		border: 1px solid var(--primary);
+	}
+}

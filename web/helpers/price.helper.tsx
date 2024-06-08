@@ -43,13 +43,25 @@ export function setDeliveryPrice(carLocation: string, startLocation: string, fin
     return deliveryPrice;
 }
 
-export function setPriceCoeff(dates: DatesInterface, priceCoeffs: PriceCoeffsInterface,
-    isStart?: boolean, startDatetime?: string, finishDatetime?: string): number {
+export function getDaysNum(dates: DatesInterface, isStart?: boolean, startDatetime?: string, finishDatetime?: string,
+        setDaysNum?: (e: number) => void
+    ): number {
     const startDate = isStart ? (startDatetime ? new Date(startDatetime) : new Date()) : new Date(dates.startDate);
     const finishDate = isStart ? (finishDatetime ? new Date(finishDatetime) : new Date()) : new Date(dates.finishDate);
 
     const timeDifference = Math.abs(finishDate.setHours(0, 0, 0, 0) - startDate.setHours(0, 0, 0, 0));
     const numberOfDays = Math.ceil(timeDifference / (1000 * 3600 * 24)) + 1;
+
+    if (setDaysNum) {
+        setDaysNum(numberOfDays);
+    }
+    
+    return numberOfDays;
+}
+
+export function setPriceCoeff(dates: DatesInterface, priceCoeffs: PriceCoeffsInterface,
+    isStart?: boolean, startDatetime?: string, finishDatetime?: string): number {
+    const numberOfDays = getDaysNum(dates, isStart, startDatetime, finishDatetime);
 
     if (numberOfDays > 25) {
         return Math.round(priceCoeffs.price5);

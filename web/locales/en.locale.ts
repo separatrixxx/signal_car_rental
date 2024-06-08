@@ -75,4 +75,7 @@ export const en = {
     out_of_stock: "Out of stock for selected dates",
     enter_locations: "Enter locations to find out delivery prices",
     error_counter: "There are no available cars for the dates you selected",
+    day1: "day",
+    day2: "days",
+    day3: "days",
 };
