@@ -31,6 +31,12 @@
 
 @media (max-width: 360px) {
 	.carPrices {
+		gap: 5px 0;
+	}
+}
+
+@media (max-width: 340px) {
+	.carPrices {
 		grid-template-columns: repeat(2, auto);
 		justify-items: left;
 	}
