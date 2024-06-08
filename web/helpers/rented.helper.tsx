@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { CarRented, CarRentedData } from "../interfaces/car.interface";
+import { CarCounterInterface, CarRented, CarRentedData } from "../interfaces/car.interface";
 import { setRented } from "../features/rented/rentedSlice";
 import { DatesInterface } from "../interfaces/dates.interface";
 import { getDate } from '../helpers/date.helper';
@@ -12,14 +12,15 @@ export async function getRented(dispatch: any) {
     dispatch(setRented(response.data));
 }
 
-export function checkAvailableCars(counter: number | undefined, rented: CarRented[], dates: DatesInterface,
-    isStart?: boolean, startDatetime?: string, finishDatetime?: string): number {
+export function checkAvailableCars(checkData: CarCounterInterface, setFreeCarsCounter: (e: number) => void) {
     let n = 0;
 
-    const startDate = isStart ? (startDatetime ? new Date(startDatetime) : new Date(getDate(true))) : new Date(dates.startDate);
-    const finishDate = isStart ? (finishDatetime ? new Date(finishDatetime) : new Date(getDate(true))) : new Date(dates.finishDate);
+    const startDate = checkData.isStart ? (checkData.startDatetime ? new Date(checkData.startDatetime)
+        : new Date(getDate(true))) : new Date(checkData.dates.startDate);
+    const finishDate = checkData.isStart ? (checkData.finishDatetime ? new Date(checkData.finishDatetime)
+        : new Date(getDate(true))) : new Date(checkData.dates.finishDate);
 
-    for (let cr of rented) {
+    for (let cr of checkData.rented) {
         const startDateRented = new Date(cr.start_date);
         const finishDateRented = new Date(cr.finish_date);
 
@@ -28,9 +29,5 @@ export function checkAvailableCars(counter: number | undefined, rented: CarRente
         }
     }
 
-    if (counter) {
-        return counter - n;
-    } else {
-        return 0;
-    }
+    setFreeCarsCounter(checkData.counter - n);
 }

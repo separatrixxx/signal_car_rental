@@ -1,3 +1,4 @@
+import { DatesInterface } from "./dates.interface";
 import { LocationInterface } from "./location.interface";
 
 export interface Cars {
@@ -14,7 +15,6 @@ export interface CarInterface {
     description: string,
     description_ru: string,
     description_ge: string,
-    price: number,
     counter: number,
     class: 'econom' | 'comfort' | 'business' | 'premium' | 'suv' | 'minivan',
     engine_type: 'gasoline' | 'diesel' | "hybrid" | 'electricity',
@@ -26,6 +26,7 @@ export interface CarInterface {
     location: LocationInterface,
     images: CarImage[],
     hit: boolean,
+    price: PriceCoeffsInterface,
 }
 
 export interface CarImage {
@@ -43,4 +44,21 @@ export interface CarRented {
     start_date: Date,
     finish_date: Date,
     status: 'free' | 'booked' | 'rented' | 'processing' | 'canceled',
+}
+
+export interface PriceCoeffsInterface {
+    price1: number,
+    price2: number,
+    price3: number,
+    price4: number,
+    price5: number,
+}
+
+export interface CarCounterInterface {
+    counter: number,
+    rented: CarRented[],
+    dates: DatesInterface,
+    isStart?: boolean,
+    startDatetime?: string,
+    finishDatetime?: string,
 }

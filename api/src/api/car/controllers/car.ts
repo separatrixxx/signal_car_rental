@@ -1,7 +1,10 @@
 import { factories } from '@strapi/strapi'
 
+
 export default factories.createCoreController('api::car.car', ({ strapi }) =>  ({
     async find(ctx) {
+        ctx.query.populate = ['images', 'location', 'price'];
+
         const { data } = await super.find(ctx);
 
         const newData = data.map(entity => {
@@ -11,7 +14,6 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
                 description: entity.attributes.description,
                 description_ru: entity.attributes.description_ru,
                 description_ge: entity.attributes.description_ge,
-                price: entity.attributes.price,
                 counter: entity.attributes.counter,
                 class: entity.attributes.class,
                 engine_type: entity.attributes.engine_type,
@@ -32,6 +34,13 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
                     alternativeText: img.attributes.alternativeText,
                     url: img.attributes.url,
                 })),
+                price: {
+                    price1: entity.attributes.price.price1,
+                    price2: entity.attributes.price.price2,
+                    price3: entity.attributes.price.price3,
+                    price4: entity.attributes.price.price4,
+                    price5: entity.attributes.price.price5,
+                },
             }
         });
 
@@ -39,7 +48,7 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
     },
 
     async findOne(ctx) {
-        ctx.query.populate = ['images', 'location'];
+        ctx.query.populate = ['images', 'location', 'price'];
 
         const { data } = await super.findOne(ctx);
 
@@ -49,7 +58,6 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
             description: data.attributes.description,
             description_ru: data.attributes.description_ru,
             description_ge: data.attributes.description_ge,
-            price: data.attributes.price,
             counter: data.attributes.counter,
             class: data.attributes.class,
             engine_type: data.attributes.engine_type,
@@ -70,6 +78,13 @@ export default factories.createCoreController('api::car.car', ({ strapi }) =>  (
                 alternativeText: img.attributes.alternativeText,
                 url: img.attributes.url,
             })),
+            price: {
+                price1: data.attributes.price.price1,
+                price2: data.attributes.price.price2,
+                price3: data.attributes.price.price3,
+                price4: data.attributes.price.price4,
+                price5: data.attributes.price.price5,
+            },
         };
 
         return { data: newData };

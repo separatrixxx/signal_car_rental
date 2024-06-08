@@ -1,3 +1,4 @@
+import { HitCarsListProps } from './HitCarsList.props';
 import styles from './HitCarsList.module.css';
 import { useRouter } from 'next/router';
 import { Htag } from '../../Common/Htag/Htag';
@@ -7,10 +8,19 @@ import { AppState } from '../../../features/store/store';
 import { CarsItem } from '../CarsItem/CarsItem';
 
 
-export const HitCarsList = (): JSX.Element => {
+export const HitCarsList = ({ isHit }: HitCarsListProps): JSX.Element => {
 	const router = useRouter();
 
-    const cars = useSelector((state: AppState) => state.cars.cars).filter((car) => car.hit);
+    const cars = useSelector((state: AppState) => state.cars.cars).filter((car) => isHit ? car.hit : !car.hit)
+        .sort(function (a, b) {
+            if (a.price > b.price) {
+                return 1;
+            } else if (a.price < b.price) {
+                return -1;
+            }
+        
+            return 0;
+        });
 
 	if (cars) {
         return (

@@ -27,7 +27,6 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 
 	const dates = useSelector((state: AppState) => state.dates.dates);
 	const price = useSelector((state: AppState) => state.price.price);
-	const coeffs = useSelector((state: AppState) => state.coeffs.coeffs);
 
 	const [active, setActive] = useState<boolean>(false);
 
@@ -47,7 +46,7 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 							</ReactMarkdown>
 						</Htag>
 						<Htag tag='xl' className={styles.carPrice}>
-							{setPriceCoeff(car.price, dates, coeffs, isStart, startDatetime, finishDatetime)
+							{setPriceCoeff(dates, car.price, isStart, startDatetime, finishDatetime)
 								+ '₾ / ' + setLocale(router.locale).day}
 						</Htag>
 						{

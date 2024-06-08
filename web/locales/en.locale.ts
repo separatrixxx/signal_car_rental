@@ -70,6 +70,7 @@ export const en = {
     question_booking: "You need to pay a deposit for booking a car in the amount of 10% of the daily rental cost",
     question_delivery: "According to the selected location, you must pay for the delivery of the car",
     hit_offers: "Hit offers",
+    all_offers: "All offers",
     hit: "Hit",
     out_of_stock: "Out of stock for selected dates",
     enter_locations: "Enter locations to find out delivery prices",

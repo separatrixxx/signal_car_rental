@@ -3,7 +3,7 @@ import styles from './CarBooking.module.css';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Input } from '../../Common/Input/Input';
 import { setLocale } from '../../../helpers/locale.helper';
 import { Button } from '../../Common/Button/Button';
@@ -17,6 +17,7 @@ import Question from './question.svg';
 import { Modal } from '../../Modal/Modal/Modal';
 import { LocationInterface } from '../../../interfaces/location.interface';
 import { ModalStart } from '../../Modal/ModalStart/ModalStart';
+import { CarCounterInterface } from '../../../interfaces/car.interface';
 
 
 export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setStartDatetime,
@@ -31,7 +32,6 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
     const rented = useSelector((state: AppState) => state.rented.rented).filter(function (rentedCar) {
 		return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
 	});
-    const coeffs = useSelector((state: AppState) => state.coeffs.coeffs);
 
     const [clientName, setClientName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -66,8 +66,23 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
 
     const [active, setActive] = useState<boolean>(false);
     const [error, setError] = useState<BookingErrorInterface>(errData);
-    const [freeCarsCounter, setFreeCarsCounter] = useState<number>(checkAvailableCars(car?.counter, rented, dates,
-        isStart, startDatetime, finishDatetime));
+
+    const [freeCarsCounter, setFreeCarsCounter] = useState<number>(0);
+
+    useEffect(() => {
+        if (car) {
+            const checkCounterData: CarCounterInterface = {
+                counter: car.counter,
+                rented: rented,
+                dates: dates,
+                isStart: isStart,
+                startDatetime: startDatetime,
+                finishDatetime: finishDatetime,
+            };
+
+            checkAvailableCars(checkCounterData, setFreeCarsCounter);
+        }
+    }, [car, rented, dates, isStart, startDatetime, finishDatetime]);
 
 	if (car) {
         const bookingCarData: BookingInterface = {
@@ -78,7 +93,7 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
             car: car,
             startLocation: startLocation,
             finishLocation: finishLocation,
-        };
+        };   
 
 		return (
 			<>
@@ -91,7 +106,7 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                     {
                         isStart ?
                             <>
-                                <Input type="location" text={startLocation.location_code === '' ? setLocale(router.locale).start_location :
+                                <Input type="location" text={startLocation.location_code === '' ?setLocale(router.locale).start_location :
                                     (router.locale === 'en' ? startLocation.location : router.locale === 'ru' ? startLocation.location_ru
                                     : startLocation.location_ge)}
                                     value={router.locale === 'en' ? startLocation.location : router.locale === 'ru' ? startLocation.location_ru
@@ -120,26 +135,22 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                             setFinishDatetime(e.target.value);
                         } : (e) => setFinishDate(e.target.value)} />
                     <Htag tag='l' className={styles.carPrice}>
-                        {setLocale(router.locale).booking_price + ': ' + setPriceCoeff(car.price, dates, coeffs,
+                        {setLocale(router.locale).booking_price + ': ' + setPriceCoeff(dates, car.price,
                             isStart, startDatetime, finishDatetime) * 0.1 + '₾'}
                         <Question className={styles.question} onClick={() => setActive(true)}/>
                     </Htag>
                     {
-                        !isStart ?
-                            <Htag tag='m' className={styles.carCounter}>
-                                {setLocale(router.locale).available_cars_left + ': ' + freeCarsCounter}
-                            </Htag>
-                        : <></>
+                        <Htag tag='m' className={styles.carCounter}>
+                            {setLocale(router.locale).available_cars_left + ': ' + freeCarsCounter}
+                        </Htag>
                     }
-                    <Button text={checkAvailableCars(car?.counter, rented, dates,
-                        isStart, startDatetime, finishDatetime) > 0 ?
+                    <Button text={freeCarsCounter > 0 ?
                         setLocale(router.locale).book_car : setLocale(router.locale).no_cars}
-                        isActive={checkAvailableCars(car?.counter, rented, dates,
-                        isStart, startDatetime, finishDatetime) > 0} isLoading={isLoading}
+                        isActive={freeCarsCounter > 0} isLoading={isLoading}
                         onClick={() => {
-                            checkData(bookingCarData, errData, dates, isStart, freeCarsCounter, setIsLoading, setError,
-                            setFreeCarsCounter, router);
-                        }} />
+                            checkData(bookingCarData, errData, dates, isStart, freeCarsCounter,
+                                setIsLoading, setError, router, setFreeCarsCounter);
+                    }} />
                 </div>
                 <Modal active={active} setActive={setActive}>
                     <Htag tag="l" className={styles.questionText}>

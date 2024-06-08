@@ -6,7 +6,6 @@ import datesSlice from "../dates/datesSlice";
 import locationsSlice from "../locations/locationsSlice";
 import priceSlice from "../price/priceSlice";
 import rentedSlice from "../rented/rentedSlice";
-import coeffsSlice from "../coeffs/coeffsSlice";
 
 
 const makeStore = () =>
@@ -18,7 +17,6 @@ const makeStore = () =>
       locations: locationsSlice,
       price: priceSlice,
       rented: rentedSlice,
-      coeffs: coeffsSlice,
     },
     devTools: true,
 });

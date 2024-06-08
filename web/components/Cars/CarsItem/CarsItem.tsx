@@ -8,9 +8,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { setLocale } from '../../../helpers/locale.helper';
 import { setPriceCoeff } from '../../../helpers/price.helper';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { checkAvailableCars } from '../../../helpers/rented.helper';
 import cn from 'classnames';
+import { CarCounterInterface } from '../../../interfaces/car.interface';
 
 
 export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
@@ -23,9 +24,20 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 		return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
 	});
 	const dates = useSelector((state: AppState) => state.dates.dates);
-	const coeffs = useSelector((state: AppState) => state.coeffs.coeffs);
 
-	const [freeCarsCounter, setFreeCarsCounter] = useState<number>(checkAvailableCars(car?.counter, rented, dates));
+    const [freeCarsCounter, setFreeCarsCounter] = useState<number>(0);
+
+    useEffect(() => {
+        if (car) {
+            const checkCounterData: CarCounterInterface = {
+                counter: car.counter,
+                rented: rented,
+                dates: dates,
+            };
+
+            checkAvailableCars(checkCounterData, setFreeCarsCounter);
+        }
+    }, [car, rented, dates]);
     
 	if (car) {
 		return (
@@ -59,7 +71,12 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 							car.location.location_ru : car.location.location_ge)}
 					</Htag>
 					<Htag tag='l'>
-						{setPriceCoeff(car.price, dates, coeffs) + '₾ / ' + setLocale(router.locale).day}
+						{
+							isStart ? setLocale(router.locale).from + ' ' + setPriceCoeff(dates, car.price) + '₾ / '
+								+ setLocale(router.locale).day
+							: setPriceCoeff(dates, car.price) + '₾ / '
+								+ setLocale(router.locale).day
+						}
 					</Htag>
 					{
 						freeCarsCounter && !isStart ?

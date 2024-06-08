@@ -100,7 +100,11 @@ export const MainPage = (): JSX.Element => {
                             <Htag tag='xxl' className={styles.hitOffersTitle}>
                                 {setLocale(router.locale).hit_offers}
                             </Htag>
-                            <HitCarsList />
+                            <HitCarsList isHit={true} />
+                            <Htag tag='xxl' className={styles.hitOffersTitle}>
+                                {setLocale(router.locale).all_offers}
+                            </Htag>
+                            <HitCarsList isHit={false} />
                         </div>
                 }
                 <Footer />

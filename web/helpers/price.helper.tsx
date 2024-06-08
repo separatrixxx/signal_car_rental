@@ -2,8 +2,8 @@ import axios, { AxiosResponse } from "axios";
 import { LocationData } from "../interfaces/location.interface";
 import { setPrice } from "../features/price/priceSlice";
 import { DatesInterface } from "../interfaces/dates.interface";
-import { PriceCoeffsInterface, PriceInterface } from "../interfaces/price.interface";
-import { setCoeffs } from "../features/coeffs/coeffsSlice";
+import { PriceInterface } from "../interfaces/price.interface";
+import { PriceCoeffsInterface } from "../interfaces/car.interface";
 
 
 export async function getPrice(dispatch: any) {
@@ -43,32 +43,23 @@ export function setDeliveryPrice(carLocation: string, startLocation: string, fin
     return deliveryPrice;
 }
 
-export async function getCoeffs(dispatch: any) {
-    try {
-        const { data : response }: AxiosResponse<PriceCoeffsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/api/price-coeffs/1');
-
-        dispatch(setCoeffs(response));
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-export function setPriceCoeff(price: number, dates: DatesInterface, coeffs: PriceCoeffsInterface,
+export function setPriceCoeff(dates: DatesInterface, priceCoeffs: PriceCoeffsInterface,
     isStart?: boolean, startDatetime?: string, finishDatetime?: string): number {
     const startDate = isStart ? (startDatetime ? new Date(startDatetime) : new Date()) : new Date(dates.startDate);
     const finishDate = isStart ? (finishDatetime ? new Date(finishDatetime) : new Date()) : new Date(dates.finishDate);
 
-    const timeDifference = Math.abs(finishDate.getTime() - startDate.getTime());
+    const timeDifference = Math.abs(finishDate.setHours(0, 0, 0, 0) - startDate.setHours(0, 0, 0, 0));
     const numberOfDays = Math.ceil(timeDifference / (1000 * 3600 * 24)) + 1;
 
-    if (numberOfDays > 14) {
-        return Math.round(price * coeffs.coeff3);
-    } else if (numberOfDays >= 7) {
-        return Math.round(price * coeffs.coeff2);
-    } else if (numberOfDays >= 3) {
-        return Math.round(price * coeffs.coeff1);
+    if (numberOfDays > 25) {
+        return Math.round(priceCoeffs.price5);
+    } else if (numberOfDays >= 10) {
+        return Math.round(priceCoeffs.price4);
+    } else if (numberOfDays >= 4) {
+        return Math.round(priceCoeffs.price3);
+    } else if (numberOfDays >= 2) {
+        return Math.round(priceCoeffs.price2);
     }
     
-    return price;
+    return priceCoeffs.price1;
 }

@@ -8,7 +8,7 @@ import { getDateInput } from "./date.helper";
 
 export async function checkData(data: BookingInterface, errData: BookingErrorInterface, dates: DatesInterface,
     isStart: boolean, freeCarsCounter: number, setIsLoading: (e: boolean) => void, setError: (e: any) => void,
-    setFreeCarsCounter: (e: number) => void, router: any) {
+    router: any, setFreeCarsCounter?: (e: number) => void) {
     setIsLoading(true);
 
     setError(errData);
@@ -20,7 +20,7 @@ export async function checkData(data: BookingInterface, errData: BookingErrorInt
             password: process.env.NEXT_PUBLIC_PASSWORD,
         })
             .then(function (response) {
-                bookingCar(data, dates, isStart, freeCarsCounter, setIsLoading, setFreeCarsCounter, response.data.jwt, router);
+                bookingCar(data, dates, isStart, freeCarsCounter, setIsLoading, response.data.jwt, router, setFreeCarsCounter);
             })
             .catch(function (error) {
                 console.log("Booking error: " + error);
@@ -58,7 +58,7 @@ export async function checkData(data: BookingInterface, errData: BookingErrorInt
 }
 
 export async function bookingCar(data: BookingInterface, dates: DatesInterface, isStart: boolean, freeCarsCounter: number,
-    setIsLoading: (e: boolean) => void, setFreeCarsCounter: (e: number) => void, token: string, router: any) {
+    setIsLoading: (e: boolean) => void, token: string, router: any, setFreeCarsCounter?: (e: number) => void) {
     if (!data.startDate && !isStart) {
         data.startDate = getDateInput('time');
     } else if (!data.startDate && isStart) {
@@ -89,7 +89,9 @@ export async function bookingCar(data: BookingInterface, dates: DatesInterface, 
         }
     })
         .then(function () {
-            setFreeCarsCounter(freeCarsCounter - 1);
+            if (setFreeCarsCounter) {
+                setFreeCarsCounter(freeCarsCounter - 1);
+            }
 
             setIsLoading(false);
             ToastSuccess(setLocale(router.locale).car_reserved);

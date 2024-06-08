@@ -29,11 +29,6 @@
       ],
       "pluginOptions": {}
     },
-    "price": {
-      "type": "integer",
-      "required": true,
-      "pluginOptions": {}
-    },
     "counter": {
       "type": "integer",
       "required": true,
@@ -114,6 +109,12 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "price": {
+      "type": "component",
+      "repeatable": false,
+      "required": true,
+      "component": "price.price"
     }
   }
 }
