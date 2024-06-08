@@ -80,11 +80,11 @@
 	font-weight: 600;
 }
 
-.search::placeholder {
+.input::placeholder {
 	color: var(--darkLight);
 }
 
-.search::-ms-input-placeholder {
+.input::-ms-input-placeholder {
 	color: var(--darkLight);
 }
 
