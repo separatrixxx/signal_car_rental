@@ -12,17 +12,19 @@ import { checkData } from '../../../helpers/booking_car.helper';
 import { getDate } from '../../../helpers/date.helper';
 import { Htag } from '../../Common/Htag/Htag';
 import { setPriceCoeff } from '../../../helpers/price.helper';
-import { checkAvailableCars } from '../../../helpers/rented.helper';
+import { checkAvailableCars, getRented } from '../../../helpers/rented.helper';
 import Question from './question.svg';
 import { Modal } from '../../Modal/Modal/Modal';
 import { LocationInterface } from '../../../interfaces/location.interface';
 import { ModalStart } from '../../Modal/ModalStart/ModalStart';
 import { CarCounterInterface } from '../../../interfaces/car.interface';
+import { useDispatch } from "react-redux";
 
 
 export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setStartDatetime,
     setFinishDatetime, setStartLocationModal, setFinishLocationModal }: CarBookingProps): JSX.Element => {
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const car = useSelector((state: AppState) => state.cars.cars).find(function (car) {
 		return car.id === carId;
@@ -71,6 +73,8 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
 
     useEffect(() => {
         if (car) {
+            getRented(dispatch);
+
             const checkCounterData: CarCounterInterface = {
                 counter: car.counter,
                 rented: rented,
@@ -79,10 +83,10 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                 startDatetime: startDatetime,
                 finishDatetime: finishDatetime,
             };
-
+    
             checkAvailableCars(checkCounterData, setFreeCarsCounter);
         }
-    }, [car, rented, dates, isStart, startDatetime, finishDatetime]);
+    }, [car, rented, dates, isStart, startDatetime, finishDatetime, freeCarsCounter, dispatch])
 
 	if (car) {
         const bookingCarData: BookingInterface = {

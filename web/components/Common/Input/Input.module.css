@@ -52,6 +52,14 @@
 	width: 92%;
 }
 
+.input::placeholder {
+	color: var(--darkLight);
+}
+
+.input::-ms-input-placeholder {
+	color: var(--darkLight);
+}
+
 .input:active,
 .input:hover,
 .input:focus,
@@ -78,14 +86,6 @@
 
 	font-size: 16px;
 	font-weight: 600;
-}
-
-.input::placeholder {
-	color: var(--darkLight);
-}
-
-.input::-ms-input-placeholder {
-	color: var(--darkLight);
 }
 
 @media (max-width: 1024px) {

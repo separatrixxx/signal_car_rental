@@ -11,7 +11,7 @@
 	border-radius: 15px;
 	background: var(--white);
 
-	filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+	box-shadow: 0 8px 5px rgb(0 0 0 / 0.08);
 }
 
 .filterItem > h1 {
@@ -25,7 +25,7 @@
 .filterItem:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.15));
+	box-shadow: 0 8px 5px rgb(0 0 0 / 0.15);
 }
 
 .filterActive {
@@ -50,7 +50,7 @@
 	.filterItem:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.15));
+		box-shadow: 0 8px 5px rgb(0 0 0 / 0.15);
 	}
 
 	.filterItem:hover > h1 {
