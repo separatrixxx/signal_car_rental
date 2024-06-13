@@ -30,18 +30,13 @@ export const SortingBar = ({ sort, name, setSort, setName }: SortingBarProps): J
     
     return (
         <div className={styles.sortingBar}>
-            {/* <Htag tag='m' className={styles.location}>
-                {locations.filter(l => l.location_code === dates.startLocation)[0][
-                    router.locale === 'en' ? 'location' : router.locale === 'ru' ? 'location_ru' : 'location_ge'
-                ]}
-            </Htag> */}
             <div className={styles.sortingDiv} onClick={()=> dispatch(setDates(datesData))}>
                 <span className={styles.sortIcon}>
                     <LocationIcon />
                 </span>
                 <Htag tag='m'>
                     {locations.filter(l => l.location_code === dates.startLocation)[0][
-                        router.locale === 'en' ? 'location' : router.locale === 'ru' ? 'location_ru' : 'location_ge'
+                        router.locale === 'ka' ? 'location_ge' : router.locale === 'ru' ? 'location_ru' : 'location'
                     ]}
                 </Htag>
             </div>

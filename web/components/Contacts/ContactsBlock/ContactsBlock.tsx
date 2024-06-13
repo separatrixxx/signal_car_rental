@@ -22,7 +22,7 @@ export const ContactsBlock = (): JSX.Element => {
                 <CarInfoItem item={setLocale(router.locale).phone + ':'} value={info.phone} type='tel' />
                 <CarInfoItem item={setLocale(router.locale).email + ':'} value={info.email} type='mailto' />
                 <CarInfoItem item={setLocale(router.locale).address + ':'} 
-                    value={router.locale === 'en' ? info.address : router.locale === 'ru' ? info.address_ru : info.address_ge} />
+                    value={router.locale === 'ka' ? info.address_ge : router.locale === 'ru' ? info.address_ru : info.address} />
                 <ContactsMap />
             </div>
         </div>

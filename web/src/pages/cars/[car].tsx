@@ -34,11 +34,11 @@ export default function Car({ car }: CarProps) {
 			<>
 				<Head>
 					<title>{setLocale(router.locale).signal_car + ' - ' + car.data.name}</title>
-					<meta name='description' content={setLocale(router.locale).signal_car + ' - ' + (router.locale === 'en' 
-						? car.data.description : router.locale === 'ru' ? car.data.description_ru : car.data.description_ge)} />
+					<meta name='description' content={setLocale(router.locale).signal_car + ' - ' + (router.locale === 'ka' 
+						? car.data.description_ge : router.locale === 'ru' ? car.data.description_ru : car.data.description)} />
 					<meta property='og:title' content={setLocale(router.locale).signal_car + ' - ' + car.data.name} />
-					<meta name='og:description' content={setLocale(router.locale).signal_car + ' - ' + (router.locale === 'en' 
-						? car.data.description : router.locale === 'ru' ? car.data.description_ru : car.data.description_ge)} />
+					<meta name='og:description' content={setLocale(router.locale).signal_car + ' - ' + (router.locale === 'ka' 
+						? car.data.description_ge : router.locale === 'ru' ? car.data.description_ru : car.data.description)} />
 					<meta charSet="utf-8" />
 				</Head>
 				<CarPage carId={car.data.id} isStart={dates.startLocation === '' ? true : false} />

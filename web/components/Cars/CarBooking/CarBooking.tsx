@@ -111,16 +111,16 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                         isStart ?
                             <>
                                 <Input type="location" text={startLocation.location_code === '' ?setLocale(router.locale).start_location :
-                                    (router.locale === 'en' ? startLocation.location : router.locale === 'ru' ? startLocation.location_ru
-                                    : startLocation.location_ge)}
-                                    value={router.locale === 'en' ? startLocation.location : router.locale === 'ru' ? startLocation.location_ru
-                                    : startLocation.location_ge} error={error.errStartLocation} isActive={startLocation.location_code === '' ? false : true}
+                                    (router.locale === 'ka' ? startLocation.location_ge : router.locale === 'ru' ? startLocation.location_ru
+                                    : startLocation.location)}
+                                    value={router.locale === 'ka' ? startLocation.location_ge : router.locale === 'ru' ? startLocation.location_ru
+                                    : startLocation.location} error={error.errStartLocation} isActive={startLocation.location_code === '' ? false : true}
                                     onChange={setActiveStart} />
                                 <Input type="location" text={finishLocation.location_code === '' ? setLocale(router.locale).finish_location :
-                                    (router.locale === 'en' ? finishLocation.location : router.locale === 'ru' ? finishLocation.location_ru
-                                    : finishLocation.location_ge)}
-                                    value={router.locale === 'en' ? finishLocation.location : router.locale === 'ru' ? finishLocation.location_ru
-                                    : finishLocation.location_ge} error={error.errFinishLocation} isActive={finishLocation.location_code === '' ? false : true}
+                                    (router.locale === 'ka' ? finishLocation.location_ge : router.locale === 'ru' ? finishLocation.location_ru
+                                    : finishLocation.location)}
+                                    value={router.locale === 'ka' ? finishLocation.location_ge : router.locale === 'ru' ? finishLocation.location_ru
+                                    : finishLocation.location} error={error.errFinishLocation} isActive={finishLocation.location_code === '' ? false : true}
                                     onChange={setActiveFinish} />
                             </>
                         : <></>

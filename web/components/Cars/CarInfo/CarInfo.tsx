@@ -46,8 +46,8 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 						</Htag>
 						<Htag tag='l' className={styles.description}>
 							<ReactMarkdown>
-								{router.locale === 'en' ? car.description : router.locale === 'ru' ?
-										car.description_ru : car.description_ge}
+								{router.locale === 'ka' ? car.description_ge : router.locale === 'ru' ?
+										car.description_ru : car.description}
 							</ReactMarkdown>
 						</Htag>
 						<Htag tag='xl' className={styles.carPrice}>

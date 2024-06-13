@@ -28,7 +28,7 @@ export const ModalStart = ({ locations, type, setLocation, setActive, setStartLo
                         setFinishLocation(l.location_code);
                     }
                 }}>
-                    {router.locale === 'en' ? l.location : router.locale === 'ru' ? l.location_ru : l.location_ge}
+                    {router.locale === 'ka' ? l.location_ge : router.locale === 'ru' ? l.location_ru : l.location}
                 </Htag>
             ))}
         </div>

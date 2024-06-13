@@ -19,8 +19,8 @@ export const AboutBlock = (): JSX.Element => {
             </Htag>
             <Htag tag='l' className={styles.about_text}>
                 <ReactMarkdown>
-                    {router.locale === 'en' ? info.about_text : router.locale === 'ru'
-                            ? info.about_text_ru : info.about_text_ge}
+                    {router.locale === 'ka' ? info.about_text_ge : router.locale === 'ru'
+                            ? info.about_text_ru : info.about_text}
                 </ReactMarkdown>
             </Htag>
         </div>

@@ -66,9 +66,9 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 				</div>
 				<div className={styles.carInfoBlock}>
 					<Htag tag='m' className={styles.name}>
-						{car.name + ' | ' + (router.locale === 'en' ?
-							car.location.location : router.locale === 'ru' ?
-							car.location.location_ru : car.location.location_ge)}
+						{car.name + ' | ' + (router.locale === 'ka' ?
+							car.location.location_ge : router.locale === 'ru' ?
+							car.location.location_ru : car.location.location)}
 					</Htag>
 					<Htag tag='l'>
 						{

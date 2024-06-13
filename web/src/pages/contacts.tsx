@@ -23,8 +23,8 @@ function Contacts(): JSX.Element {
     <>
       <Head>
         <title>{setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).contacts}</title>
-        <meta name='description' content={router.locale === 'en' 
-					? info.about_text : router.locale === 'ru' ?info.about_text_ru : info.about_text_ge} />
+        <meta name='description' content={router.locale === 'ka' 
+					? info.about_text_ge : router.locale === 'ru' ? info.about_text_ru : info.about_text} />
         <meta property='og:title' content={setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).contacts} />
         <meta property='og:description' content={setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).contacts} />
         <meta charSet="utf-8" />
