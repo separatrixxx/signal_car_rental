@@ -79,7 +79,7 @@ export const MainPage = (): JSX.Element => {
 				}}
 			/>
             <div className={styles.wrapper}>
-                <Header setActive={setActive} />
+                <Header isStart={dates.startLocation === ''} setActive={setActive} />
                 {
                     dates.startLocation !== ''
                     ?

@@ -38,6 +38,12 @@
 }
 
 @media (min-width: 1024px) {
+	.fixed {
+		border-radius: 0;
+	}
+}
+
+@media (min-width: 1024px) {
 	.logo:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 

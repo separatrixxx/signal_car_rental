@@ -1,5 +1,5 @@
 export interface FilterInterface {
-    name: 'class' | 'mileage' | 'engine_type' | 'transmission' | 'drive_unit',
+    name: 'class' | 'engine_type' | 'transmission' | 'drive_unit',
     value: string,
     text: string,
 }

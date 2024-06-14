@@ -9,6 +9,10 @@ import { useDispatch } from "react-redux";
 import { getDate } from '../../../helpers/date.helper';
 import { DatesErrorInterface, DatesInterface } from '../../../interfaces/dates.interface';
 import { setLocationsDate } from '../../../helpers/location.helper';
+import { motion } from 'framer-motion';
+import { useScrollY } from '../../../hooks/useScrollY';
+import { useResizeW } from '../../../hooks/useResize';
+
 
 export const StartFilter = ({ startLocation, finishLocation, setActiveStart, setActiveFinish }: StartFilterProps): JSX.Element => {
     const router = useRouter();
@@ -58,8 +62,36 @@ export const StartFilter = ({ startLocation, finishLocation, setActiveStart, set
         };
     }, []);
 
+    const [lastScroll, setLastScroll] = useState<number>(0);
+    const [flag, setFlag] = useState<boolean>(false);
+
+    const scrollPosition = useScrollY();
+
+    if (scrollPosition - lastScroll >= 200 && scrollPosition > lastScroll) {
+        setFlag(true);
+        setLastScroll(scrollPosition);
+    } else if (scrollPosition < lastScroll) {
+        setFlag(false);
+        setLastScroll(scrollPosition);
+    }
+
+    const variants = {
+        visible: {
+            transform: 'translate(0px, 0px)',
+        },
+        hidden: {
+            transform: 'translate(0px, -64px)',
+        }
+    };
+
+    const width = useResizeW();
+    
     return (
-        <div className={styles.startFilter}>
+        <motion.div className={styles.startFilter}
+            variants={variants}
+            initial={flag && width > 1024 ? 'hidden' : 'visible'}
+            transition={{ duration: 0.3 }}
+            animate={flag && width > 1024 ? 'hidden' : 'visible'}>
             <Input type="location" text={startLocation.location_code === '' ? setLocale(router.locale).start_location :
                 (router.locale === 'ka' ? startLocation.location_ge : router.locale === 'ru' ? startLocation.location_ru
                 : startLocation.location)}
@@ -78,6 +110,6 @@ export const StartFilter = ({ startLocation, finishLocation, setActiveStart, set
                 error={error.errFinishDate} onChange={(e) => setFinishDate(e.target.value)} />
             <Button text={setLocale(router.locale).find_cars} isActive={true} isLoading={isLoading} className={styles.startButton}
                 onClick={() => setLocationsDate(startFilterData, errData, router, setIsLoading, setError, dispatch)} />
-        </div>
+        </motion.div>
     );
 };

@@ -20,7 +20,6 @@ export interface CarInterface {
     engine_type: 'gasoline' | 'diesel' | "hybrid" | 'electricity',
     engine_capacity: number,
     engine_power: number,
-    mileage: number,
     transmission: 'automatic' | 'manual',
     drive_unit: 'front_wheel' | 'rear',
     location: LocationInterface,
@@ -55,7 +54,7 @@ export interface PriceCoeffsInterface {
 }
 
 export interface CarCounterInterface {
-    counter: number,
+    counter?: number,
     rented: CarRented[],
     dates: DatesInterface,
     isStart?: boolean,

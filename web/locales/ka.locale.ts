@@ -29,7 +29,7 @@ export const ka = {
     premium: "პრემიუმ",
     suv: "ჯიპი",
     minivan: "მინივენი",
-    engine_type: "ძრავის ტიპი",
+    fuel_type: "საწვავის ტიპი",
     gasoline: "ბენზინი",
     diesel: "დიზელი",
     hybrid: "ჰიბრიდი",

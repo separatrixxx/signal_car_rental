@@ -1,9 +1,9 @@
 .carsDiv {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 
 	width: 80%;
-	gap: 30px;
+	gap: 50px;
 	justify-items: center;
 	margin-top: 270px;
 }
@@ -12,6 +12,13 @@
 	margin-top: 20px !important;
 
 	color: var(--primary) !important;
+}
+
+@media (max-width: 1400px) {
+	.carsDiv {
+		grid-template-columns: repeat(3, auto);
+		gap: 30px;
+	}
 }
 
 @media (max-width: 1024px) {

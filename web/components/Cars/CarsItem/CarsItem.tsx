@@ -7,7 +7,7 @@ import { AppState } from '../../../features/store/store';
 import Image from 'next/image';
 import Link from 'next/link';
 import { setLocale } from '../../../helpers/locale.helper';
-import { setPriceCoeff } from '../../../helpers/price.helper';
+import { getDaysNum, setPriceCoeff } from '../../../helpers/price.helper';
 import { useEffect, useState } from 'react';
 import { checkAvailableCars } from '../../../helpers/rented.helper';
 import cn from 'classnames';
@@ -27,17 +27,15 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 
     const [freeCarsCounter, setFreeCarsCounter] = useState<number>(0);
 
-    useEffect(() => {
-        if (car) {
-            const checkCounterData: CarCounterInterface = {
-                counter: car.counter,
-                rented: rented,
-                dates: dates,
-            };
+	const checkCounterData: CarCounterInterface = {
+		counter: car?.counter,
+		rented: rented,
+		dates: dates,
+	};
 
-            checkAvailableCars(checkCounterData, setFreeCarsCounter);
-        }
-    }, [car, rented, dates]);
+    useEffect(() => {
+        checkAvailableCars(checkCounterData, setFreeCarsCounter);
+    }, [car, freeCarsCounter]);
     
 	if (car) {
 		return (
@@ -74,8 +72,7 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 						{
 							isStart ? setLocale(router.locale).from + ' ' + setPriceCoeff(dates, car.price) + '₾ / '
 								+ setLocale(router.locale).day
-							: setPriceCoeff(dates, car.price) + '₾ / '
-								+ setLocale(router.locale).day
+							: getDaysNum(dates) * setPriceCoeff(dates, car.price) + '₾'
 						}
 					</Htag>
 					{

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-08T19:54:53.790Z"
+    "x-generation-date": "2024-06-14T13:49:49.524Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -98,7 +98,6 @@
               "images",
               "counter",
               "class",
-              "mileage",
               "engine_type",
               "engine_capacity",
               "engine_power",
@@ -142,9 +141,6 @@
                   "suv",
                   "minivan"
                 ]
-              },
-              "mileage": {
-                "type": "integer"
               },
               "engine_type": {
                 "type": "string",
@@ -259,7 +255,6 @@
           "images",
           "counter",
           "class",
-          "mileage",
           "engine_type",
           "engine_capacity",
           "engine_power",
@@ -913,9 +908,6 @@
               "suv",
               "minivan"
             ]
-          },
-          "mileage": {
-            "type": "integer"
           },
           "engine_type": {
             "type": "string",
@@ -3307,9 +3299,6 @@
                           "suv",
                           "minivan"
                         ]
-                      },
-                      "mileage": {
-                        "type": "integer"
                       },
                       "engine_type": {
                         "type": "string",

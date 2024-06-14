@@ -808,7 +808,6 @@ export interface ApiCarCar extends Schema.CollectionType {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'econom'>;
-    mileage: Attribute.Integer & Attribute.Required;
     engine_type: Attribute.Enumeration<
       ['gasoline', 'diesel', 'hybrid', 'electricity']
     > &

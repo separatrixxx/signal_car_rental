@@ -50,7 +50,7 @@
 	overflow: hidden;
 
 	width: 100%;
-	height: 300px;
+	height: 250px;
 
 	border-radius: 15px;
 }
@@ -103,15 +103,33 @@
 	}
 }
 
-@media (max-width: 1700px) {
+@media (max-width: 2000px) {
 	.imageBlock {
-		height: 250px;
+		height: 220px;
+	}
+}
+
+@media (max-width: 1800px) {
+	.imageBlock {
+		height: 200px;
+	}
+}
+
+@media (max-width: 1600px) {
+	.imageBlock {
+		height: 170px;
 	}
 }
 
 @media (max-width: 1400px) {
 	.imageBlock {
 		height: 200px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.imageBlock {
+		height: 170px;
 	}
 }
 

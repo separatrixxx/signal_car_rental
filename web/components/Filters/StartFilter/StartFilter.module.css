@@ -19,8 +19,8 @@
 @media (min-width: 1024px) {
 	.fixed {
 		position: fixed;
-		z-index: 1000;
-		top: 0;
+		z-index: 3;
+		top: 64px;
 		right: 0;
 		left: 0;
 

@@ -29,7 +29,7 @@ export const ru = {
     premium: "Премиум",
     suv: "Внедорожник",
     minivan: "Минивэн",
-    engine_type: "Тип двигателя",
+    fuel_type: "Тип топлива",
     gasoline: "Бензин",
     diesel: "Дизель",
     hybrid: "Гибрид",

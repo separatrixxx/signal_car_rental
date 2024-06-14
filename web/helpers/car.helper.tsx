@@ -42,14 +42,7 @@ function sortClass(cars: CarInterface[], filtersActual: FilterActualInterface): 
         if ((!filtersActual.class || filtersActual.class === car.class)
             && (!filtersActual.drive_unit || filtersActual.drive_unit === car.drive_unit)
             && (!filtersActual.engine_type || filtersActual.engine_type === car.engine_type)
-            && (!filtersActual.transmission || filtersActual.transmission === car.transmission)
-            && (!filtersActual.mileage || ((filtersActual.mileage === '0 - 1000' && car.mileage <= 1000)
-                || (filtersActual.mileage === '1001 - 10000' && (car.mileage > 1000 && car.mileage <= 10000))
-                || (filtersActual.mileage === '10001 - 50000' && (car.mileage > 10000 && car.mileage <= 50000))
-                || (filtersActual.mileage === '50001 - 100000' && (car.mileage > 50000 && car.mileage <= 100000))
-                || (filtersActual.mileage === '100001 - 200000' && (car.mileage > 100000 && car.mileage <= 200000))
-                || (filtersActual.mileage === '200000+' && car.mileage > 200000)))
-            )
+            && (!filtersActual.transmission || filtersActual.transmission === car.transmission))
         {
             carsNew.push(car);
         }

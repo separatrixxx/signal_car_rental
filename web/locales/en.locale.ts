@@ -29,7 +29,7 @@ export const en = {
     premium: "Premium",
     suv: "SUV",
     minivan: "Minivan",
-    engine_type: "Engine type",
+    fuel_type: "Fuel type",
     gasoline: "Gasoline",
     diesel: "Diesel",
     hybrid: "Hybrid",

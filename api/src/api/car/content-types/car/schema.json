@@ -47,10 +47,6 @@
       "required": true,
       "default": "econom"
     },
-    "mileage": {
-      "type": "integer",
-      "required": true
-    },
     "engine_type": {
       "type": "enumeration",
       "enum": [

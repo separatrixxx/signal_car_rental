@@ -9,7 +9,7 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { CarInfoItem } from '../CarInfoItem/CarInfoItem';
 import { CarInterface } from '../../../interfaces/car.interface';
 import { Slider } from '../../Slider/Slider/Slider';
-import { setDeliveryPrice, setPriceCoeff } from '../../../helpers/price.helper';
+import { getDaysNum, setDeliveryPrice, setPriceCoeff } from '../../../helpers/price.helper';
 import Question from './question.svg';
 import { Modal } from '../../Modal/Modal/Modal';
 import { useState } from 'react';
@@ -51,8 +51,8 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 							</ReactMarkdown>
 						</Htag>
 						<Htag tag='xl' className={styles.carPrice}>
-							{setPriceCoeff(dates, car.price, isStart, startDatetime, finishDatetime)
-								+ '₾ / ' + setLocale(router.locale).day}
+							{getDaysNum(dates, isStart, startDatetime, finishDatetime) * 
+								setPriceCoeff(dates, car.price, isStart, startDatetime, finishDatetime) + '₾'}
 						</Htag>
 						{
 							!isStart ?
@@ -83,14 +83,12 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 							{setLocale(router.locale).specifications}
 						</Htag>
 						<CarInfoItem item={setLocale(router.locale).class + ':'} value={setLocale(router.locale)[car.class]} />
-						<CarInfoItem item={setLocale(router.locale).engine_type + ':'}
+						<CarInfoItem item={setLocale(router.locale).fuel_type + ':'}
 							value={setLocale(router.locale)[car.engine_type]} />
 						<CarInfoItem item={setLocale(router.locale).engine_capacity + ':'}
 							value={car.engine_capacity + ' ' + setLocale(router.locale).liters} />
 						<CarInfoItem item={setLocale(router.locale).engine_power + ':'}
 							value={car.engine_power + ' ' + setLocale(router.locale).horse_power} />
-						<CarInfoItem item={setLocale(router.locale).mileage + ':'}
-							value={car.mileage + ' ' + setLocale(router.locale).kilometers} />
 						<CarInfoItem item={setLocale(router.locale).transmission + ':'}
 							value={setLocale(router.locale)[car.transmission]} />
 						<CarInfoItem item={setLocale(router.locale).drive_unit + ':'}

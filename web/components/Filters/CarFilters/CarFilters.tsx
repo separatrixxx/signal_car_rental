@@ -42,39 +42,7 @@ export const CarFilters = ({ filtersActual, setActive, setFilters }: CarFiltersP
 						text: setLocale(router.locale).minivan,
 					},
 				]} filtersActual={filtersActual} filterType='class' setActive={setActive} setFilters={setFilters} />
-			<FilterItem text={setLocale(router.locale).mileage} filters={[
-					{
-						name: 'mileage',
-						value: '0 - 1000',
-						text: '0 - 1000 ' + setLocale(router.locale).kilometers,
-					},
-					{
-						name: 'mileage',
-						value: '1001 - 10000',
-						text: '1001 - 10000 ' + setLocale(router.locale).kilometers,
-					},
-					{
-						name: 'mileage',
-						value: '10001 - 50000',
-						text: '10001 - 50000 ' + setLocale(router.locale).kilometers,
-					},
-					{
-						name: 'mileage',
-						value: '50001 - 100000',
-						text: '50001 - 100000 ' + setLocale(router.locale).kilometers,
-					},
-					{
-						name: 'mileage',
-						value: '100001 - 200000',
-						text: '100001 - 200000 ' + setLocale(router.locale).kilometers,
-					},
-					{
-						name: 'mileage',
-						value: '200000+',
-						text: '200000+ ' + setLocale(router.locale).kilometers,
-					},
-				]} filtersActual={filtersActual} filterType='mileage' setActive={setActive} setFilters={setFilters} />
-			<FilterItem text={setLocale(router.locale).engine_type} filters={[
+			<FilterItem text={setLocale(router.locale).fuel_type} filters={[
 					{
 						name: 'engine_type',
 						value: 'gasoline',

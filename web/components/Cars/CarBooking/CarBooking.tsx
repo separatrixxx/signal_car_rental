@@ -3,7 +3,7 @@ import styles from './CarBooking.module.css';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Input } from '../../Common/Input/Input';
 import { setLocale } from '../../../helpers/locale.helper';
 import { Button } from '../../Common/Button/Button';
@@ -11,7 +11,7 @@ import { BookingErrorInterface, BookingInterface } from '../../../interfaces/boo
 import { checkData } from '../../../helpers/booking_car.helper';
 import { getDate } from '../../../helpers/date.helper';
 import { Htag } from '../../Common/Htag/Htag';
-import { setPriceCoeff } from '../../../helpers/price.helper';
+import { getDaysNum, setPriceCoeff } from '../../../helpers/price.helper';
 import { checkAvailableCars, getRented } from '../../../helpers/rented.helper';
 import Question from './question.svg';
 import { Modal } from '../../Modal/Modal/Modal';
@@ -71,22 +71,18 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
 
     const [freeCarsCounter, setFreeCarsCounter] = useState<number>(0);
 
-    useEffect(() => {
-        if (car) {
-            getRented(dispatch);
+    const checkCounterData: CarCounterInterface = {
+        counter: car?.counter,
+        rented: rented,
+        dates: dates,
+        isStart: isStart,
+        startDatetime: startDatetime,
+        finishDatetime: finishDatetime,
+    };
 
-            const checkCounterData: CarCounterInterface = {
-                counter: car.counter,
-                rented: rented,
-                dates: dates,
-                isStart: isStart,
-                startDatetime: startDatetime,
-                finishDatetime: finishDatetime,
-            };
-    
-            checkAvailableCars(checkCounterData, setFreeCarsCounter);
-        }
-    }, [car, rented, dates, isStart, startDatetime, finishDatetime, freeCarsCounter, dispatch])
+    useEffect(() => {
+        checkAvailableCars(checkCounterData, setFreeCarsCounter);
+    }, [])
 
 	if (car) {
         const bookingCarData: BookingInterface = {
@@ -139,7 +135,9 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                             setFinishDatetime(e.target.value);
                         } : (e) => setFinishDate(e.target.value)} />
                     <Htag tag='l' className={styles.carPrice}>
-                        {setLocale(router.locale).booking_price + ': ' + setPriceCoeff(dates, car.price,
+                        {setLocale(router.locale).booking_price + ': ' +
+                            getDaysNum(dates, isStart, startDatetime, finishDatetime) *
+                            setPriceCoeff(dates, car.price,
                             isStart, startDatetime, finishDatetime) * 0.1 + '₾'}
                         <Question className={styles.question} onClick={() => setActive(true)}/>
                     </Htag>
@@ -154,6 +152,9 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                         onClick={() => {
                             checkData(bookingCarData, errData, dates, isStart, freeCarsCounter,
                                 setIsLoading, setError, router, setFreeCarsCounter);
+
+                            checkAvailableCars(checkCounterData, setFreeCarsCounter);
+                            getRented(dispatch);
                     }} />
                 </div>
                 <Modal active={active} setActive={setActive}>

@@ -5,13 +5,13 @@ import { useRouter } from 'next/router';
 import { setLocale } from '../../../helpers/locale.helper';
 import { LocaleChange } from '../../Common/LocaleChange/LocaleChange';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useScrollY } from '../../../hooks/useScrollY';
 import Logo from './logo.svg';
 import Link from 'next/link';
 
 
-export const Header = ({ setActive }: HeaderProps): JSX.Element => {
+export const Header = ({ isStart, setActive }: HeaderProps): JSX.Element => {
     const router = useRouter();
     
     const [lastScroll, setLastScroll] = useState<number>(0);
@@ -35,6 +35,29 @@ export const Header = ({ setActive }: HeaderProps): JSX.Element => {
             transform: 'translate(0%, -100%)',
         }
     };
+
+    useEffect(() => {
+        const headerElement = document.querySelector(`.${styles.header}`);
+        const initialPosition = (headerElement?.getBoundingClientRect().top || 0) + window.scrollY;
+
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+
+            if (headerElement && isStart) {
+                if (scrollPosition > initialPosition && !headerElement.classList.contains(styles.fixed)) {
+                    headerElement.classList.add(styles.fixed);
+                } else if (scrollPosition <= initialPosition && headerElement.classList.contains(styles.fixed)) {
+                    headerElement.classList.remove(styles.fixed);
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isStart]);
     
 	return (
         <motion.header className={styles.header}

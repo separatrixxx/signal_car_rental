@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from "axios";
-import { CarCounterInterface, CarRented, CarRentedData } from "../interfaces/car.interface";
+import { CarCounterInterface, CarRentedData } from "../interfaces/car.interface";
 import { setRented } from "../features/rented/rentedSlice";
-import { DatesInterface } from "../interfaces/dates.interface";
 import { getDate } from '../helpers/date.helper';
 
 
@@ -24,10 +23,13 @@ export function checkAvailableCars(checkData: CarCounterInterface, setFreeCarsCo
         const startDateRented = new Date(cr.start_date);
         const finishDateRented = new Date(cr.finish_date);
 
-        if (startDate.setHours(0, 0, 0, 0) <= finishDateRented.setHours(0, 0, 0, 0) && finishDate.setHours(0, 0, 0, 0) >= startDateRented.setHours(0, 0, 0, 0)) {
+        if (startDate.setHours(0, 0, 0, 0) <= finishDateRented.setHours(0, 0, 0, 0)
+            && finishDate.setHours(0, 0, 0, 0) >= startDateRented.setHours(0, 0, 0, 0)) {
             n += 1
         }
     }
 
-    setFreeCarsCounter(checkData.counter - n);
+    if (checkData.counter) {
+        setFreeCarsCounter(checkData.counter - n);
+    }
 }
