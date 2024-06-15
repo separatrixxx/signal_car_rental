@@ -1,7 +1,7 @@
 export const ka = {
     locale: "ka",
     language: "ქართული",
-    lang: "KA",
+    lang: "GE",
     signal_car: "SIGNAL | მანქანის დაქირავება საქართველოში",
     error404: "გვერდი ვერ იპოვეს, 404 შეცდომა",
     error500: "სერვერის ვერავი, შეცდომა 500",

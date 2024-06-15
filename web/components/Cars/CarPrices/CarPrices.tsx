@@ -14,6 +14,7 @@ export const CarPrices = ({ price, isStart, startDatetime, finishDatetime }: Car
     const router = useRouter();
 
     const dates = useSelector((state: AppState) => state.dates.dates);
+    const currency = useSelector((state: AppState) => state.currency.currency);
 
     const priceArray = Object.values(price);
 
@@ -32,7 +33,8 @@ export const CarPrices = ({ price, isStart, startDatetime, finishDatetime }: Car
     return (
         <div className={styles.carPrices}>
 			{priceArray.map((p, i) => (
-                <CarPricesItem key={p} text={textPrices[i] + ':'} price={p + '₾ / ' + setLocale(router.locale).day}
+                <CarPricesItem key={p} text={textPrices[i] + ':'} price={p + currency.symbol +
+                    ' / ' + setLocale(router.locale).day}
                     isActive={daysNum >= numPrices[i]
                         && (daysNum < numPrices[i + 1]
                         || numPrices[i + 1] === undefined)

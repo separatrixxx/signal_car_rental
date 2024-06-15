@@ -14,8 +14,9 @@
 
 	border-radius: 0 0 20px 20px;
 	background: var(--white);
-	grid-template-columns: 1fr auto;
+	grid-template-columns: 1fr auto auto;
 	box-shadow: 0 20px 13px rgb(0 0 0 / 0.03), 0 8px 5px rgb(0 0 0 / 0.08);
+	gap: 20px;
 }
 
 .linksDiv {
@@ -68,6 +69,7 @@
 		padding: 7px 20px;
 
 		border-radius: 0 0 15px 15px;
+		gap: 15px;
 	}
 
 	.linksDiv {

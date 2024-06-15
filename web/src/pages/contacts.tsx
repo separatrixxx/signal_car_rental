@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { getInfo } from "../../helpers/info.helper";
 import { useSelector } from 'react-redux';
 import { AppState } from "../../features/store/store";
+import { setCurrency } from "../../features/currency/currencySlice";
+import { getCurrency } from "../../helpers/currency.helper";
 
 
 function Contacts(): JSX.Element {
@@ -15,6 +17,7 @@ function Contacts(): JSX.Element {
 
   useEffect(() => {
     getInfo(dispatch);
+    dispatch(setCurrency(getCurrency()));
   }, [dispatch]);
 
   const info = useSelector((state: AppState) => state.info.info);

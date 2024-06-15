@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getInfo } from "../../helpers/info.helper";
 import { getRented } from "../../helpers/rented.helper";
+import { setCurrency } from "../../features/currency/currencySlice";
+import { getCurrency, getRates } from "../../helpers/currency.helper";
 
 
 function Main(): JSX.Element {
@@ -17,6 +19,8 @@ function Main(): JSX.Element {
   useEffect(() => {
     getInfo(dispatch);
     getRented(dispatch);
+    getRates(dispatch);
+    dispatch(setCurrency(getCurrency()));
   }, [dispatch]);
 
   const info = useSelector((state: AppState) => state.info.info);

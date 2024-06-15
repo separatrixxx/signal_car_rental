@@ -4,6 +4,7 @@ import { setPrice } from "../features/price/priceSlice";
 import { DatesInterface } from "../interfaces/dates.interface";
 import { PriceInterface } from "../interfaces/price.interface";
 import { PriceCoeffsInterface } from "../interfaces/car.interface";
+import { CurrencyRatesInterface } from "../interfaces/currency.interface";
 
 
 export async function getPrice(dispatch: any) {
@@ -32,7 +33,7 @@ export function checkPrices(carLocation: string, startLocation: string, finishLo
 }
 
 export function setDeliveryPrice(carLocation: string, startLocation: string, finishLocation: string,
-    price: PriceInterface[]): number {
+    price: PriceInterface[], currency: string, rates: CurrencyRatesInterface): number {
     const newPrices = price.filter(p => checkPrices(carLocation, startLocation, finishLocation, p));
     let deliveryPrice = 0;
 
@@ -40,7 +41,7 @@ export function setDeliveryPrice(carLocation: string, startLocation: string, fin
         deliveryPrice += np.price;
     }
 
-    return deliveryPrice;
+    return Math.round(deliveryPrice * rates[currency.toLowerCase() as 'eur']);
 }
 
 export function getDaysNum(dates: DatesInterface, isStart?: boolean, startDatetime?: string, finishDatetime?: string,
@@ -60,18 +61,19 @@ export function getDaysNum(dates: DatesInterface, isStart?: boolean, startDateti
 }
 
 export function setPriceCoeff(dates: DatesInterface, priceCoeffs: PriceCoeffsInterface,
-    isStart?: boolean, startDatetime?: string, finishDatetime?: string): number {
+    currency: string, rates: CurrencyRatesInterface, isStart?: boolean, startDatetime?: string,
+    finishDatetime?: string): number {
     const numberOfDays = getDaysNum(dates, isStart, startDatetime, finishDatetime);
 
     if (numberOfDays > 25) {
-        return Math.round(priceCoeffs.price5);
+        return Math.round(priceCoeffs.price5 * rates[currency.toLowerCase() as 'eur']);
     } else if (numberOfDays >= 10) {
-        return Math.round(priceCoeffs.price4);
+        return Math.round(priceCoeffs.price4 * rates[currency.toLowerCase() as 'eur']);
     } else if (numberOfDays >= 4) {
-        return Math.round(priceCoeffs.price3);
+        return Math.round(priceCoeffs.price3 * rates[currency.toLowerCase() as 'eur']);
     } else if (numberOfDays >= 2) {
-        return Math.round(priceCoeffs.price2);
+        return Math.round(priceCoeffs.price2 * rates[currency.toLowerCase() as 'eur']);
     }
     
-    return priceCoeffs.price1;
+    return Math.round(priceCoeffs.price1 * rates[currency.toLowerCase() as 'eur']);
 }

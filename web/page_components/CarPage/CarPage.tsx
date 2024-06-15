@@ -8,10 +8,12 @@ import { Modal } from '../../components/Modal/Modal/Modal';
 import { useState } from 'react';
 import { Footer } from '../../components/Common/Footer/Footer';
 import { ModalLanguage } from '../../components/Modal/ModalLanguage/ModalLanguage';
+import { ModalCurrency } from '../../components/Modal/ModalCurrency/ModalCurrency';
 
 
 export const CarPage = ({ carId, isStart }: CarPageProps): JSX.Element => {
-	const [active, setActive] = useState<boolean>(false);
+	const [activeLocale, setActiveLocale] = useState<boolean>(false);
+    const [activeCurrency, setActiveCurrency] = useState<boolean>(false);
 
 	const [startDatetime, setStartDatetime] = useState<string>('');
 	const [finishDatetime, setFinishDatetime] = useState<string>('');
@@ -28,7 +30,7 @@ export const CarPage = ({ carId, isStart }: CarPageProps): JSX.Element => {
 				}}
 			/>
 			<div className={styles.wrapper}>
-				<Header setActive={setActive} />
+				<Header setActiveLocale={setActiveLocale} setActiveCurrency={setActiveCurrency} />
                 <div className={styles.carBlock}>
                     <CarInfo carId={carId} isStart={isStart} startDatetime={startDatetime} finishDatetime={finishDatetime}
 						startLocation={startLocation} finishLocation={finishLocation} />
@@ -38,8 +40,11 @@ export const CarPage = ({ carId, isStart }: CarPageProps): JSX.Element => {
                 </div>
 				<Footer />
 			</div>
-			<Modal active={active} setActive={setActive}>
-                <ModalLanguage setActive={setActive} />
+			<Modal active={activeLocale} setActive={setActiveLocale}>
+                <ModalLanguage setActive={setActiveLocale} />
+            </Modal>
+            <Modal active={activeCurrency} setActive={setActiveCurrency}>
+                <ModalCurrency setActive={setActiveCurrency} />
             </Modal>
 		</>
 	);

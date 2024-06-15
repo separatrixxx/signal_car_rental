@@ -14,8 +14,8 @@ import Question from './question.svg';
 import { Modal } from '../../Modal/Modal/Modal';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import cn from 'classnames';
 import { CarPrices } from '../CarPrices/CarPrices';
+import cn from 'classnames';
 
 
 export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLocation, finishLocation }:
@@ -28,6 +28,8 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 
 	const dates = useSelector((state: AppState) => state.dates.dates);
 	const price = useSelector((state: AppState) => state.price.price);
+	const currency = useSelector((state: AppState) => state.currency.currency);
+	const rates = useSelector((state: AppState) => state.rates.rates);
 
 	const [active, setActive] = useState<boolean>(false);
 
@@ -52,23 +54,27 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 						</Htag>
 						<Htag tag='xl' className={styles.carPrice}>
 							{getDaysNum(dates, isStart, startDatetime, finishDatetime) * 
-								setPriceCoeff(dates, car.price, isStart, startDatetime, finishDatetime) + '₾'}
+								setPriceCoeff(dates, car.price, currency.code, rates, isStart, startDatetime, finishDatetime)
+									+ currency.symbol}
 						</Htag>
 						{
 							!isStart ?
-								setDeliveryPrice(car.location.location_code, dates.startLocation, dates.finishLocation, price) > 0 ?
+								setDeliveryPrice(car.location.location_code, dates.startLocation, dates.finishLocation, price,
+									currency.code, rates) > 0 ?
 									<Htag tag='l' className={styles.carPrice}>
 										{setLocale(router.locale).delivery_price + ': ' +
 											setDeliveryPrice(car.location.location_code, dates.startLocation,
-											dates.finishLocation, price) + '₾'}
+											dates.finishLocation, price, currency.code, rates) + currency.symbol}
 										<Question className={styles.question} onClick={() => setActive(true)}/>
 									</Htag>
 								: <></>
 							: startLocation && finishLocation ?
-								setDeliveryPrice(car.location.location_code, startLocation, finishLocation, price) > 0 ?
+								setDeliveryPrice(car.location.location_code, startLocation, finishLocation, price,
+									currency.code, rates) > 0 ?
 									<Htag tag='l' className={styles.carPrice}>
 										{setLocale(router.locale).delivery_price + ': ' +
-											setDeliveryPrice(car.location.location_code, startLocation, finishLocation, price) + '₾'}
+											setDeliveryPrice(car.location.location_code, startLocation, finishLocation, price,
+												currency.code, rates) + currency.symbol}
 										<Question className={styles.question} onClick={() => setActive(true)}/>
 									</Htag>
 								: <></>

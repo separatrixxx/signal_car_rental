@@ -14,6 +14,8 @@ import { getPrice } from '../../../helpers/price.helper';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
 import { getRented } from '../../../helpers/rented.helper';
+import { setCurrency } from '../../../features/currency/currencySlice';
+import { getCurrency, getRates } from '../../../helpers/currency.helper';
 
 
 export default function Car({ car }: CarProps) {
@@ -27,6 +29,8 @@ export default function Car({ car }: CarProps) {
     	getPrice(dispatch);
 		getCars(dispatch, dates);
 		getRented(dispatch);
+		getRates(dispatch);
+		dispatch(setCurrency(getCurrency()));
 	}, [dispatch, dates]);
 
 	if (car) {

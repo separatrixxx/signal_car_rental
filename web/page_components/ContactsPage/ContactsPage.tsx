@@ -6,10 +6,12 @@ import { useState } from 'react';
 import { Footer } from '../../components/Common/Footer/Footer';
 import { ContactsBlock } from '../../components/Contacts/ContactsBlock/ContactsBlock';
 import { ModalLanguage } from '../../components/Modal/ModalLanguage/ModalLanguage';
+import { ModalCurrency } from '../../components/Modal/ModalCurrency/ModalCurrency';
 
 
 export const ContactsPage = (): JSX.Element => {
-    const [active, setActive] = useState<boolean>(false);
+    const [activeLocale, setActiveLocale] = useState<boolean>(false);
+    const [activeCurrency, setActiveCurrency] = useState<boolean>(false);
 
     return (
         <>
@@ -21,12 +23,15 @@ export const ContactsPage = (): JSX.Element => {
 				}}
 			/>
             <div className={styles.wrapper}>
-                <Header setActive={setActive} />
+            <Header setActiveLocale={setActiveLocale} setActiveCurrency={setActiveCurrency} />
                 <ContactsBlock />
                 <Footer />
             </div>
-			<Modal active={active} setActive={setActive}>
-                <ModalLanguage setActive={setActive} />
+			<Modal active={activeLocale} setActive={setActiveLocale}>
+                <ModalLanguage setActive={setActiveLocale} />
+            </Modal>
+            <Modal active={activeCurrency} setActive={setActiveCurrency}>
+                <ModalCurrency setActive={setActiveCurrency} />
             </Modal>
         </>
     );

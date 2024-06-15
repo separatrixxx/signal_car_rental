@@ -24,6 +24,8 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 		return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
 	});
 	const dates = useSelector((state: AppState) => state.dates.dates);
+	const currency = useSelector((state: AppState) => state.currency.currency);
+	const rates = useSelector((state: AppState) => state.rates.rates);
 
     const [freeCarsCounter, setFreeCarsCounter] = useState<number>(0);
 
@@ -70,9 +72,9 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 					</Htag>
 					<Htag tag='l'>
 						{
-							isStart ? setLocale(router.locale).from + ' ' + setPriceCoeff(dates, car.price) + '₾ / '
-								+ setLocale(router.locale).day
-							: getDaysNum(dates) * setPriceCoeff(dates, car.price) + '₾'
+							isStart ? setLocale(router.locale).from + ' ' + setPriceCoeff(dates, car.price, currency.code, rates)
+								+ currency.symbol + ' / ' + setLocale(router.locale).day
+							: getDaysNum(dates) * setPriceCoeff(dates, car.price, currency.code, rates) + currency.symbol
 						}
 					</Htag>
 					{

@@ -11,7 +11,7 @@ import Logo from './logo.svg';
 import Link from 'next/link';
 
 
-export const Header = ({ isStart, setActive }: HeaderProps): JSX.Element => {
+export const Header = ({ isStart, setActiveLocale, setActiveCurrency }: HeaderProps): JSX.Element => {
     const router = useRouter();
     
     const [lastScroll, setLastScroll] = useState<number>(0);
@@ -72,7 +72,8 @@ export const Header = ({ isStart, setActive }: HeaderProps): JSX.Element => {
                 <HeaderLink text={setLocale(router.locale).about}  link="/about" />
                 <HeaderLink text={setLocale(router.locale).contacts}  link="/contacts" />
             </div>
-            <LocaleChange setActive={setActive} />
+            <LocaleChange isCurrency={true} setActiveLocale={setActiveLocale} setActiveCurrency={setActiveCurrency}  />
+            <LocaleChange isCurrency={false} setActiveLocale={setActiveLocale} setActiveCurrency={setActiveCurrency}  />
         </motion.header>
     );
 };

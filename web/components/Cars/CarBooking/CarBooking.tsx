@@ -30,10 +30,11 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
 		return car.id === carId;
 	});
     const dates = useSelector((state: AppState) => state.dates.dates);
-
     const rented = useSelector((state: AppState) => state.rented.rented).filter(function (rentedCar) {
 		return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
 	});
+    const currency = useSelector((state: AppState) => state.currency.currency);
+    const rates = useSelector((state: AppState) => state.rates.rates);
 
     const [clientName, setClientName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -82,7 +83,7 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
 
     useEffect(() => {
         checkAvailableCars(checkCounterData, setFreeCarsCounter);
-    }, [])
+    }, []);
 
 	if (car) {
         const bookingCarData: BookingInterface = {
@@ -136,9 +137,9 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                         } : (e) => setFinishDate(e.target.value)} />
                     <Htag tag='l' className={styles.carPrice}>
                         {setLocale(router.locale).booking_price + ': ' +
-                            getDaysNum(dates, isStart, startDatetime, finishDatetime) *
-                            setPriceCoeff(dates, car.price,
-                            isStart, startDatetime, finishDatetime) * 0.1 + '₾'}
+                            (getDaysNum(dates, isStart, startDatetime, finishDatetime) *
+                            setPriceCoeff(dates, car.price, currency.code, rates,
+                            isStart, startDatetime, finishDatetime) * 0.1).toFixed(1) + currency.symbol}
                         <Question className={styles.question} onClick={() => setActive(true)}/>
                     </Htag>
                     {

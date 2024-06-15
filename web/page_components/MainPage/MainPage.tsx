@@ -25,13 +25,15 @@ import { HitCarsList } from '../../components/Cars/HitCarsList/HitCarsList';
 import { Htag } from '../../components/Common/Htag/Htag';
 import { setLocale } from '../../helpers/locale.helper';
 import { useRouter } from 'next/router';
+import { ModalCurrency } from '../../components/Modal/ModalCurrency/ModalCurrency';
 
 
 export const MainPage = (): JSX.Element => {
     const router = useRouter();
     const dispatch = useDispatch();
 
-    const [active, setActive] = useState<boolean>(false);
+    const [activeLocale, setActiveLocale] = useState<boolean>(false);
+    const [activeCurrency, setActiveCurrency] = useState<boolean>(false);
     const [activeFilters, setActiveFilters] = useState<boolean>(false);
     const [activeStart, setActiveStart] = useState<boolean>(false);
     const [activeFinish, setActiveFinish] = useState<boolean>(false);
@@ -79,7 +81,8 @@ export const MainPage = (): JSX.Element => {
 				}}
 			/>
             <div className={styles.wrapper}>
-                <Header isStart={dates.startLocation === ''} setActive={setActive} />
+                <Header isStart={dates.startLocation === ''} setActiveLocale={setActiveLocale} 
+                    setActiveCurrency={setActiveCurrency} />
                 {
                     dates.startLocation !== ''
                     ?
@@ -109,8 +112,11 @@ export const MainPage = (): JSX.Element => {
                 }
                 <Footer />
             </div>
-			<Modal active={active} setActive={setActive}>
-                <ModalLanguage setActive={setActive} />
+			<Modal active={activeLocale} setActive={setActiveLocale}>
+                <ModalLanguage setActive={setActiveLocale} />
+            </Modal>
+            <Modal active={activeCurrency} setActive={setActiveCurrency}>
+                <ModalCurrency setActive={setActiveCurrency} />
             </Modal>
             <Modal active={activeFilters} setActive={setActiveFilters}>
                 <ModalFilters filters={filters} filtersActual={filtersActual}
