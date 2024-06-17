@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'node:querystring';
 import { useRouter } from 'next/router';
 import axios, { AxiosResponse } from 'axios';
@@ -53,34 +53,13 @@ export default function Car({ car }: CarProps) {
 	}
 }
 
-export const getStaticPaths: GetStaticPaths = async ({ locales }: GetStaticPropsContext<ParsedUrlQuery>) => {		
-     const paths: any[] = [];
-	 
-	for (const locale of locales as []) {
-		const { data: response }: AxiosResponse<Cars> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-			'/api/cars?populate=images%2C%20location');
-
-		response.data.map(car => {
-            return paths.push({
-                params: { car: '' + car.id },
-                locale,
-            });
-        });
-	}
-
-	return {
-		paths: paths,
-		fallback: true
-	};
-};
-
-export const getStaticProps: GetStaticProps<CarProps> = async ({ params, locale }: GetStaticPropsContext<ParsedUrlQuery>) => {
-	if (!params) {
-		return {
-			notFound: true
-		};
-	}
-	try {
+export const getServerSideProps: GetServerSideProps<CarProps> = async ({ params }) => {
+    if (!params) {
+        return {
+            notFound: true
+        };
+    }
+    try {
         const { data: car }: AxiosResponse<CarData> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
             '/api/cars/' + params.car);
 
