@@ -56,7 +56,7 @@ export async function getCars(dispatch: any, dates: DatesInterface, filtersActua
     
     try {
         const { data : response }: AxiosResponse<Cars> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/api/cars?populate=images%2C%20location');
+            '/api/cars?pagination%5Blimit%5D=1000&populate=images%2C%20location');
             
         if (response.data && filtersActual && sort) {
             response.data = sortPrice(response.data, sort);

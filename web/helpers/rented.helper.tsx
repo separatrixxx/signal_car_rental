@@ -6,7 +6,7 @@ import { getDate } from '../helpers/date.helper';
 
 export async function getRented(dispatch: any) {
     const { data : response }: AxiosResponse<CarRentedData> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-        '/api/rented-cars?populate=car');
+        '/api/rented-cars?pagination%5Blimit%5D=1000000&populate=car');
     
     dispatch(setRented(response.data));
 }
