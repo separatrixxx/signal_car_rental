@@ -52,11 +52,11 @@ a {
 }
 
 :root {
-	--primary: #04A6D3;
+	--primary: #00B2E3;
 	--white: #FFF;
 	--dark: #1F1F1F;
-	--light: #BFBFBF;
-	--darkLight: #969696;
+	--light: #DDD;
+	--darkLight: #A3A3A3;
 	--error: #FF1500;
 	--banana: #FFC803;
 	--font-family: 'Roboto', sans-serif;
