@@ -1,6 +1,7 @@
 import { ModalProps } from './Modal.props';
 import styles from './Modal.module.css';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 import cn from 'classnames';
 
 
@@ -22,6 +23,20 @@ export const Modal = ({ active, setActive, children }: ModalProps): JSX.Element 
             transform: 'scale(0.5)',
         }
     };
+
+    useEffect(() => {
+        const handleEsc = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setActive(false);
+            }
+        };
+
+        document.addEventListener('keydown', handleEsc);
+
+        return () => {
+            document.removeEventListener('keydown', handleEsc);
+        };
+    }, [setActive]);
 
     return (
         <motion.div className={cn(styles.modal, {
