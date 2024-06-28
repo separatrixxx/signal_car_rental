@@ -4,7 +4,7 @@ module.exports = {
 		defaultLocale: 'en',
 	},
 	images: {
-		domains: ['legaldoc.vercel.app/'],
+		domains: ['https://signal-car-rental.vercel.app/'],
 	},
 	webpack(config) {
 		config.module.rules.push({
