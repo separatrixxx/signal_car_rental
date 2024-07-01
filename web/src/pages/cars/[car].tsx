@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { GetServerSideProps, GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
-import { ParsedUrlQuery } from 'node:querystring';
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import axios, { AxiosResponse } from 'axios';
-import { CarData, Cars } from '../../../interfaces/car.interface';
+import { CarData } from '../../../interfaces/car.interface';
 import { CarPage } from '../../../page_components/CarPage/CarPage';
 import { setLocale } from '../../../helpers/locale.helper';
 import { useDispatch } from "react-redux";
