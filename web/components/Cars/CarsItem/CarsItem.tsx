@@ -10,8 +10,8 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { getDaysNum, setPriceCoeff } from '../../../helpers/price.helper';
 import { useEffect, useState } from 'react';
 import { checkAvailableCars } from '../../../helpers/rented.helper';
-import cn from 'classnames';
 import { CarCounterInterface } from '../../../interfaces/car.interface';
+import cn from 'classnames';
 
 
 export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
