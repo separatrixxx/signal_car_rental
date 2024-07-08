@@ -14,12 +14,14 @@ export const CarsList = (): JSX.Element => {
 	const router = useRouter();
 
     const cars = useSelector((state: AppState) => state.cars.cars);
-	const [displayedCars, setDisplayedCars] = useState(cars.slice(0, 20));
+
+	const limit = 20;
+	const [displayedCars, setDisplayedCars] = useState(cars.slice(0, limit));
     const [ref, inView] = useInView();
 
     useEffect(() => {
         if (inView && displayedCars.length < cars.length) {
-            const nextCars = cars.slice(displayedCars.length, displayedCars.length + 20);
+            const nextCars = cars.slice(displayedCars.length, displayedCars.length + limit);
             setDisplayedCars(prevCars => [...prevCars, ...nextCars]);
         }
     }, [inView, cars, displayedCars]);
