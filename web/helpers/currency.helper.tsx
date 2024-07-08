@@ -53,7 +53,6 @@ export async function getRates(dispatch: any) {
             rub: (rateRUB.quantity / rateRUB.rate) * rateEUR.rate,
             gel: rateEUR.rate,
         };
-        console.log(currencyRates)
 
         dispatch(setRates(currencyRates));
     } catch (err) {

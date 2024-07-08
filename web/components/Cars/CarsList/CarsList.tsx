@@ -11,12 +11,12 @@ import { LoadingDots } from '../../Common/LoadingDots/LoadingDots';
 
 
 export const CarsList = (): JSX.Element => {
-	const router = useRouter();
+    const router = useRouter();
 
     const cars = useSelector((state: AppState) => state.cars.cars);
 
-	const limit = 20;
-	const [displayedCars, setDisplayedCars] = useState(cars.slice(0, limit));
+    const limit = 20;
+    const [displayedCars, setDisplayedCars] = useState(cars.slice(0, limit));
     const [ref, inView] = useInView();
 
     useEffect(() => {
@@ -26,27 +26,27 @@ export const CarsList = (): JSX.Element => {
         }
     }, [inView, cars, displayedCars]);
 
-	return (
-		<>
-			<div className={styles.carsDiv}>
-				{
-					cars.length !== 0 ? 
-						displayedCars.map(car => (
-							<CarsItem key={car.id} carId={car.id} />
-						))
-					:
-						<Htag tag='m' className={styles.emptyText}>
-							{setLocale(router.locale).list_of_cars_empty}
-						</Htag>
-				}
-			</div>
-			{
-				cars.length !== displayedCars.length ?
-					<div ref={ref} className={styles.loadingIndicator}>
-						<LoadingDots />
-					</div>
-				: <></>
-			}
-		</>
-	);
+    return (
+        <>
+            <div className={styles.carsDiv}>
+                {
+                    cars.length !== 0 ? 
+                        displayedCars.map((car, index) => (
+                            <CarsItem key={`${car.id}-${index}`} carId={car.id} />
+                        ))
+                    :
+                        <Htag tag='m' className={styles.emptyText}>
+                            {setLocale(router.locale).list_of_cars_empty}
+                        </Htag>
+                }
+            </div>
+            {
+                cars.length !== displayedCars.length ?
+                    <div ref={ref} className={styles.loadingIndicator}>
+                        <LoadingDots />
+                    </div>
+                : <></>
+            }
+        </>
+    );
 };
