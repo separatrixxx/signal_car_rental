@@ -69,8 +69,9 @@ export const Header = ({ isStart, setActiveLocale, setActiveCurrency }: HeaderPr
                 <Link href="/" aria-label="logo" className={styles.logo}>
                     <Logo />
                 </Link>
-                <HeaderLink text={setLocale(router.locale).about}  link="/about" />
-                <HeaderLink text={setLocale(router.locale).contacts}  link="/contacts" />
+                <HeaderLink text={setLocale(router.locale).about} link="/about" />
+                <HeaderLink text={setLocale(router.locale).contacts} link="/contacts" />
+                <HeaderLink text={setLocale(router.locale).media}  link="/media" />
             </div>
             <LocaleChange isCurrency={true} setActiveLocale={setActiveLocale} setActiveCurrency={setActiveCurrency}  />
             <LocaleChange isCurrency={false} setActiveLocale={setActiveLocale} setActiveCurrency={setActiveCurrency}  />

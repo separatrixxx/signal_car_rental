@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
 import { useDispatch } from "react-redux";
 import { setDates } from '../../../features/dates/datesSlice';
+import { getLocaleLocation } from '../../../helpers/locale.helper';
 
 
 export const ModalStart = ({ locations, type, setLocation, setActive, setStartLocation, setFinishLocation }:
@@ -28,7 +29,7 @@ export const ModalStart = ({ locations, type, setLocation, setActive, setStartLo
                         setFinishLocation(l.location_code);
                     }
                 }}>
-                    {router.locale === 'ka' ? l.location_ge : router.locale === 'ru' ? l.location_ru : l.location}
+                    {getLocaleLocation(router.locale, l)}
                 </Htag>
             ))}
         </div>

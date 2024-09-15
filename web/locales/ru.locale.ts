@@ -18,6 +18,7 @@ export const ru = {
     no_cars: "Нет доступных машин",
     about: "О нас",
     contacts: "Контакты",
+    media: "Новости",
     from: "от",
     day: "сутки",
     specifications: "Характеристики",

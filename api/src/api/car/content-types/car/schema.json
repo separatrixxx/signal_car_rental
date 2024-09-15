@@ -111,6 +111,14 @@
       "repeatable": false,
       "required": true,
       "component": "price.price"
+    },
+    "description_he": {
+      "type": "richtext",
+      "required": true
+    },
+    "description_pl": {
+      "type": "richtext",
+      "required": true
     }
   }
 }

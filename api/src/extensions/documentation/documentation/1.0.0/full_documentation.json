@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-14T13:49:49.524Z"
+    "x-generation-date": "2024-09-15T17:34:57.199Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -107,7 +107,9 @@
               "description_ru",
               "description_ge",
               "hit",
-              "price"
+              "price",
+              "description_he",
+              "description_pl"
             ],
             "type": "object",
             "properties": {
@@ -197,6 +199,12 @@
               },
               "price": {
                 "$ref": "#/components/schemas/PricePriceComponent"
+              },
+              "description_he": {
+                "type": "string"
+              },
+              "description_pl": {
+                "type": "string"
               }
             }
           }
@@ -264,7 +272,9 @@
           "description_ru",
           "description_ge",
           "hit",
-          "price"
+          "price",
+          "description_he",
+          "description_pl"
         ],
         "properties": {
           "name": {
@@ -963,6 +973,12 @@
                       "location_ge": {
                         "type": "string"
                       },
+                      "location_pl": {
+                        "type": "string"
+                      },
+                      "location_he": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -1029,6 +1045,12 @@
           },
           "price": {
             "$ref": "#/components/schemas/PricePriceComponent"
+          },
+          "description_he": {
+            "type": "string"
+          },
+          "description_pl": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -1136,7 +1158,6 @@
         "properties": {
           "data": {
             "required": [
-              "address",
               "phone",
               "email",
               "address_ru",
@@ -1144,7 +1165,11 @@
               "location",
               "about_text",
               "about_text_ru",
-              "about_text_ge"
+              "about_text_ge",
+              "address_he",
+              "about_text_he",
+              "address_pl",
+              "about_text_pl"
             ],
             "type": "object",
             "properties": {
@@ -1173,6 +1198,18 @@
                 "type": "string"
               },
               "about_text_ge": {
+                "type": "string"
+              },
+              "address_he": {
+                "type": "string"
+              },
+              "about_text_he": {
+                "type": "string"
+              },
+              "address_pl": {
+                "type": "string"
+              },
+              "about_text_pl": {
                 "type": "string"
               }
             }
@@ -1228,7 +1265,6 @@
       "CompanyInfo": {
         "type": "object",
         "required": [
-          "address",
           "phone",
           "email",
           "address_ru",
@@ -1236,7 +1272,11 @@
           "location",
           "about_text",
           "about_text_ru",
-          "about_text_ge"
+          "about_text_ge",
+          "address_he",
+          "about_text_he",
+          "address_pl",
+          "about_text_pl"
         ],
         "properties": {
           "address": {
@@ -1264,6 +1304,18 @@
             "type": "string"
           },
           "about_text_ge": {
+            "type": "string"
+          },
+          "address_he": {
+            "type": "string"
+          },
+          "about_text_he": {
+            "type": "string"
+          },
+          "address_pl": {
+            "type": "string"
+          },
+          "about_text_pl": {
             "type": "string"
           },
           "createdAt": {
@@ -1599,7 +1651,9 @@
               "location_code",
               "location",
               "location_ru",
-              "location_ge"
+              "location_ge",
+              "location_pl",
+              "location_he"
             ],
             "type": "object",
             "properties": {
@@ -1613,6 +1667,12 @@
                 "type": "string"
               },
               "location_ge": {
+                "type": "string"
+              },
+              "location_pl": {
+                "type": "string"
+              },
+              "location_he": {
                 "type": "string"
               }
             }
@@ -1671,7 +1731,9 @@
           "location_code",
           "location",
           "location_ru",
-          "location_ge"
+          "location_ge",
+          "location_pl",
+          "location_he"
         ],
         "properties": {
           "location_code": {
@@ -1684,6 +1746,12 @@
             "type": "string"
           },
           "location_ge": {
+            "type": "string"
+          },
+          "location_pl": {
+            "type": "string"
+          },
+          "location_he": {
             "type": "string"
           },
           "createdAt": {
@@ -2126,6 +2194,12 @@
                         "type": "string"
                       },
                       "location_ge": {
+                        "type": "string"
+                      },
+                      "location_pl": {
+                        "type": "string"
+                      },
+                      "location_he": {
                         "type": "string"
                       },
                       "createdAt": {
@@ -3354,6 +3428,12 @@
                                   "location_ge": {
                                     "type": "string"
                                   },
+                                  "location_pl": {
+                                    "type": "string"
+                                  },
+                                  "location_he": {
+                                    "type": "string"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -3445,6 +3525,12 @@
                             "format": "float"
                           }
                         }
+                      },
+                      "description_he": {
+                        "type": "string"
+                      },
+                      "description_pl": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",

@@ -6,11 +6,15 @@ const infoData: InfoInterface = {
   about_text: '',
   about_text_ru: '',
   about_text_ge: '',
+  about_text_pl: '',
+  about_text_he: '',
   phone: '',
   email: '',
   address: '',
   address_ru: '',
   address_ge: '',
+  address_pl: '',
+  address_he: '',
   location: '',
 };
 

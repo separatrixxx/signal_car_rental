@@ -4,7 +4,8 @@
   "info": {
     "singularName": "location",
     "pluralName": "locations",
-    "displayName": "Location"
+    "displayName": "Location",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,6 +25,14 @@
       "required": true
     },
     "location_ge": {
+      "type": "string",
+      "required": true
+    },
+    "location_pl": {
+      "type": "string",
+      "required": true
+    },
+    "location_he": {
       "type": "string",
       "required": true
     }

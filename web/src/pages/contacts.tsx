@@ -1,7 +1,7 @@
 import { ContactsPage } from "../../page_components/ContactsPage/ContactsPage";
 import Head from 'next/head';
 import { useRouter } from "next/router";
-import { setLocale } from "../../helpers/locale.helper";
+import { getAddressDescription, setLocale } from "../../helpers/locale.helper";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getInfo } from "../../helpers/info.helper";
@@ -26,10 +26,9 @@ function Contacts(): JSX.Element {
     <>
       <Head>
         <title>{setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).contacts}</title>
-        <meta name='description' content={router.locale === 'ka' 
-					? info.about_text_ge : router.locale === 'ru' ? info.about_text_ru : info.about_text} />
+        <meta name='description' content={getAddressDescription(router.locale, info).about_locale} />
         <meta property='og:title' content={setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).contacts} />
-        <meta property='og:description' content={setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).contacts} />
+        <meta property='og:description' content={getAddressDescription(router.locale, info).about_locale} />
         <meta charSet="utf-8" />
       </Head>
       <ContactsPage />

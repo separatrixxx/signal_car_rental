@@ -1,4 +1,4 @@
-import { AboutPage } from "../../page_components/AboutPage/AboutPage";
+import { MediaPage } from "../../page_components/MediaPage/MediaPage";
 import Head from 'next/head';
 import { useRouter } from "next/router";
 import { getAddressDescription, setLocale } from "../../helpers/locale.helper";
@@ -11,7 +11,7 @@ import { setCurrency } from "../../features/currency/currencySlice";
 import { getCurrency } from "../../helpers/currency.helper";
 
 
-function About(): JSX.Element {
+function Media(): JSX.Element {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -25,15 +25,15 @@ function About(): JSX.Element {
   return (
     <>
       <Head>
-        <title>{setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).about}</title>
-        <meta name='description' content={getAddressDescription(router.locale, info).about_locale} />
-        <meta property='og:title' content={setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).about} />
-        <meta name='description' content={getAddressDescription(router.locale, info).about_locale} />
+        <title>{setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).media}</title>
+        <meta property='description' content={getAddressDescription(router.locale, info).about_locale} />
+        <meta property='og:title' content={setLocale(router.locale).signal_car + ' - ' + setLocale(router.locale).media} />
+        <meta property='og:description' content={getAddressDescription(router.locale, info).about_locale} />
         <meta charSet="utf-8" />
       </Head>
-      <AboutPage />
+      <MediaPage />
     </>
   );
 }
 
-export default About;
+export default Media;

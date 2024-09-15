@@ -7,4 +7,6 @@ export interface LocationInterface {
     location: string,
     location_ru: string,
     location_ge: string,
+    location_pl: string,
+    location_he: string,
 }

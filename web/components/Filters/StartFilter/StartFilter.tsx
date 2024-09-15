@@ -3,7 +3,7 @@ import styles from './StartFilter.module.css';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { Input } from '../../Common/Input/Input';
-import { setLocale } from '../../../helpers/locale.helper';
+import { getLocaleLocation, setLocale } from '../../../helpers/locale.helper';
 import { Button } from '../../Common/Button/Button';
 import { useDispatch } from "react-redux";
 import { getDate } from '../../../helpers/date.helper';
@@ -85,7 +85,7 @@ export const StartFilter = ({ startLocation, finishLocation, setActiveStart, set
     };
 
     const width = useResizeW();
-    
+
     return (
         <motion.div className={styles.startFilter}
             variants={variants}
@@ -93,17 +93,13 @@ export const StartFilter = ({ startLocation, finishLocation, setActiveStart, set
             transition={{ duration: 0.3 }}
             animate={flag && width > 1024 ? 'hidden' : 'visible'}>
             <Input type="location" text={startLocation.location_code === '' ? setLocale(router.locale).start_location :
-                (router.locale === 'ka' ? startLocation.location_ge : router.locale === 'ru' ? startLocation.location_ru
-                : startLocation.location)}
-                value={router.locale === 'ka' ? startLocation.location_ge : router.locale === 'ru' ? startLocation.location_ru
-                : startLocation.location} error={error.errStartLocation} isActive={startLocation.location_code === '' ? false : true}
-                onChange={setActiveStart} />
+                getLocaleLocation(router.locale, startLocation)}
+                value={getLocaleLocation(router.locale, startLocation)} error={error.errStartLocation}
+                isActive={startLocation.location_code === '' ? false : true} onChange={setActiveStart} />
             <Input type="location" text={finishLocation.location_code === '' ? setLocale(router.locale).finish_location :
-                (router.locale === 'ka' ? finishLocation.location_ge : router.locale === 'ru' ? finishLocation.location_ru
-                : finishLocation.location)}
-                value={router.locale === 'ka' ? finishLocation.location_ge : router.locale === 'ru' ? finishLocation.location_ru
-                : finishLocation.location} error={error.errFinishLocation} isActive={finishLocation.location_code === '' ? false : true}
-                onChange={setActiveFinish} />
+                getLocaleLocation(router.locale, finishLocation)}
+                value={getLocaleLocation(router.locale, finishLocation)} error={error.errFinishLocation}
+                isActive={finishLocation.location_code === '' ? false : true} onChange={setActiveFinish} />
             <Input type="date" text={setLocale(router.locale).start_date} value={startDate} minDate={getDate()}
                 error={error.errStartDate} onChange={(e) => setStartDate(e.target.value)} />
             <Input type="date" text={setLocale(router.locale).finish_date} value={finishDate} minDate={getDate()}

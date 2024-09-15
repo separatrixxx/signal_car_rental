@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
 import { Htag } from '../../Common/Htag/Htag';
-import { setLocale } from '../../../helpers/locale.helper';
+import { getAddressDescription, setLocale } from '../../../helpers/locale.helper';
 import { CarInfoItem } from '../../Cars/CarInfoItem/CarInfoItem';
 import { ContactsMap } from '../ContactsMap/ContactsMap';
 
@@ -22,7 +22,7 @@ export const ContactsBlock = (): JSX.Element => {
                 <CarInfoItem item={setLocale(router.locale).phone + ':'} value={info.phone} type='tel' />
                 <CarInfoItem item={setLocale(router.locale).email + ':'} value={info.email} type='mailto' />
                 <CarInfoItem item={setLocale(router.locale).address + ':'} 
-                    value={router.locale === 'ka' ? info.address_ge : router.locale === 'ru' ? info.address_ru : info.address} />
+                    value={getAddressDescription(router.locale, info).address_locale} />
                 <ContactsMap />
             </div>
         </div>

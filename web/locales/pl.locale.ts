@@ -17,6 +17,7 @@ export const pl = {
     error_location: "Wprowadź lokalizację",
     no_cars: "Brak dostępnych samochodów",
     about: "O nas",
+    media: "Media",
     contacts: "Kontakt",
     from: "od",
     day: "dzień",

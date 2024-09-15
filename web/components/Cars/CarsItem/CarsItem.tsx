@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
 import Image from 'next/image';
 import Link from 'next/link';
-import { setLocale } from '../../../helpers/locale.helper';
+import { getLocaleLocation, setLocale } from '../../../helpers/locale.helper';
 import { getDaysNum, setPriceCoeff } from '../../../helpers/price.helper';
 import { useEffect, useState } from 'react';
 import { checkAvailableCars } from '../../../helpers/rented.helper';
@@ -66,9 +66,7 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 				</div>
 				<div className={styles.carInfoBlock}>
 					<Htag tag='m' className={styles.name}>
-						{car.name + ' | ' + (router.locale === 'ka' ?
-							car.location.location_ge : router.locale === 'ru' ?
-							car.location.location_ru : car.location.location)}
+						{car.name + ' | ' + getLocaleLocation(router.locale, car.location)}
 					</Htag>
 					<Htag tag='l'>
 						{

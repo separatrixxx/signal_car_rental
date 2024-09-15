@@ -10,6 +10,8 @@ export default factories.createCoreController('api::location.location', ({ strap
                 location: entity.attributes.location,
                 location_ru: entity.attributes.location_ru,
                 location_ge: entity.attributes.location_ge,
+                location_pl: entity.attributes.location_pl,
+                location_he: entity.attributes.location_he,
             }
         });
 
@@ -24,6 +26,8 @@ export default factories.createCoreController('api::location.location', ({ strap
             location: data.attributes.location,
             location_ru: data.attributes.location_ru,
             location_ge: data.attributes.location_ge,
+            location_pl: data.attributes.location_pl,
+            location_he: data.attributes.location_he,
         };
 
         return { data: newData };

@@ -18,6 +18,7 @@ export const en = {
     no_cars: "No cars available",
     about: "About",
     contacts: "Contacts",
+    media: "Media",
     from: "from",
     day: "day",
     specifications: "Specifications",

@@ -1,7 +1,7 @@
 import { SortingBarProps } from './SortingBar.props';
 import styles from './SortingBar.module.css';
 import { useRouter } from 'next/router';
-import { setLocale } from '../../../helpers/locale.helper';
+import { getLocaleLocations, setLocale } from '../../../helpers/locale.helper';
 import { Htag } from '../../Common/Htag/Htag';
 import SortIcon from './sort_icon.svg';
 import LocationIcon from './location_icon.svg';
@@ -35,9 +35,7 @@ export const SortingBar = ({ sort, name, setSort, setName }: SortingBarProps): J
                     <LocationIcon />
                 </span>
                 <Htag tag='m'>
-                    {locations.filter(l => l.location_code === dates.startLocation)[0][
-                        router.locale === 'ka' ? 'location_ge' : router.locale === 'ru' ? 'location_ru' : 'location'
-                    ]}
+                    {locations.filter(l => l.location_code === dates.startLocation)[0][getLocaleLocations(router.locale) as 'location']}
                 </Htag>
             </div>
             <div className={styles.sortingDiv} onClick={() => sort === 'low' ? setSort('high') : setSort('low')}>

@@ -18,6 +18,7 @@ export const ka = {
     no_cars: "მანქანები არ არის მარადიული",
     about: "შესახებ",
     contacts: "კონტაქტები",
+    media: "სიახლეები",
     from: "დან",
     day: "დღე",
     specifications: "სპეციფიკაციები",

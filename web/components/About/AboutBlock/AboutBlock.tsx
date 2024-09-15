@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
 import { Htag } from '../../Common/Htag/Htag';
-import { setLocale } from '../../../helpers/locale.helper';
+import { getAddressDescription, setLocale } from '../../../helpers/locale.helper';
 import ReactMarkdown from 'react-markdown';
 
 
@@ -19,8 +19,7 @@ export const AboutBlock = (): JSX.Element => {
             </Htag>
             <Htag tag='l' className={styles.about_text}>
                 <ReactMarkdown>
-                    {router.locale === 'ka' ? info.about_text_ge : router.locale === 'ru'
-                            ? info.about_text_ru : info.about_text}
+                    {getAddressDescription(router.locale, info).about_locale}
                 </ReactMarkdown>
             </Htag>
         </div>

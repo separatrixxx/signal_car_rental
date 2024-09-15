@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
 import { useEffect, useMemo, useState } from 'react';
 import { Input } from '../../Common/Input/Input';
-import { setLocale } from '../../../helpers/locale.helper';
+import { getLocaleLocation, setLocale } from '../../../helpers/locale.helper';
 import { Button } from '../../Common/Button/Button';
 import { BookingErrorInterface, BookingInterface } from '../../../interfaces/booking.interface';
 import { checkData } from '../../../helpers/booking_car.helper';
@@ -27,19 +27,19 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
     const dispatch = useDispatch();
 
     const car = useSelector((state: AppState) => state.cars.cars).find(function (car) {
-		return car.id === carId;
-	});
+        return car.id === carId;
+    });
     const dates = useSelector((state: AppState) => state.dates.dates);
     const rented = useSelector((state: AppState) => state.rented.rented).filter(function (rentedCar) {
-		return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
-	});
+        return rentedCar.car_id === carId && rentedCar.status !== 'free' && rentedCar.status !== 'canceled';
+    });
     const currency = useSelector((state: AppState) => state.currency.currency);
     const rates = useSelector((state: AppState) => state.rates.rates);
 
     const [clientName, setClientName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [startDate, setStartDate] = useState<string>('');
-    const [finishDate, setFinishDate] = useState<string>('');    
+    const [finishDate, setFinishDate] = useState<string>('');
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -57,6 +57,8 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
         location: '',
         location_ru: '',
         location_ge: '',
+        location_pl: '',
+        location_he: '',
     };
 
     const locations = useSelector((state: AppState) => state.locations.locations);
@@ -85,7 +87,7 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
         checkAvailableCars(checkCounterData, setFreeCarsCounter);
     }, []);
 
-	if (car) {
+    if (car) {
         const bookingCarData: BookingInterface = {
             clientName: clientName,
             phone: phone,
@@ -94,10 +96,10 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
             car: car,
             startLocation: startLocation,
             finishLocation: finishLocation,
-        };   
+        };
 
-		return (
-			<>
+        return (
+            <>
                 <div className={styles.carBooking}>
                     <Input type="text" text={setLocale(router.locale).your_name} value={clientName}
                         error={error.errName} onChange={(e) => setClientName(e.target.value)} />
@@ -107,22 +109,18 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                     {
                         isStart ?
                             <>
-                                <Input type="location" text={startLocation.location_code === '' ?setLocale(router.locale).start_location :
-                                    (router.locale === 'ka' ? startLocation.location_ge : router.locale === 'ru' ? startLocation.location_ru
-                                    : startLocation.location)}
-                                    value={router.locale === 'ka' ? startLocation.location_ge : router.locale === 'ru' ? startLocation.location_ru
-                                    : startLocation.location} error={error.errStartLocation} isActive={startLocation.location_code === '' ? false : true}
-                                    onChange={setActiveStart} />
+                                <Input type="location" text={startLocation.location_code === '' ? setLocale(router.locale).start_location :
+                                    getLocaleLocation(router.locale, startLocation)}
+                                    value={getLocaleLocation(router.locale, startLocation)} error={error.errStartLocation}
+                                    isActive={startLocation.location_code === '' ? false : true} onChange={setActiveStart} />
                                 <Input type="location" text={finishLocation.location_code === '' ? setLocale(router.locale).finish_location :
-                                    (router.locale === 'ka' ? finishLocation.location_ge : router.locale === 'ru' ? finishLocation.location_ru
-                                    : finishLocation.location)}
-                                    value={router.locale === 'ka' ? finishLocation.location_ge : router.locale === 'ru' ? finishLocation.location_ru
-                                    : finishLocation.location} error={error.errFinishLocation} isActive={finishLocation.location_code === '' ? false : true}
-                                    onChange={setActiveFinish} />
+                                    getLocaleLocation(router.locale, finishLocation)}
+                                    value={getLocaleLocation(router.locale, finishLocation)} error={error.errFinishLocation}
+                                    isActive={finishLocation.location_code === '' ? false : true} onChange={setActiveFinish} />
                             </>
-                        : <></>
+                            : <></>
                     }
-                    
+
                     <Input type={isStart ? "datetime-local" : "time"} text={setLocale(router.locale).start_time}
                         value={startDate} minDate={getDate(isStart)} error={error.errStart}
                         onChange={isStart ? (e) => {
@@ -138,9 +136,9 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                     <Htag tag='l' className={styles.carPrice}>
                         {setLocale(router.locale).booking_price + ': ' +
                             (getDaysNum(dates, isStart, startDatetime, finishDatetime) *
-                            setPriceCoeff(dates, car.price, currency.code, rates,
-                            isStart, startDatetime, finishDatetime) * 0.1).toFixed(1) + currency.symbol}
-                        <Question className={styles.question} onClick={() => setActive(true)}/>
+                                setPriceCoeff(dates, car.price, currency.code, rates,
+                                    isStart, startDatetime, finishDatetime) * 0.1).toFixed(1) + currency.symbol}
+                        <Question className={styles.question} onClick={() => setActive(true)} />
                     </Htag>
                     {
                         <Htag tag='m' className={styles.carCounter}>
@@ -156,7 +154,7 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
 
                             checkAvailableCars(checkCounterData, setFreeCarsCounter);
                             getRented(dispatch);
-                    }} />
+                        }} />
                 </div>
                 <Modal active={active} setActive={setActive}>
                     <Htag tag="l" className={styles.questionText}>
@@ -172,8 +170,8 @@ export const CarBooking = ({ carId, isStart, startDatetime, finishDatetime, setS
                         setFinishLocation={setFinishLocationModal} />
                 </Modal>
             </>
-		);
-	} else {
-		return <></>
-	}
+        );
+    } else {
+        return <></>
+    }
 };

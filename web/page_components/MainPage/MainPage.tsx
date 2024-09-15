@@ -66,6 +66,8 @@ export const MainPage = (): JSX.Element => {
         location: '',
         location_ru: '',
         location_ge: '',
+        location_pl: '',
+        location_he: '',
     };
 
     const [startLocation, setStartLocation] = useState<LocationInterface>(locatEx);

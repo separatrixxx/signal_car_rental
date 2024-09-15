@@ -13,8 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "address": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "phone": {
       "type": "string",
@@ -45,6 +44,22 @@
       "required": true
     },
     "about_text_ge": {
+      "type": "richtext",
+      "required": true
+    },
+    "address_he": {
+      "type": "string",
+      "required": true
+    },
+    "about_text_he": {
+      "type": "richtext",
+      "required": true
+    },
+    "address_pl": {
+      "type": "string",
+      "required": true
+    },
+    "about_text_pl": {
       "type": "richtext",
       "required": true
     }

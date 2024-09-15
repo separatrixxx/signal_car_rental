@@ -1,7 +1,7 @@
 import { MainPage } from "../../page_components/MainPage/MainPage";
 import Head from 'next/head';
 import { useRouter } from "next/router";
-import { setLocale } from "../../helpers/locale.helper";
+import { getAddressDescription, setLocale } from "../../helpers/locale.helper";
 import { useSelector } from 'react-redux';
 import { AppState } from "../../features/store/store";
 import { useDispatch } from "react-redux";
@@ -29,11 +29,9 @@ function Main(): JSX.Element {
     <>
       <Head>
         <title>{setLocale(router.locale).signal_car}</title>
-        <meta name='description' content={router.locale === 'ka' 
-					? info.about_text_ge : router.locale === 'ru' ? info.about_text_ru : info.about_text} />
+        <meta name='description' content={getAddressDescription(router.locale, info).about_locale} />
         <meta property='og:title' content={setLocale(router.locale).signal_car} />
-        <meta name='og:description' content={router.locale === 'ka' 
-					? info.about_text_ge : router.locale === 'ru' ? info.about_text_ru : info.about_text} />
+        <meta name='og:description' content={getAddressDescription(router.locale, info).about_locale} />
         <meta charSet="utf-8" />
       </Head>
       <MainPage />

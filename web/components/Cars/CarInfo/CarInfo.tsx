@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../../features/store/store';
 import { Htag } from '../../Common/Htag/Htag';
 import { TextPad } from '../../Common/TextPad/TextPad';
-import { setLocale } from '../../../helpers/locale.helper';
+import { getCarDescription, setLocale } from '../../../helpers/locale.helper';
 import { CarInfoItem } from '../CarInfoItem/CarInfoItem';
 import { CarInterface } from '../../../interfaces/car.interface';
 import { Slider } from '../../Slider/Slider/Slider';
@@ -48,8 +48,7 @@ export const CarInfo = ({ carId, isStart, startDatetime, finishDatetime, startLo
 						</Htag>
 						<Htag tag='l' className={styles.description}>
 							<ReactMarkdown>
-								{router.locale === 'ka' ? car.description_ge : router.locale === 'ru' ?
-										car.description_ru : car.description}
+								{getCarDescription(router.locale, car)}
 							</ReactMarkdown>
 						</Htag>
 						<Htag tag='xl' className={styles.carPrice}>

@@ -15,6 +15,8 @@ export interface CarInterface {
     description: string,
     description_ru: string,
     description_ge: string,
+    description_pl: string,
+    description_he: string,
     counter: number,
     class: 'econom' | 'comfort' | 'business' | 'premium' | 'suv' | 'minivan',
     engine_type: 'gasoline' | 'diesel' | "hybrid" | 'electricity',

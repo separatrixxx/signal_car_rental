@@ -831,6 +831,8 @@ export interface ApiCarCar extends Schema.CollectionType {
     description_ge: Attribute.RichText & Attribute.Required;
     hit: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     price: Attribute.Component<'price.price'> & Attribute.Required;
+    description_he: Attribute.RichText & Attribute.Required;
+    description_pl: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -853,7 +855,7 @@ export interface ApiCompanyInfoCompanyInfo extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    address: Attribute.String & Attribute.Required;
+    address: Attribute.String;
     phone: Attribute.String & Attribute.Required;
     email: Attribute.String & Attribute.Required;
     address_ru: Attribute.String & Attribute.Required;
@@ -862,6 +864,10 @@ export interface ApiCompanyInfoCompanyInfo extends Schema.CollectionType {
     about_text: Attribute.RichText & Attribute.Required;
     about_text_ru: Attribute.RichText & Attribute.Required;
     about_text_ge: Attribute.RichText & Attribute.Required;
+    address_he: Attribute.String & Attribute.Required;
+    about_text_he: Attribute.RichText & Attribute.Required;
+    address_pl: Attribute.String & Attribute.Required;
+    about_text_pl: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -886,6 +892,7 @@ export interface ApiLocationLocation extends Schema.CollectionType {
     singularName: 'location';
     pluralName: 'locations';
     displayName: 'Location';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -895,6 +902,8 @@ export interface ApiLocationLocation extends Schema.CollectionType {
     location: Attribute.String & Attribute.Required;
     location_ru: Attribute.String & Attribute.Required;
     location_ge: Attribute.String & Attribute.Required;
+    location_pl: Attribute.String & Attribute.Required;
+    location_he: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
