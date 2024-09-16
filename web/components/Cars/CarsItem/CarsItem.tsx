@@ -65,10 +65,10 @@ export const CarsItem = ({ carId, isStart }: CarsItemProps): JSX.Element => {
 					/>
 				</div>
 				<div className={styles.carInfoBlock}>
-					<Htag tag='m' className={styles.name}>
+					<Htag tag='l' className={styles.name}>
 						{car.name + ' | ' + getLocaleLocation(router.locale, car.location)}
 					</Htag>
-					<Htag tag='l'>
+					<Htag tag='m'>
 						{
 							isStart ? setLocale(router.locale).from + ' ' + setPriceCoeff(dates, car.price, currency.code, rates)
 								+ currency.symbol + ' / ' + setLocale(router.locale).day

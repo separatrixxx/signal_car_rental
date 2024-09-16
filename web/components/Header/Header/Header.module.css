@@ -14,7 +14,8 @@
 
 	border-radius: 0 0 20px 20px;
 	background: var(--white);
-	grid-template-columns: 1fr auto auto;
+	grid-template-columns: auto 1fr auto;
+	grid-template-areas: ". headerBlock .";
 	box-shadow: 0 20px 13px rgb(0 0 0 / 0.03), 0 8px 5px rgb(0 0 0 / 0.08);
 	gap: 20px;
 }
@@ -23,9 +24,10 @@
 	display: grid;
 	align-items: center;
 
-	width: fit-content;
-	grid-template-columns: repeat(4, auto);
+	width: 100%;
+	grid-template-columns: auto auto auto 1fr !important;
 	gap: 20px;
+	grid-area: headerBlock;
 }
 
 .logo {
@@ -38,9 +40,16 @@
 	width: 40px;
 }
 
+.buttonsDiv {
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 20px;
+	justify-self: right !important;
+}
+
 @media (min-width: 1024px) {
 	.fixed {
-		border-radius: 0;
+		border-radius: 0 !important;
 	}
 }
 
@@ -56,10 +65,35 @@
 	.header {
 		width: calc(100% - 80px);
 		padding: 15px 40px;
+		gap: 0 !important;
+		grid-template-columns: 1fr auto;
+		grid-template-areas:
+			". ."
+			"headerBlock headerBlock";
+	}
+
+	.linksDiv {
+		grid-template-columns: auto;
+		grid-template-rows: auto auto auto;
+
+		justify-self: left;
+		justify-items: left;
+		gap: 7px !important;
+	}
+
+	.buttonsDiv {
+		display: grid;
+
+		margin-top: 10px;
+		padding-top: 12px;
+
+		border-top: 1px solid var(--light);
+		grid-template-columns: auto auto;
+		gap: 10px;
 	}
 
 	.logo > svg {
-		width: 30px;
+		width: 35px;
 	}
 }
 
@@ -76,21 +110,13 @@
 		gap: 10px;
 	}
 
-	.logo {
-		margin-right: 5px;
-	}
-
 	.logo > svg {
-		width: 20px;
+		width: 30px;
 	}
 }
 
 @media (max-width: 300px) {
 	.header {
 		border-radius: 0 0 10px 10px;
-	}
-
-	.logo > svg {
-		width: 15px;
 	}
 }

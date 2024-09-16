@@ -25,28 +25,28 @@
 }
 
 .xl {
-	font-size: 32px;
+	font-size: 34px;
 	font-weight: 700;
 	font-style: normal;
 	line-height: 42px;
 }
 
 .l {
-	font-size: 20px;
+	font-size: 22px;
 	font-weight: 700;
 	font-style: normal;
 	line-height: normal;
 }
 
 .m {
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 500;
 	font-style: normal;
 	line-height: normal;
 }
 
 .s {
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 500;
 	font-style: normal;
 	line-height: normal;
@@ -63,7 +63,7 @@
 	}
 
 	.xl {
-		font-size: 26px;
+		font-size: 28px;
 		line-height: 32px;
 	}
 }
@@ -78,20 +78,20 @@
 	}
 
 	.xl {
-		font-size: 24px;
+		font-size: 26px;
 		line-height: 30px;
 	}
 
 	.l {
-		font-size: 14px;
+		font-size: 16px;
 	}
 
 	.m {
-		font-size: 12px;
+		font-size: 14px;
 	}
 
 	.s {
-		font-size: 10px;
+		font-size: 12px;
 	}
 }
 
@@ -121,20 +121,20 @@
 	}
 
 	.xl {
-		font-size: 20px;
+		font-size: 22px;
 		line-height: 26px;
 	}
 
 	.l {
-		font-size: 14px;
+		font-size: 16px;
 	}
 
 	.m {
-		font-size: 12px;
+		font-size: 14px;
 	}
 
 	.s {
-		font-size: 12px;
+		font-size: 14px;
 	}
 }
 
@@ -148,7 +148,7 @@
 	}
 
 	.xl {
-		font-size: 16px;
+		font-size: 18px;
 		line-height: 26px;
 	}
 }
@@ -159,21 +159,6 @@
 	}
 
 	.xxl {
-		font-size: 16px;
-	}
-
-	.xl {
-		font-size: 14px;
-		line-height: 24px;
-	}
-
-	.l {
-		font-size: 12px;
-	}
-}
-
-@media (max-width: 200px) {
-	.xxl {
 		font-size: 18px;
 	}
 
@@ -183,6 +168,12 @@
 	}
 
 	.l {
-		font-size: 10px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 200px) {
+	.l {
+		font-size: 12px;
 	}
 }
