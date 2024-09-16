@@ -47,6 +47,10 @@
 	justify-self: right !important;
 }
 
+.hidden {
+	display: none !important;
+}
+
 @media (min-width: 1024px) {
 	.fixed {
 		border-radius: 0 !important;

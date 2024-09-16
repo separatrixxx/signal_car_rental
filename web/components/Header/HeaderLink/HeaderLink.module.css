@@ -18,6 +18,10 @@
 	color: var(--primary);
 }
 
+.hidden {
+	display: none !important;
+}
+
 @media (min-width: 1024px) {
 	.link:hover > h1 {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

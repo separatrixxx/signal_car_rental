@@ -5,9 +5,11 @@ import { Htag } from '../../Common/Htag/Htag';
 import cn from 'classnames';
 
 
-export const HeaderLink = ({ text, link }: HeaderLinkProps): JSX.Element => {
+export const HeaderLink = ({ hidden, text, link }: HeaderLinkProps): JSX.Element => {
 	return (
-        <Link href={link} className={styles.link}>
+        <Link href={link} className={cn(styles.link, {
+            [styles.hidden]: hidden,
+        })}>
             <Htag tag='m'>
                 {text}
             </Htag>

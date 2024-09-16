@@ -11,6 +11,7 @@ import Logo from './logo.svg';
 import Link from 'next/link';
 import { useResizeW } from '../../../hooks/useResize';
 import { BurgerMenu } from '../BurgerMenu/BurgenMenu';
+import cn from 'classnames';
 
 
 export const Header = ({ isStart, setActiveLocale, setActiveCurrency }: HeaderProps): JSX.Element => {
@@ -19,6 +20,7 @@ export const Header = ({ isStart, setActiveLocale, setActiveCurrency }: HeaderPr
     const [lastScroll, setLastScroll] = useState<number>(0);
     const [flag, setFlag] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
+    const [hidden, setHidden] = useState<boolean>(true);
     const width = useResizeW();
 
     const headerRef = useRef<HTMLDivElement | null>(null);
@@ -67,6 +69,8 @@ export const Header = ({ isStart, setActiveLocale, setActiveCurrency }: HeaderPr
     }
 
     useEffect(() => {
+        setHidden(width <= 1024);
+
         const headerElement = document.querySelector(`.${styles.header}`);
         const initialPosition = (headerElement?.getBoundingClientRect().top || 0) + window.scrollY;
 
@@ -96,7 +100,7 @@ export const Header = ({ isStart, setActiveLocale, setActiveCurrency }: HeaderPr
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [isStart]);
+    }, [isStart, width]);
 
     return (
         <motion.header className={styles.header}
@@ -112,15 +116,17 @@ export const Header = ({ isStart, setActiveLocale, setActiveCurrency }: HeaderPr
                 initial={open || width > 1024 ? 'visible' : 'hidden'}
                 animate={open || width > 1024 ? 'visible' : 'hidden'}
                 style={width > 1024 ? { gridTemplateColumns: 'repeat(4, auto)' } : { gridTemplateRows: 'repeat(4, auto)' }}>
-                <HeaderLink text={setLocale(router.locale).about} link="/about" />
-                <HeaderLink text={setLocale(router.locale).contacts} link="/contacts" />
-                <HeaderLink text={setLocale(router.locale).media} link="/media" />
-                <div className={styles.buttonsDiv}>
+                <HeaderLink hidden={hidden} text={setLocale(router.locale).about} link="/about" />
+                <HeaderLink hidden={hidden} text={setLocale(router.locale).contacts} link="/contacts" />
+                <HeaderLink hidden={hidden} text={setLocale(router.locale).media} link="/media" />
+                <div className={cn(styles.buttonsDiv, {
+                    [styles.hidden]: hidden,
+                })}>
                     <LocaleChange isCurrency={true} setActiveLocale={setActiveLocale} setActiveCurrency={setActiveCurrency} />
                     <LocaleChange isCurrency={false} setActiveLocale={setActiveLocale} setActiveCurrency={setActiveCurrency} />
                 </div>
             </motion.div>
-            <BurgerMenu open={open} setOpen={setOpen} />
+            <BurgerMenu open={open} setOpen={setOpen} setHidden={setHidden} />
         </motion.header>
     );
 };

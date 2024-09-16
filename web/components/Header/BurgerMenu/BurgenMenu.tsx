@@ -3,7 +3,7 @@ import styles from './BurgerMenu.module.css';
 import { motion } from 'framer-motion';
 
 
-export const BurgerMenu = ({ open, setOpen }: BurgerMenuProps): JSX.Element => {
+export const BurgerMenu = ({ open, setOpen, setHidden }: BurgerMenuProps): JSX.Element => {
     const variants1 = {
         open: {
             transform: 'rotate(45deg)',
@@ -29,6 +29,12 @@ export const BurgerMenu = ({ open, setOpen }: BurgerMenuProps): JSX.Element => {
     return (
         <div className={styles.burgerMenu} onClick={() => {
             setOpen(!open);
+
+            if (open) {
+                setTimeout(() => setHidden(true), 300);
+            } else {
+                setHidden(false);
+            }
         }}>
             <motion.span variants={variants1}
                 initial={open ? 'open' : 'close'}
