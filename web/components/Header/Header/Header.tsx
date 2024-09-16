@@ -44,7 +44,7 @@ export const Header = ({ isStart, setActiveLocale, setActiveCurrency }: HeaderPr
 
     const variantsHeader = {
         visible: {
-            padding: '10px 0',
+            padding: '15px 0 10px 0',
             height: 'fit-content',
             opacity: 1,
             transition: {

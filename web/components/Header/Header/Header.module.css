@@ -73,7 +73,7 @@
 	}
 
 	.linksDiv {
-		grid-template-columns: auto;
+		grid-template-columns: auto !important;
 		grid-template-rows: auto auto auto;
 
 		justify-self: left;
@@ -88,8 +88,8 @@
 		padding-top: 12px;
 
 		border-top: 1px solid var(--light);
-		grid-template-columns: auto auto;
 		gap: 10px;
+		justify-self: left !important;
 	}
 
 	.logo > svg {
