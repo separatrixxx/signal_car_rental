@@ -22,8 +22,7 @@ export const Slider = ({ images }: SliderProps): JSX.Element => {
             autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
-            }}
-        >
+            }}>
             {
                 images.map(img => (
                     <SwiperSlide key={img.id}>
