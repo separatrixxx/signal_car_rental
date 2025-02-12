@@ -11,7 +11,7 @@ export const ByBlock = ({ color }: ByBlockProps): JSX.Element => {
                 <Htag tag='s' className={cn(styles.bySeparatrix, {
                     [styles.darkColor]: color === 'dark',
                 })}>
-                    by 🍌 codes
+                    by separatrix
                 </Htag>
             </a>
         </div>
