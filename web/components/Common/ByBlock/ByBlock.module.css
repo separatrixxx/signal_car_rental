@@ -7,7 +7,7 @@
 	height: fit-content;
 }
 
-.byBanana {
+.bySeparatrix {
 	transition-duration: 300ms;
 
 	color: var(--darkLight);
@@ -17,16 +17,16 @@
 	color: var(--white);
 }
 
-.byBanana:active {
+.bySeparatrix:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	color: var(--banana);
+	color: var(--primary);
 }
 
 @media (min-width: 1024px) {
-	.byBanana:hover {
+	.bySeparatrix:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		color: var(--banana);
+		color: var(--primary);
 	}
 }
